@@ -12,9 +12,16 @@ body{
 
 }
 
-#main_search{
-  position: relative;
-  left: 43%;
+#mainSearch{
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+}
+#searchBar{
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
 }
 
 h1{
