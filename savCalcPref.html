@@ -49,12 +49,6 @@
       font-weight:bold;
       padding-right:40%;
     }
-    input {
-      border-radius:8px;
-      outline:none;
-      margin-top:px;
-      margin-left:4px;
-    }
     #carInfoArrow {
       transition: 0.5s;
     }
@@ -71,7 +65,7 @@
       margin-right:20px;
       margin:20px;
     }
-    #km {
+    .km {
       width:35px;
     }
     #submit {
@@ -80,6 +74,16 @@
       font-size:16pt;
       font-weight:bold;
     }
+    .forms input{
+      padding:4px;
+      border-radius:12px;
+      outline:none;
+      margin-top:4px;
+      margin-left:4px;
+    }
+    #form3 input {
+    }
+
   </style>
 
   </head>
@@ -142,7 +146,7 @@
           <form class="forms" name="form2" id="form2">
             <ul>
               <li><input type=radio name="closest" value="closest"> Closest</li>
-              <li><input type=radio name="lowest" value="lowest"> Lowest price within <input id="km" type=number name="km"> km</li>
+              <li><input type=radio name="lowest" value="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0"> km</li>
               <li><input type=radio name="custom" value="custom"> Custom</li>
             </ul>
           </form>
@@ -151,9 +155,11 @@
         <button id="additionalOptionsButton"><img id="additionalOptionsArrow" src='arrow2.png'>&ensp;Additional Options</button>
         <div id="additionalOptions">
           <form class="forms" name="form3" id="form3">
-            <input type=number name="jerryCans" placeholder="">
-            <input type=text name="model" placeholder="model">
-            <input type=number name="year" placeholder="year">
+            <input type=checkbox name=check1><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" value="0">
+            <br/>
+            <input type=checkbox name=check1><label>Total Time:</label><input type=number class="km" value="0" name="timeH"> hour(s)<input type=number class="km" name="timeM" value="0"> minute(s)
+            <br/>
+            <input type=checkbox name=check1><label>Total Distance:</label><input type=number class="km" name="distance" value="0"> km
           </form>
         </div>
         <hr>
