@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="logo.css"> <!--Needed for nav bar-->
+  <style>
+    #main {
+      width:100%;
+      height:500px;
+    }
+    #preferences {
+      border: 3px black solid;
+      width:80%;
+      height:600px;
+      padding-left:20px;
+      background-color:silver;
+      margin: 0 auto;
+      border-radius:13px;
+    }
+    #carInfo {
+      margin-left:16px;
+      margin-top:8px;
+    }
+    #additionalOptions {
+      margin-left:16px;
+      margin-top:8px;
+    }
+    #carInfoButton {
+      background: none;
+      border: 0;
+      outline:none;
+      font-size:16pt;
+      font-weight:bold;
+      padding-right:40%;
+    }
+    #additionalOptionsButton {
+      background: none;
+      border: 0;
+      outline:none;
+      font-size:16pt;
+      font-weight:bold;
+    }
+    #gasStationButton {
+      background: none;
+      border: 0;
+      outline:none;
+      font-size:16pt;
+      font-weight:bold;
+      padding-right:40%;
+    }
+    input {
+      border-radius:8px;
+      outline:none;
+      margin-top:px;
+      margin-left:4px;
+    }
+    #carInfoArrow {
+      transition: 0.5s;
+    }
+    #gasStationArrow {
+      transition: 0.5s;
+    }
+    #additionalOptionsArrow {
+      transition: 0.5s;
+    }
+    form ul {
+      list-style-type: none;
+    }
+    hr {
+      margin-right:20px;
+      margin:20px;
+    }
+    #km {
+      width:35px;
+    }
+    #submit {
+      width:200px;
+      height:60px;
+      font-size:16pt;
+      font-weight:bold;
+    }
+  </style>
+
+  </head>
+
+  <body>
+    <!-- Nav bar start-->
+    <div id="top"></div>
+    <nav id="topbar">
+      <div id="logo">
+        <form>
+        <input type="text" name="search" placeholder="Search">
+        <input type="submit" name="submit" value="Submit">
+        </form>
+        <a href="index.html"><img src="placeholderlogo.png" alt="logo"></a>
+      </div>
+      <nav class="navbar">
+        <div class="dropdown">
+          <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
+          </button>
+          <div id="accountDrop" class="dropdown-content">
+            <a class="notSignedIn" href="logIn.html">Log-In</a>
+            <a class="notSignedIn" href="signUp.html">Sign-Up</a>
+            <a class="signedIn" href="myAccount.html">My Account</a>
+            <a class="signedIn" href="preferences.html">Edit Preferences</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
+          </button>
+          <div id="featureDrop" class="dropdown-content">
+            <a href="savCalcPref.html">US Savings Calculator</a>
+            <a href="gasStationList.html">Gas Station List</a>
+            <a href="aboutUs.html">About Us</a>
+          </div>
+        </div>
+        <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
+      </nav>
+      </div>
+    </nav>
+    <!-- Nav bar end-->
+
+    <!-- Main content goes here-->
+    <main id="main">
+      <h1>Savings Calculator</h1>
+
+      <div id="preferences">
+        <h3>Preferences</h3>
+        <hr>
+        <button id="carInfoButton">1.&ensp;<img id="carInfoArrow" src='arrow.png'>&ensp;Car Info</button>
+        <div id="carInfo">
+          <form class="forms" name="form1" id="form1">
+            <input type=text name="make" placeholder="make">
+            <input type=text name="model" placeholder="model">
+            <input type=number name="year" placeholder="year" min="1950" max="2020">
+          </form>
+        </div>
+        <hr>
+        <button id="gasStationButton">2.&ensp;<img id="gasStationArrow" src='arrow.png'>&ensp;Gas Station</button>
+        <div id="gasStation">
+          <form class="forms" name="form2" id="form2">
+            <ul>
+              <li><input type=radio name="closest" value="closest"> Closest</li>
+              <li><input type=radio name="lowest" value="lowest"> Lowest price within <input id="km" type=number name="km"> km</li>
+              <li><input type=radio name="custom" value="custom"> Custom</li>
+            </ul>
+          </form>
+        </div>
+        <hr>
+        <button id="additionalOptionsButton"><img id="additionalOptionsArrow" src='arrow2.png'>&ensp;Additional Options</button>
+        <div id="additionalOptions">
+          <form class="forms" name="form3" id="form3">
+            <input type=number name="jerryCans" placeholder="">
+            <input type=text name="model" placeholder="model">
+            <input type=number name="year" placeholder="year">
+          </form>
+        </div>
+        <hr>
+        <input id="submit" type="button" value="Start Journey" onclick="submitForms()">
+
+        <script>
+          $(document).ready(function() {
+          $("#additionalOptions").hide();
+          var carInfo = document.getElementById("carInfo");
+          var arrow = document.getElementsByClassName("arrow");
+          value0 = 0;
+          value1 = 0;
+          value2 = 0;
+
+          $("#carInfoButton").click(function(){
+            $("#carInfo").toggle(500);
+            if (value0 == 0) {
+              $("#carInfoArrow").css({'transform': 'rotate(-90deg)'});
+              value0 = 1;
+            } else if (value0 == 1){
+              $("#carInfoArrow").css({'transform': ''});
+              value0 = 0;
+            }
+            });
+          $("#gasStationButton").click(function(){
+            $("#gasStation").toggle(500);
+            if (value1 == 0) {
+              $("#gasStationArrow").css({'transform': 'rotate(-90deg)'});
+              value1 = 1;
+            } else if (value1 == 1){
+            $("#gasStationArrow").css({'transform': ''});
+              value1 = 0;
+            }
+            });
+          $("#additionalOptionsButton").click(function(){
+            $("#additionalOptions").toggle(500);
+            if (value2 == 0) {
+              $("#additionalOptionsArrow").css({'transform': 'rotate(90deg)'});
+              value2 = 1;
+            } else if (value2 == 1){
+            $("#additionalOptionsArrow").css({'transform': ''});
+              value2 = 0;
+            }
+            });
+
+            submitForms = (function() {
+              document.getElementById("form1").submit();
+              document.getElementById("form2").submit();
+              document.getElementById("form3").submit();
+            });
+        });
+        </script>
+      </div>
+      
+
+        
+    </main>
+  </body>
+</html>
+  
