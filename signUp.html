@@ -1,10 +1,10 @@
 <!DOCTYPE html>
   <html lang="eng">
     <head>
-      <title>Home Page</title>
+      <title>Sign Up</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
-      <link rel="stylesheet" href="home.css"> <!--Homepage CSS Sheet-->
+      <link rel="stylesheet" href="signup.css"> <!--Homepage CSS Sheet-->
       <style>
       </style>
     
@@ -48,18 +48,22 @@
         <!-- Nav bar end-->
     
         <!-- Main content goes here-->
-        <div id="first_home">
-          
-          <h1><br>Fuel Finder</h1>
-          <p class="descript">Let us find the perfect stop for you</p>
+        <div id="container">
           <form>
-              <input type="text" name="search" placeholder="Search" id="main_search">
-          </form>
-          <br><br><br><br>
-          <h2>What is Fuel Finder?</h2>
-          <p class="descript">Fuel Finder is a service dedicated to reducing the gas expenses of every driver in the world.</p>
-          
-          </div>
+            <h1>Sign Up</h1>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" id="sign-up" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id="sign-up" placeholder="Enter Password" name="psw" required>
+
+            <label for="psw-confirm"><b>Confirm Password</b></label>
+            <input type="password" id="sign-up" placeholder="Confirm Password" name="psw-confirm" required>
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+            <p>Already have an account? Log in <a href="#" style="color:dodgerblue">here</a>.</p>
+            <button type="submit" class="signupbtn">Sign Up</button>
+          </form> 
+        </div>
       </body>
     </html>
-      
