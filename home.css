@@ -1,0 +1,39 @@
+/*CSS for home page*/
+body{
+  margin: 0%;
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.4)),url(road2.jpeg);
+  height:auto;
+  background-size:cover;
+  background-position:center;
+  margin:0;
+  width: 100%;
+}
+#first_home{
+
+}
+
+#main_search{
+  position: relative;
+  left: 43%;
+}
+
+h1{
+  text-align: center;
+  font-size: 4em;
+  color:white;
+  margin: 0%;
+}
+
+h2{
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  margin: 0%;
+}
+
+.descript{
+  font-size: 1em;
+  font-style: italic;
+  text-align: center;
+  color:white;
+}

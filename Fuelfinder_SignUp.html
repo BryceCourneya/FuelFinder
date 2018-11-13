@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+  <html lang="eng">
+    <head>
+      <title>Sign Up</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
+      <link rel="stylesheet" href="signup.css"> <!--Homepage CSS Sheet-->
+      <style>
+      </style>
+    
+      </head>
+    
+      <body>
+        <!-- Nav bar start-->
+        <div id="top"></div>
+        <nav id="topbar">
+          <div id="logo">
+            <form>
+            <input type="text" name="search" placeholder="Search">
+            <input type="submit" name="submit" value="Submit">
+            </form>
+            <a href="index.html"><img src="placeholderlogo.png" alt="logo"></a>
+          </div>
+          <nav class="navbar">
+            <div class="dropdown">
+              <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
+              </button>
+              <div id="accountDrop" class="dropdown-content">
+                <a class="notSignedIn" href="logIn.html">Log-In</a>
+                <a class="signedIn" href="myAccount.html">My Account</a>
+                <a class="signedIn" href="preferences.html">Edit Preferences</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
+              </button>
+              <div id="featureDrop" class="dropdown-content">
+                <a href="savCalcPref.html">US Savings Calculator</a>
+                <a href="gasStationList.html">Gas Station List</a>
+                <a href="aboutUs.html">About Us</a>
+              </div>
+            </div>
+            <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
+          </nav>
+          </div>
+        </nav>
+        <!-- Nav bar end-->
+    
+        <!-- Main content goes here-->
+        <div id="container">
+          <form>
+            <h1>Sign Up</h1>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" id="sign-up" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id="sign-up" placeholder="Enter Password" name="psw" required>
+
+            <label for="psw-confirm"><b>Confirm Password</b></label>
+            <input type="password" id="sign-up" placeholder="Confirm Password" name="psw-confirm" required>
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+            <p>Already have an account? Log in <a href="#" style="color:dodgerblue">here</a>.</p>
+            <button type="submit" class="signupbtn">Sign Up</button>
+          </form> 
+        </div>
+      </body>
+    </html>
