@@ -3,7 +3,7 @@ h1{
   font-size: 3em;
 }
 
-button {
+#signUpBtn {
   background-color:black;
   color:white;
   padding:3% 4%;
