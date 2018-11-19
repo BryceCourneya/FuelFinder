@@ -2,29 +2,48 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
+  <title>Savings Calculator</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="logo.css"> <!--Needed for nav bar-->
   <style>
+    body {
+      background:url(desertroad.jpg!d) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
     #main {
       width:100%;
       height:500px;
     }
+    h1 {
+      padding-left:142px;
+    }
+    h3 {
+      padding-top:18px;
+      padding-left:8px;
+    }
     #preferences {
-      border: 3px black solid;
+      border: 3px rgba(0,0,0,0.6);
       width:80%;
       height:600px;
       padding-left:20px;
-      background-color:silver;
+      background-color:rgba(0,0,0,0.6);
       margin: 0 auto;
+      margin-bottom:30px;
       border-radius:13px;
+      color:white;
     }
     #carInfo {
       margin-left:16px;
       margin-top:8px;
+      color: white;
     }
     #additionalOptions {
       margin-left:16px;
       margin-top:8px;
+      color: white;
     }
     #carInfoButton {
       background: none;
@@ -33,6 +52,7 @@
       font-size:16pt;
       font-weight:bold;
       padding-right:40%;
+      color: white;
     }
     #additionalOptionsButton {
       background: none;
@@ -40,6 +60,7 @@
       outline:none;
       font-size:16pt;
       font-weight:bold;
+      color: white;
     }
     #gasStationButton {
       background: none;
@@ -48,15 +69,19 @@
       font-size:16pt;
       font-weight:bold;
       padding-right:40%;
+      color: white;
     }
     #carInfoArrow {
       transition: 0.5s;
+      color: white;
     }
     #gasStationArrow {
       transition: 0.5s;
+      color: white;
     }
     #additionalOptionsArrow {
       transition: 0.5s;
+      color: white;
     }
     form ul {
       list-style-type: none;
@@ -67,6 +92,7 @@
     }
     .km {
       width:35px;
+      color:black;
     }
     #submit {
       width:200px;
@@ -77,9 +103,11 @@
     .forms input{
       padding:4px;
       border-radius:12px;
+      border-color:rgba(0,0,0,0.2);
       outline:none;
       margin-top:4px;
       margin-left:4px;
+      background-color:rgba(255,255,255,0.8);
     }
     #form3 input {
     }
@@ -94,7 +122,7 @@
     <nav id="topbar">
       <div id="logo">
         <form>
-        <input type="text" name="search" placeholder="Search">
+        <input type="search" name="search" placeholder="Search">
         <input type="submit" name="submit" value="Submit">
         </form>
         <a href="index.html"><img src="placeholderlogo.png" alt="logo"></a>
@@ -135,9 +163,9 @@
         <button id="carInfoButton">1.&ensp;<img id="carInfoArrow" src='arrow.png'>&ensp;Car Info</button>
         <div id="carInfo">
           <form class="forms" name="form1" id="form1">
-            <input type=text name="make" placeholder="make">
-            <input type=text name="model" placeholder="model">
-            <input type=number name="year" placeholder="year" min="1950" max="2020">
+            <input type=text name="make" placeholder="make" id="make">
+            <input type=text name="model" placeholder="model" id="model">
+            <input type=number name="year" placeholder="year" id="year" min="1950" max="2020">
           </form>
         </div>
         <hr>
@@ -145,9 +173,9 @@
         <div id="gasStation">
           <form class="forms" name="form2" id="form2">
             <ul>
-              <li><input type=radio name="closest" value="closest"> Closest</li>
-              <li><input type=radio name="lowest" value="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0"> km</li>
-              <li><input type=radio name="custom" value="custom"> Custom</li>
+              <li><input type=radio name="radio" value="closest" id="closest"> Closest</li>
+              <li><input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0"> km</li>
+              <li><input type=radio name="radio" value="custom" id="custom"> Custom</li>
             </ul>
           </form>
         </div>
@@ -155,11 +183,11 @@
         <button id="additionalOptionsButton"><img id="additionalOptionsArrow" src='arrow2.png'>&ensp;Additional Options</button>
         <div id="additionalOptions">
           <form class="forms" name="form3" id="form3">
-            <input type=checkbox name=check1><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" value="0">
+            <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0">
             <br/>
-            <input type=checkbox name=check1><label>Total Time:</label><input type=number class="km" value="0" name="timeH"> hour(s)<input type=number class="km" name="timeM" value="0"> minute(s)
+            <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="maxTime" name="timeH"> hour(s)<input type=number class="km" name="timeM" value="0"> minute(s)
             <br/>
-            <input type=checkbox name=check1><label>Total Distance:</label><input type=number class="km" name="distance" value="0"> km
+            <input type=checkbox name=check3 id="check3"><label>Total Distance:</label><input type=number class="km" id="maxDistance"name="distance" value="0"> km
           </form>
         </div>
         <hr>
@@ -205,17 +233,14 @@
             }
             });
 
-            submitForms = (function() {
+            submitForms = function() {
               document.getElementById("form1").submit();
               document.getElementById("form2").submit();
               document.getElementById("form3").submit();
-            });
+            };
         });
         </script>
       </div>
-      
-
-        
     </main>
   </body>
 </html>
