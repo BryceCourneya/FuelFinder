@@ -70,6 +70,7 @@ html {
   float:left;
   top:0;
   left:0;
+    z-index: 1;
 }
 #top {
   width:100%;

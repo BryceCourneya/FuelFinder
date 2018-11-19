@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(mountainroad.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+#maincontent {
+    margin: 5% 5% 5% 5%;
+    border-radius: 30px;
+    background-color: rgb(60, 60, 59, 0.7);
+    height: auto;
+    padding: 10px;
+    width: 80%;
+}
+
+#titletext{
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    font-size: 16pt;  
+    padding-left: 1em;
+}
+
+#titletext > div{
+    border-bottom: 2px solid white;
+}
+.stationbox {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin-top: 1%;
+    margin-right: 0;
+    border: solid 2px black;
+    display: flex;
+    border-radius: 50px;
+}
+
+.station {
+    float: right;
+    width: 20%;
+    height: auto;
+}
+
+.stationrating {
+    margin: 1rem;
+    margin-right: 0;
+    max-width: 3em;
+    width: auto;
+    border-right: dotted 1px #d0cccc;
+}
+
+
+.iconholder {
+    
+}
+
+.esso {
+    width: 75%;
+    height: auto;
+}
+
+.ratinghold{
+    position: relative;
+    display: inline-block;
+    top: 5px;
+    background-color: greenyellow;
+    border-radius: 30%;
+    padding: 0 0.5em;
+}
+
+.rating {}
+
+.stationinfo {
+    flex-grow: 1;
+    margin: 1em;
+}
+
+.stationname {
+    margin: 0;
+    font-size: 1.5em;
+    line-height: 1.2em;
+}
+
+.stationlocation{
+    font-size: 0.9em;
+    line-height: 1em;
+}
+
+
+.stationdistance{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+}
+
+.stationdistance > div{
+    vertical-align: middle;
+}
+
+.distancecontainer{
+    border: 1px solid #d0cccc;
+    border-radius: 25%;
+    padding: 0 0.2em;
+}
+
+.gasinfo{
+    margin: 1em;
+    border-left: dotted 1px #d0cccc;  
+    padding-left: 0.5em;
+    width: 25%;
+    max-width: 8rem;
+}
+
+.gascontainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.pricecontainer{
+    font-size: 1.3em;
+    font-weight:bolder;
+    text-align: center;
+    line-height: 1.1em;
+    width: 100%;
+    margin-bottom: 0.3em;
+}
+
+.lastupdate{
+    text-align: center;
+}
+.userprofile{
+    text-align: center;
+    line-height: 1.1em;
+    display: block;
+    color: #808080;
+    font-size: 0.6em;
+}
+
+.user{
+    text-decoration-line: none;
+}
+
+.user:visited{
+    text-decoration-line: none;
+    color: #808080;
+}
+
+.timeupdated{
+    color: #808080;
+    font-size: 0.6em;
+}
