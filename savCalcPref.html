@@ -18,7 +18,11 @@
       height:500px;
     }
     h1 {
-      padding-left:142px;
+      width:80%;
+      padding-left:28px;
+      margin:0 auto;
+      margin-top:10px;
+      margin-bottom:-10px;
     }
     h3 {
       padding-top:18px;
@@ -111,6 +115,22 @@
     }
     #form3 input {
     }
+    @media(max-width: 550px) {
+      h1 {
+        font-size:20pt;
+        text-align:center;
+        padding-left:0;
+      }
+      #gasStationButton {
+        padding-right:0;
+      }
+      #carInfoButton {
+        padding-right:0;
+      }
+      #preferences {
+        height:760px;
+      }
+    }
 
   </style>
 
@@ -119,15 +139,17 @@
   <body>
     <!-- Nav bar start-->
     <div id="top"></div>
+   
     <nav id="topbar">
       <div id="logo">
         <form>
-        <input type="search" name="search" placeholder="Search">
+        <input type="search" name="search" placeholder="Search" id="search">
         <input type="submit" name="submit" value="Submit">
         </form>
-        <a href="index.html"><img src="placeholderlogo.png" alt="logo"></a>
+        <a href="index.html"><img src="placeholderlogo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="tempSmall.png" alt="logo" id="logo2"></a>
       </div>
-      <nav class="navbar">
+      <nav class="navbar" id="navbar">
         <div class="dropdown">
           <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
           </button>
@@ -151,6 +173,7 @@
       </nav>
       </div>
     </nav>
+    
     <!-- Nav bar end-->
 
     <!-- Main content goes here-->
@@ -234,6 +257,14 @@
             });
 
             submitForms = function() {
+              var firebaseRef = firebase.database().ref();
+
+              var make = document.getElementById("make");
+              var year = document.getElementById("year");
+              var model = document.getElementById("model");
+
+              firebaseRef.push().set(year);
+
               document.getElementById("form1").submit();
               document.getElementById("form2").submit();
               document.getElementById("form3").submit();
@@ -242,6 +273,23 @@
         </script>
       </div>
     </main>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB_fU6DV9UBbjCy-d1f8Hu86eIfmbPsOK8",
+      authDomain: "fuelfinder-33a03.firebaseapp.com",
+      databaseURL: "https://fuelfinder-33a03.firebaseio.com",
+      projectId: "fuelfinder-33a03",
+      storageBucket: "fuelfinder-33a03.appspot.com",
+      messagingSenderId: "808681338832"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script src="savCalcPref.js"></script>
+
   </body>
 </html>
   
