@@ -86,8 +86,9 @@ html {
 }
 #logo img{
   width:150px;
-  height:60px;
+  height:80px;
   float:left;
+  margin-bottom:-30px;
 }
 #logo input {
   float:right;

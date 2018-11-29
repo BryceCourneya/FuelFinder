@@ -134,6 +134,21 @@
 
   </style>
 
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB_fU6DV9UBbjCy-d1f8Hu86eIfmbPsOK8",
+        authDomain: "fuelfinder-33a03.firebaseapp.com",
+        databaseURL: "https://fuelfinder-33a03.firebaseio.com",
+        projectId: "fuelfinder-33a03",
+        storageBucket: "fuelfinder-33a03.appspot.com",
+        messagingSenderId: "808681338832"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </head>
 
   <body>
@@ -146,8 +161,8 @@
         <input type="search" name="search" placeholder="Search" id="search">
         <input type="submit" name="submit" value="Submit">
         </form>
-        <a href="index.html"><img src="placeholderlogo.png" alt="logo" id="logo1"></a>
-        <a href="index.html"><img src="tempSmall.png" alt="logo" id="logo2"></a>
+        <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
       </div>
       <nav class="navbar" id="navbar">
         <div class="dropdown">
@@ -197,8 +212,7 @@
           <form class="forms" name="form2" id="form2">
             <ul>
               <li><input type=radio name="radio" value="closest" id="closest"> Closest</li>
-              <li><input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0"> km</li>
-              <li><input type=radio name="radio" value="custom" id="custom"> Custom</li>
+              <li><input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" id="lowestKM"> km</li>
             </ul>
           </form>
         </div>
@@ -208,17 +222,19 @@
           <form class="forms" name="form3" id="form3">
             <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0">
             <br/>
-            <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="maxTime" name="timeH"> hour(s)<input type=number class="km" name="timeM" value="0"> minute(s)
+            <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="timeH" name="timeH" min="0" max="99"> hour(s)<input type=number class="km" name="timeM" id="timeM" value="0" min="0" max="59"> minute(s)
             <br/>
             <input type=checkbox name=check3 id="check3"><label>Total Distance:</label><input type=number class="km" id="maxDistance"name="distance" value="0"> km
           </form>
         </div>
         <hr>
-        <input id="submit" type="button" value="Start Journey" onclick="submitForms()">
+        <input id="submit" type="button" onclick="submitForm()" value="Start Journey">
+        <!-- She said to use type=button and onclick="function" -->
 
         <script>
           $(document).ready(function() {
           $("#additionalOptions").hide();
+          document.getElementById("closest").checked = true;
           var carInfo = document.getElementById("carInfo");
           var arrow = document.getElementsByClassName("arrow");
           value0 = 0;
@@ -255,41 +271,73 @@
               value2 = 0;
             }
             });
+          });
+          </script>
+          
+          <script>
+           // document.getElementById('submit').addEventListener('submit', submitForm);
 
-            submitForms = function() {
-              var firebaseRef = firebase.database().ref();
+                function submitForm() {
+                  //e.preventDefault();
+      
+                  var make = document.getElementById("make").value;
+                  var year = document.getElementById("year").value;
+                  var model = document.getElementById("model").value;
 
-              var make = document.getElementById("make");
-              var year = document.getElementById("year");
-              var model = document.getElementById("model");
+                  if (document.getElementById('closest').checked) {
+                    var station = "closest";
+                  }
 
-              firebaseRef.push().set(year);
+                  if (document.getElementById('lowest').checked) {
+                    var station = document.getElementById("lowestKM").value + "km";
+                  }
 
-              document.getElementById("form1").submit();
-              document.getElementById("form2").submit();
-              document.getElementById("form3").submit();
-            };
-        });
+                  if (document.getElementById('check1').checked) {
+                    var jerryCans = document.getElementById("jerryCans").value;
+                  } else {
+                    var jerryCans = 0;
+                  }
+
+                  if (document.getElementById('check2').checked) {
+                    var maxTime = document.getElementById("timeH").value + "h " + document.getElementById("timeM").value + "m";
+                  } else {
+                    var maxTime = "N/A";
+                  }
+                  if (document.getElementById('check3').checked) {
+                    var maxDistance = document.getElementById("maxDistance").value + "km";
+                  } else {
+                    var maxDistance = "N/A";
+                  }
+
+                  localStorage.setItem("model", model);
+                  localStorage.setItem("make", make);
+                  localStorage.setItem("year", year);
+                  localStorage.setItem("station", station);
+                  localStorage.setItem("jerryCans", jerryCans);
+                  localStorage.setItem("maxTime", maxTime);
+                  localStorage.setItem("maxDistance", maxDistance);
+
+                  //firebase.auth().onAuthStateChanged(function(user){
+        
+                  //firebase.database().ref('users/'+user.uid).update( {
+                  var promise = firebase.database().ref("preferences").set( {
+                   "model" : model,
+                   "make" : make,
+                   "year" : year,
+                   "station" : station,
+                   "jerryCans" : jerryCans,
+                   "maxTime" : maxTime,
+                   "maxDistance" : maxDistance
+                   
+                    });
+                  // });
+                  promise.then(function() {
+                    window.location.href="savCalcResults.html";
+                  });
+                }
         </script>
       </div>
     </main>
-
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyB_fU6DV9UBbjCy-d1f8Hu86eIfmbPsOK8",
-      authDomain: "fuelfinder-33a03.firebaseapp.com",
-      databaseURL: "https://fuelfinder-33a03.firebaseio.com",
-      projectId: "fuelfinder-33a03",
-      storageBucket: "fuelfinder-33a03.appspot.com",
-      messagingSenderId: "808681338832"
-    };
-    firebase.initializeApp(config);
-  </script>
-
-  <script src="savCalcPref.js"></script>
-
   </body>
 </html>
   
