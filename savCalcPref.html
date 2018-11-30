@@ -211,7 +211,7 @@
         <div id="gasStation">
           <form class="forms" name="form2" id="form2">
             <ul>
-              <li><input type=radio name="radio" value="closest" id="closest"> Closest</li>
+              <li><input type=radio name="radio" value="closest" id="closest"> Closest US</li>
               <li><input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" id="lowestKM"> km</li>
             </ul>
           </form>
@@ -285,11 +285,11 @@
                   var model = document.getElementById("model").value;
 
                   if (document.getElementById('closest').checked) {
-                    var station = "closest";
+                    var station = "Closest US";
                   }
 
                   if (document.getElementById('lowest').checked) {
-                    var station = document.getElementById("lowestKM").value + "km";
+                    var station = "Within " + document.getElementById("lowestKM").value + "km";
                   }
 
                   if (document.getElementById('check1').checked) {

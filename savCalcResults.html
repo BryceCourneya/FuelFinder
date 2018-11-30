@@ -17,14 +17,14 @@
       width:100%;
       height:500px;
     }
-    #heading {
+    .heading {
       padding-top:18px;
       padding-left:20px;
     }
     #results {
       border: 3px rgba(0,0,0,0.6);
       width:90%;
-      height:600px;
+      height:700px;
       background-color:rgba(0,0,0,0.6);
       margin: 0 auto;
       margin-bottom:30px;
@@ -114,6 +114,51 @@
     .break {
       display:none;
     }
+    #preferences {
+      overflow:hidden;
+      float:right;
+      margin-left:40px;
+      margin-right:40px;
+      margin-top:50px;
+      float:left;
+    }
+    #compared {
+      text-align:center;
+    }
+    #preferenceNames {
+      overflow:hidden;
+      float:left;
+      padding-left:20px;
+    }
+    #prefWrap {
+      width:100%;
+      height:220px;
+      display:block;
+      margin-top:-10px;
+    }
+    #map {
+      float:right;
+      margin-right:20px;
+      height:240px;
+      width:390px;
+      display:block;
+      margin-top:-5px;
+    }
+    #map img {
+      height:240px;
+      width:390px;
+    }
+    @media(max-width: 900px) {
+      #map img {
+        height: 200px;
+        width: 320px;
+      }
+      #map {
+        height: 200px;
+        width: 320px;
+        margin-top:14px;
+      }
+    }
     @media(max-width: 750px) {
       #vehicleInfo {
         display:block;  
@@ -122,7 +167,27 @@
         display:block;
       }
       #fuel {
-        margin-top:-10px;
+        margin-bottom:14px;
+      }
+    }
+    @media(max-width: 722px) {
+      #map img {
+        height: 140px;
+        width: 230px;
+      }
+      #map {
+        height: 140px;
+        width: 230px;
+        margin-top:40px;
+        margin-left:0;
+      }
+    }
+    @media(max-width: 625px) {
+      #map img {
+        display:none;
+      }
+      #map {
+        display:none;
       }
     }
     @media(max-width: 600PX) {
@@ -134,19 +199,21 @@
         padding-right:10px;
       }
       #wrapper2 {
-      margin:0 auto;
-      width:100%;
-      height:100px;
+        margin:0 auto;
+        width:100%;
+        height:100px;
       }
       #vehicleInfo {
         padding-left:24px;
         margin:0 auto;
         float:left;
+        padding-top:10px;
       }
       #vehicleInfo2 {
         padding-left:8px;
         margin:0 auto;
         padding-right:18px;
+        padding-top:10px;
       }
     }
     @media(max-width: 550px) {
@@ -162,7 +229,7 @@
       #carInfoButton {
         padding-right:0;
       }
-      #preferences {
+      #results {
         height:760px;
       }
     }
@@ -229,13 +296,14 @@
     <!-- Main content goes here-->
     <main id="main">
       <div id="results">
-        <h3 id="heading">Results</h3>
+        <h3 class="heading">Results</h3>
         <hr>
 
         <div id=wrapper1>
           <div id=savingsDiv>
             <div id=savings>SAVINGS:</div>
             <div id=amount>$46.53</div>
+            <div id=compared>*compared to your closest station.</div>
           </div>
           <div id=wrapper2>
             <div id=vehicleInfo2>
@@ -246,6 +314,21 @@
               <p>Fuel
               <br class="break"/>  Consumption:</p>  
             </div>
+          </div>
+        </div>
+        <hr>
+        <div id=prefWrap>
+          <div id="preferenceNames">
+            <h3 id="heading2">Options</h3>
+            <p>Station: </p>
+            <p>Jerry Cans:</p>
+            <p>Max Time: </p>
+            <p>Max Distance:</p>
+          </div>
+          <div id="preferences">
+          </div>
+          <div id="map">
+            <img src="map.png">
           </div>
         </div>
         
@@ -286,43 +369,85 @@
           
           <script>
             var model = localStorage.getItem("model");
+            var modelLetter = model.charAt("0").toUpperCase();
+            var model = modelLetter + model.substring(1, model.length);
+
             var make = localStorage.getItem("make");
+            var makeLetter = make.charAt("0").toUpperCase();
+            var make = makeLetter + make.substring(1, make.length);
+
             var year = localStorage.getItem("year");
+            year = "'" + year.substring(year.length-2, year.length);
+
             var station = localStorage.getItem("station");
             var jerryCans = localStorage.getItem("jerryCans");
             var maxTime = localStorage.getItem("maxTime");
             var maxDistance = localStorage.getItem("maxDistance");
 
-            var fb = firebase.database().ref()
-            
-            if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
-              fb.child("cars/hondaCivic/fuel").once('value', function (snap) {
-                 console.log(snap.val());
-                 var fuel = (snap.val());
-              });
-            }
-            
-            var mileage = firebase.database().ref('preferences'/'make').value;
-
             var makeP = document.createElement("p");
-            var makeNode = document.createTextNode("" + make + " " + model);
+            var makeNode = document.createTextNode("" + make + " " + model + " " + year);
             makeP.appendChild(makeNode);
             document.getElementById("vehicleInfo2").appendChild(makeP);
 
+            var stationP = document.createElement("p");
+            var stationNode = document.createTextNode("" + station);
+            stationP.appendChild(stationNode);
+            document.getElementById("preferences").appendChild(stationP);
+
+            var jerryCansP = document.createElement("p");
+            var jerryCansNode = document.createTextNode("" + jerryCans);
+            jerryCansP.appendChild(jerryCansNode);
+            document.getElementById("preferences").appendChild(jerryCansP);
+
+            var maxTimeP = document.createElement("p");
+            var maxTimeNode = document.createTextNode("" + maxTime);
+            maxTimeP.appendChild(maxTimeNode);
+            document.getElementById("preferences").appendChild(maxTimeP);
+
+            var maxDistanceP = document.createElement("p");
+            var maxDistanceNode = document.createTextNode("" + maxDistance);
+            maxDistanceP.appendChild(maxDistanceNode);
+            document.getElementById("preferences").appendChild(maxDistanceP);
+
             var tankP = document.createElement("p");
-            var tankNode = document.createTextNode("50 litre / 13.2 gallon");
-            tankP.appendChild(tankNode);
-            document.getElementById("vehicleInfo2").appendChild(tankP);
-
-            var breaker = document.createElement("br");
-            breaker.setAttribute("class", "break");
-            document.getElementById("vehicleInfo2").appendChild(breaker);
-
             var fuelP = document.createElement("p");
-            var fuelNode = document.createTextNode(fuel);
-            fuelP.setAttribute("id", "fuel");
-            fuelP.appendChild(fuelNode);
-            document.getElementById("vehicleInfo2").appendChild(fuelP);
+
+            var fb = firebase.database().ref()
+            
+            if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+              fb.child("cars/hondaCivic/tank").once('value', function (snap) {
+                 console.log(snap.val());
+                 var tankNode = document.createTextNode(snap.val());
+                 tankP.setAttribute("id", "tank");
+                 tankP.appendChild(tankNode);
+                 document.getElementById("vehicleInfo2").appendChild(tankP);
+              });
+              fb.child("cars/hondaCivic/fuel").once('value', function (snap) {
+                 console.log(snap.val());
+                 var fuelNode = document.createTextNode(snap.val());
+                 fuelP.setAttribute("id", "fuel");
+                 fuelP.appendChild(fuelNode);
+                 document.getElementById("vehicleInfo2").appendChild(fuelP);
+              });
+            }
+
+            if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+              fb.child("cars/toyotaCorolla/tank").once('value', function (snap) {
+                 console.log(snap.val());
+                 var tankNode = document.createTextNode(snap.val());
+                 tankP.setAttribute("id", "tank");
+                 tankP.appendChild(tankNode);
+                 document.getElementById("vehicleInfo2").appendChild(tankP);
+              });
+              fb.child("cars/toyotaCorolla/fuel").once('value', function (snap) {
+                 console.log(snap.val());
+                 var fuelNode = document.createTextNode(snap.val());
+                 fuelP.setAttribute("id", "fuel");
+                 fuelP.appendChild(fuelNode);
+                 document.getElementById("vehicleInfo2").appendChild(fuelP);
+              });
+            }
+            
         </script>
       </div>
     </main>
