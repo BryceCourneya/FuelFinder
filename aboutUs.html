@@ -6,6 +6,20 @@
       <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
       <style>
 
+        .container {
+          width: 80%;
+          height: 800px;
+          background:rgba(0, 0, 0, 0.84);
+          color:white;
+          top: 90%;
+          left: 50%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          box-sizing:border-box;
+          padding: 30px 30px;
+          border-radius: 40px;
+        }
+
         body {
           background:url(About_us.jpg) no-repeat center center fixed;
           -webkit-background-size: cover;
@@ -14,27 +28,34 @@
           background-size: cover;
         }
         #mission {
-          color:white;
+          text-align: center;
+        }
+        
+        h1 {
+          text-align:center;
         }
 
         #about {
           color:white;
+          text-align: center;
         }
 
-        #aboutUs{
-          text-align:center;
-          color:white;
+        #caldwellImg{
+          float:left;
+          margin-bottom: 20%;
+          margin-right: 2%;
         }
-        h1 {
-          font-size:2em;
-          color:white;
+
+        .caldwell{
+          margin-top: 0%;
+          margin-bottom: 0%;
         }
+
         h2 {
           color:white;
+          text-align: center;
         }
-        h3 {
-          color:white;
-        }
+
         .separate{
           border-top-style: solid;
           border-color:black;
@@ -98,15 +119,25 @@
 
         <script src="login.js"></script>
 
-        <div id="aboutus">
-          <h1>- Our Mission -</h1>
-          <p id="mission">To find the best possible outcome for you</p>
-          <h2>- About -</h2>  
-          <p id="about">Talks about who we are and how we started and our plans for the future</p>
-          <h3>- Meet the Team -</h3>
+        <div class="container">
+          <h1>- FuelFinder -</h1>
+          <p id="mission">Through rain or shine, blood and tears, we've finally created an application to suit your needs. FuelFinder
+            can find for you the most ideal way to save on gas expenses.
+          </p>
+          <p id="about">FuelFinder, Fuel your life.</p>
+          <h2>- Meet the Team -</h2>        
           
+          <img src="caldwell.jpg" alt="Caldwell Animus Portems" height="200px" width="250px" id="caldwellImg">
+          <p class="caldwell">Caldwell Animus Portems III </p>
+          <br>
+          <p class="caldwell">Team leader, lord of memes, pedophile, Caldwell is our spiritual leader: without him
+            we would be lost. As leader of the team, Caldwell's job is to make sure we are always on track. He is often seen napping
+            on the floor, playing footsie with unwilling ladies, or skulking the hallways looking for kids. Many people have said good
+            things about him: <i>"Get away from me creep!" "You sure are good with kids, wait, WHAT ARE YOU DOING TO MY SON BRYCE"</i><br>
+            All the team can say when asked about him: "class act."
+          </p>
 
-          <img src="" alt="Kris chan" title="Luigi Alcuaz" id="pic1">
+          <!--<img src="" alt="Kris chan" title="Luigi Alcuaz" id="pic1">
           <p class="head">Kris Chan</p>
           <br>
           <img src="" alt="Luigi Alcuaz" title="Luigi Alcuaz" id="pic2"> 
@@ -114,11 +145,8 @@
           <br>
           <img src="" alt="Bryce Courneya" title="Bryce Courneya" id="pic3">
           <p class="head">Bryce Courneya</p>
-          <br>
-          <p class="head">- FAQ -</p>
+          <br>-->    
 
-          
-      
         </div>
 
     
