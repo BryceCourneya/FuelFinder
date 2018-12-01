@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="gasStationList.js"></script>
     <link rel="stylesheet" href="logo.css">
     <!--Needed for nav bar-->
     <link rel="stylesheet" href="gasStationList.css">
@@ -50,11 +53,14 @@
     <!-- Nav bar end-->
 
     <!-- Main content goes here-->
+    <div id=searchcontainer>
+        <input type="text" id="search" placeholder="Search by Station Name">
+    </div>
     <div id="maincontent">
         <div>
             <div id="titletext">
                 <div id="gaspriceheader">
-                Gas Prices Near Richmond, British Columbia
+                    Gas Prices Near Richmond, British Columbia
                 </div>
             </div>
             <div class="stationbox">
@@ -66,17 +72,59 @@
                         6.8
                     </div>
                 </div>
+                <a href="index.html">
                 <div class="stationinfo">
-                    <h1 class="stationname">Esso</h1>
+                    <h1 class="stationname" class="essostation">Esso</h1>
                     <div class="stationlocation">
                         9100 Westminster Hwy
                         <br>
                         Richmond, BC
                     </div>
                 </div>
+                </a>
                 <div class="stationdistance">
                     <div>
                         <div class="distancecontainer">0.8km</div>
+                    </div>
+                </div>
+                <div class="gasinfo">
+                    <div class="gascontainer">
+                        <span class="pricecontainer">134.2&#65504;</span>
+                        <div class="lastupdate">
+                            <span class="userprofile">
+                                <a class="user" href="index.html">
+                                    DurantIsASnake
+                                </a>
+                            </span>
+                            <span class="timeupdated">
+                                25 minutes ago
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stationbox">
+                <div class="stationrating">
+                    <div class="iconholder">
+                        <img class="esso" src="chevron.png" alt="chevron">
+                    </div>
+                    <div class="ratinghold">
+                        6.8
+                    </div>
+                </div>
+                <a href="index.html">
+                <div class="stationinfo">
+                    <h1 class="stationname">Chevron</h1>
+                    <div class="stationlocation">
+                        8151 Granville Avenue
+                        <br>
+                        Richmond, BC
+                    </div>
+                </div>
+                </a>
+                <div class="stationdistance">
+                    <div>
+                        <div class="distancecontainer">1.4km</div>
                     </div>
                 </div>
                 <div class="gasinfo">
@@ -104,22 +152,24 @@
                         6.8
                     </div>
                 </div>
+                <a href="index.html">                
                 <div class="stationinfo">
                     <h1 class="stationname">Esso</h1>
                     <div class="stationlocation">
-                        9100 Westminster Hwy
+                        8011 No. 3 Road
                         <br>
                         Richmond, BC
                     </div>
                 </div>
+                </a>
                 <div class="stationdistance">
                     <div>
-                        <div class="distancecontainer">0.8km</div>
+                        <div class="distancecontainer">2.2km</div>
                     </div>
                 </div>
                 <div class="gasinfo">
                     <div class="gascontainer">
-                        <span class="pricecontainer">135.7&#65504;</span>
+                        <span class="pricecontainer">138.9&#65504;</span>
                         <div class="lastupdate">
                             <span class="userprofile">
                                 <a class="user" href="index.html">
@@ -136,28 +186,30 @@
             <div class="stationbox">
                 <div class="stationrating">
                     <div class="iconholder">
-                        <img class="esso" src="esso.png" alt="esso">
+                        <img class="esso" src="chevron.png" alt="chevron">
                     </div>
                     <div class="ratinghold">
                         6.8
                     </div>
                 </div>
+                <a href="index.html">
                 <div class="stationinfo">
-                    <h1 class="stationname">Esso</h1>
+                    <h1 class="stationname">Chevron</h1>
                     <div class="stationlocation">
-                        9100 Westminster Hwy
+                        360 D Street
                         <br>
-                        Richmond, BC
+                        Blaine, Washington
                     </div>
                 </div>
+                </a>
                 <div class="stationdistance">
                     <div>
-                        <div class="distancecontainer">0.8km</div>
+                        <div class="distancecontainer">16.4km</div>
                     </div>
                 </div>
                 <div class="gasinfo">
                     <div class="gascontainer">
-                        <span class="pricecontainer">135.7&#65504;</span>
+                        <span class="pricecontainer">122.1&#65504;</span>
                         <div class="lastupdate">
                             <span class="userprofile">
                                 <a class="user" href="index.html">
@@ -174,66 +226,30 @@
             <div class="stationbox">
                 <div class="stationrating">
                     <div class="iconholder">
-                        <img class="esso" src="esso.png" alt="esso">
+                        <img class="esso" src="shell.png" alt="shell">
                     </div>
                     <div class="ratinghold">
                         6.8
                     </div>
                 </div>
+                <a href="index.html">
                 <div class="stationinfo">
-                    <h1 class="stationname">Esso</h1>
+                    <h1 class="stationname">Shell</h1>
                     <div class="stationlocation">
-                        9100 Westminster Hwy
+                        347 D Street
                         <br>
-                        Richmond, BC
+                        Blaine, Washington
                     </div>
                 </div>
+                </a>
                 <div class="stationdistance">
                     <div>
-                        <div class="distancecontainer">0.8km</div>
+                        <div class="distancecontainer">18.1km</div>
                     </div>
                 </div>
                 <div class="gasinfo">
                     <div class="gascontainer">
-                        <span class="pricecontainer">135.7&#65504;</span>
-                        <div class="lastupdate">
-                            <span class="userprofile">
-                                <a class="user" href="index.html">
-                                    DurantIsASnake
-                                </a>
-                            </span>
-                            <span class="timeupdated">
-                                25 minutes ago
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="stationbox">
-                <div class="stationrating">
-                    <div class="iconholder">
-                        <img class="esso" src="esso.png" alt="esso">
-                    </div>
-                    <div class="ratinghold">
-                        6.8
-                    </div>
-                </div>
-                <div class="stationinfo">
-                    <h1 class="stationname">Esso</h1>
-                    <div class="stationlocation">
-                        9100 Westminster Hwy
-                        <br>
-                        Richmond, BC
-                    </div>
-                </div>
-                <div class="stationdistance">
-                    <div>
-                        <div class="distancecontainer">0.8km</div>
-                    </div>
-                </div>
-                <div class="gasinfo">
-                    <div class="gascontainer">
-                        <span class="pricecontainer">135.7&#65504;</span>
+                        <span class="pricecontainer">120.9&#65504;</span>
                         <div class="lastupdate">
                             <span class="userprofile">
                                 <a class="user" href="index.html">
@@ -250,7 +266,7 @@
         </div>
     </div>
 
-    <!--Content goes here... or don't use the main div if you don't want-->
+    
 
 </body>
 

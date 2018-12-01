@@ -1,13 +1,31 @@
 body {
     margin: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(mountainroad.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(mountainroad.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+#searchcontainer{
+    width: 75%;
+    height: 3rem;
+    margin: 3% 5% 0 5%;
+    border-radius: 30px;
+}
+
+#searchcontainer input{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    padding: 0.1rem 1rem 0.1rem 1rem;
+    font-size: 16pt;
 }
 
 #maincontent {
-    margin: 5% 5% 5% 5%;
+    margin: 2% 5% 5% 5%;
     border-radius: 30px;
     background-color: rgb(60, 60, 59, 0.7);
     height: auto;
@@ -51,11 +69,6 @@ body {
     border-right: dotted 1px #d0cccc;
 }
 
-
-.iconholder {
-    
-}
-
 .esso {
     width: 75%;
     height: auto;
@@ -70,8 +83,15 @@ body {
     padding: 0 0.5em;
 }
 
-.rating {}
+a {
+    text-decoration: none;   
+    color: black;
+    flex-grow: 1;
+}
 
+a:link {
+    
+}
 .stationinfo {
     flex-grow: 1;
     margin: 1em;
