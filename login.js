@@ -1,3 +1,24 @@
+function createAccount(){
+  var userEmail = document.getElementById('createEmail').value;
+  var userPassword = document.getElementById('createPass').value;
+  var passwordVerif = document.getElementById('passVerif').value;
+
+  firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).catch(function(error) {
+
+  }
+firebase.auth().onAuthStateChanged(function(user){
+  firebase.database().ref("users/"+user.uid).update(
+{
+   "name":user.displayName, 
+   "email":user.email
+  });
+});
+
+Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+  // ...
+}
+
+
 //inputs information into firebase authentication
 function logIn(){
   var userEmail = document.getElementById('email').value;
@@ -25,7 +46,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById('').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;*/   
-    
+
   } else {
     document.getElementById('signedIn').style.display="none";
     document.getElementById('notSignedIn').style.display="block";
