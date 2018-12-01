@@ -144,13 +144,13 @@
             <h1>Create Account</h1>
             <form>     
                 <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Enter Email" name="email" required>
+                <input type="text" id="createEmail" placeholder="Enter Email" name="email" required>
                 <label for="psw">Password</label>
-                <input type="password" id="signUp" placeholder="Enter Password" name="psw" required>
+                <input type="password" id="createPass" placeholder="Enter Password" name="psw" required>
                 <label for="pswConfirm"><b>Confirm Password</b></label>
-                <input type="password" id="signUp" placeholder="Confirm Password" name="psw-confirm" required>    
+                <input type="password" id="passVerif" placeholder="Confirm Password" name="psw-confirm" required>    
       
-                <input id="submit" type="button" onclick="submitform()" value="Create Account">
+                <input id="submit" type="button" onclick="createAccount()" value="Create Account">
                 <p>Already have an account? Log in <a href="logIn.html" style="color:red">here</a>.</p>
               </form>            
           </div>
