@@ -1,23 +1,25 @@
+var database = firebase.database();
+//var ref = database.ref('users');
+
 function createAccount(){
   var userEmail = document.getElementById('createEmail').value;
   var userPassword = document.getElementById('createPass').value;
   var passwordVerif = document.getElementById('passVerif').value;
 
-  firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).catch(function(error) {
+  if(userPassword == passwordVerif){
+    firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then(function() {
+      window.location.href="myAccount.html";
 
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;      
+      window.alert("\nError code: " + errorCode + "\n" + errorMessage);
+    });   
+  } else {
+    window.alert("passwords are not equal");
   }
-firebase.auth().onAuthStateChanged(function(user){
-  firebase.database().ref("users/"+user.uid).update(
-{
-   "name":user.displayName, 
-   "email":user.email
-  });
-});
-
-Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-  // ...
 }
-
 
 //inputs information into firebase authentication
 function logIn(){
@@ -30,7 +32,14 @@ function logIn(){
     var errorMessage = error.message;
     
     window.alert("\nError code: " + errorCode + "\n" + errorMessage);
-  });
+  }); 
+
+  if (firebase.auth().currentUser) {
+    window.location.href="myAccount.html";
+  } else {
+    window.location.href="logIn.html";
+  }
+    
 }
 
 // Nav changes and myAccount.html changes depending on user state (log in/log out)
@@ -47,6 +56,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById('').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;*/   
 
+    database.ref('users/'+user.uid).update({
+      "email": userEmail
+    });
   } else {
     document.getElementById('signedIn').style.display="none";
     document.getElementById('notSignedIn').style.display="block";
@@ -68,9 +80,6 @@ function logOut(){
 }
 
 //account preferences, information is put into database
-var database = firebase.database();
-var ref = database.ref('users');
-
 function edit() {
   var make = document.getElementById("make").value;
   var model = document.getElementById("model").value;
@@ -93,7 +102,6 @@ function edit() {
     "maxDistance" : maxDistance
   });
 
-  //ref.push(data);
   window.location.href="myAccount.html"; 
 }
 
