@@ -1,6 +1,6 @@
 var database = firebase.database();
-//var ref = database.ref('users');
 
+//Creates an account under certain restrictions
 function createAccount(){
   var userEmail = document.getElementById('createEmail').value;
   var userPassword = document.getElementById('createPass').value;
@@ -8,6 +8,7 @@ function createAccount(){
 
   if(userPassword == passwordVerif){
     firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then(function() {
+
       window.location.href="myAccount.html";
 
     }).catch(function(error) {
@@ -19,9 +20,10 @@ function createAccount(){
   } else {
     window.alert("passwords are not equal");
   }
+  window.alert(user.uid);
 }
 
-//inputs information into firebase authentication
+//Logs in into firebase authentication
 function logIn(){
   var userEmail = document.getElementById('email').value;
   var userPassword = document.getElementById('password').value;
@@ -55,10 +57,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById('').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;*/   
-
-    database.ref('users/'+user.uid).update({
-      "email": userEmail
-    });
   } else {
     document.getElementById('signedIn').style.display="none";
     document.getElementById('notSignedIn').style.display="block";
@@ -91,7 +89,7 @@ function edit() {
   var maxDistance = document.getElementById("maxDistance").value; 
 
   var user = firebase.auth().currentUser;
-  firebase.database().ref('users/'+user.uid).update( {
+  database.ref('users/'+user.uid).update( {
     "make": make,
     "model": model,
     "year": year,
@@ -109,40 +107,6 @@ function edit() {
   self.ref.child("users").child(user.uid).setValue(["model": model])
   self.ref.child("users").child(user.uid).setValue(["year": year])*/ 
  
-  /* var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  var uiConfig = {
-    callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        return true;
-      },
-      uiShown: function() {
-        // The widget is rendered.
-        // Hide the loader.
-        document.getElementById('loader').style.display = 'none';
-      }
-    },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInSuccessUrl: 'main.html',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      //firebase.auth.PhoneAuthProvider.PROVIDER_ID
-    ],
-    // Terms of service url.
-    tosUrl: 'main.html',
-  };
-
-  // The start method will wait until the DOM is loaded.
-  ui.start('#firebaseui-auth-container', uiConfig);
-
 /*
 <script src="/__/firebase/5.5.8/firebase-app.js"></script>
 <script src="/__/firebase/5.5.8/firebase-auth.js"></script>
