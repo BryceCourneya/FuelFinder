@@ -11,43 +11,47 @@
 </head>
 
 <body>
-    <!--Nav Bar start-->
+    <!-- Nav bar start-->
     <div id="top"></div>
+   
     <nav id="topbar">
-        <div id="logo">
-            <form>
-                <input type="text" name="search" placeholder="Search">
-                <input type="submit" name="submit" value="Submit">
-            </form>
-            <a href="index.html"><img src="placeholderlogo.png" alt="logo"></a>
+      <div id="logo">
+        <form>
+        <input type="search" name="search" placeholder="Search" id="search">
+        <input type="submit" name="submit" value="Submit">
+        </form>
+        <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <div class="dropdown">
+          <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
+          </button>
+          <div id="accountDrop" class="dropdown-content">
+            <div id="notSignedIn">
+              <a href="logIn.html">Log-In</a>
+              <a href="signUp.html">Sign-Up</a>
+            </div>
+            <div id="signedIn">
+              <a href="myAccount.html">My Account</a>
+              <a href="preferences.html">Edit Preferences</a>
+            </div>
+          </div>
         </div>
-        <nav class="navbar">
-            <div class="dropdown">
-                <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
-                </button>
-                <div id="accountDrop" class="dropdown-content">
-                    <div id="notSignedIn">
-                        <a href="logIn.html">Log-In</a>
-                        <a href="signUp.html">Sign-Up</a>
-                      </div>
-                      <div id="signedIn">
-                        <a href="myAccount.html">My Account</a>
-                        <a href="preferences.html">Edit Preferences</a>
-                      </div>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
-                </button>
-                <div id="featureDrop" class="dropdown-content">
-                    <a href="savCalcPref.html">US Savings Calculator</a>
-                    <a href="gasStationList.html">Gas Station List</a>
-                    <a href="aboutUs.html">About Us</a>
-                </div>
-            </div>
-            <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a>
-        </nav>
+        <div class="dropdown">
+          <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
+          </button>
+          <div id="featureDrop" class="dropdown-content">
+            <a href="savCalcPref.html">US Savings Calculator</a>
+            <a href="gasStationList.html">Gas Station List</a>
+            <a href="aboutUs.html">About Us</a>
+          </div>
+        </div>
+        <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
+      </nav>
+      </div>
     </nav>
+    
     <!-- Nav bar end-->
 
     <script src="login.js"></script>

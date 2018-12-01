@@ -387,6 +387,7 @@
 
             var station = localStorage.getItem("station");
             var jerryCans = localStorage.getItem("jerryCans");
+            var jerryCanSize = localStorage.getItem("jerryCanSize");
             var maxTime = localStorage.getItem("maxTime");
             var maxDistance = localStorage.getItem("maxDistance");
 
@@ -401,7 +402,7 @@
             document.getElementById("preferences").appendChild(stationP);
 
             var jerryCansP = document.createElement("p");
-            var jerryCansNode = document.createTextNode("" + jerryCans);
+            var jerryCansNode = document.createTextNode("" + jerryCans + " x " + jerryCanSize + "L");
             jerryCansP.appendChild(jerryCansNode);
             document.getElementById("preferences").appendChild(jerryCansP);
 

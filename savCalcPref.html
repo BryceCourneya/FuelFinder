@@ -224,7 +224,7 @@
         <button id="additionalOptionsButton"><img id="additionalOptionsArrow" src='arrow2.png'>&ensp;Additional Options</button>
         <div id="additionalOptions">
           <form class="forms" name="form3" id="form3">
-            <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0">
+            <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters
             <br/>
             <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="timeH" name="timeH" min="0" max="99"> hour(s)<input type=number class="km" name="timeM" id="timeM" value="0" min="0" max="59"> minute(s)
             <br/>
@@ -300,8 +300,10 @@
 
                   if (document.getElementById('check1').checked) {
                     var jerryCans = document.getElementById("jerryCans").value;
+                    var jerryCanSize = document.getElementById("jerryCanSize").value;
                   } else {
                     var jerryCans = 0;
+                    var jerryCanSize = 0;
                   }
 
                   if (document.getElementById('check2').checked) {
@@ -336,6 +338,7 @@
                     localStorage.setItem("year", year);
                     localStorage.setItem("station", station);
                     localStorage.setItem("jerryCans", jerryCans);
+                    localStorage.setItem("jerryCanSize", jerryCanSize);
                     localStorage.setItem("maxTime", maxTime);
                     localStorage.setItem("maxDistance", maxDistance);
                   }
@@ -349,6 +352,7 @@
                      "year" : year,
                      "station" : station,
                      "jerryCans" : jerryCans,
+                     "jerryCanSize" : jerryCanSize,
                      "maxTime" : maxTime,
                      "maxDistance" : maxDistance
                     });
