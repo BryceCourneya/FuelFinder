@@ -1,24 +1,26 @@
 <!DOCTYPE html>
   <html lang="eng">
     <head>
-      <title>Sign Up</title>
+      <title>Account</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
+      <link rel="stylesheet" href="account.css"> <!--Homepage CSS Sheet-->
       <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
       <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
       <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
       <style>
-      body {
+
+        body {
         background-image:url(login.jpg);
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-      }
+        }
 
-      .container {
-        width: 320px;
-        height: 420px;
+        .container {
+        width: 90%;
+        height: 80%;
         background:rgba(0, 0, 0, 0.84);
         color:white;
         top: 55%;
@@ -28,37 +30,9 @@
         box-sizing:border-box;
         padding: 30px 30px;
         border-radius: 40px;
-      }
+        }
 
-      h1 {
-        margin:0;
-        padding: 0 0 20px;
-        text-align: center;
-        font-size: 2em;
-      }
-
-      .container label {
-        margin:0;
-        padding:0;
-        font-weight: bold;
-      }
-
-      .container input {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .container input[type="text"], input[type="password"] {
-        border:none;
-        border-bottom: 1px solid #fff;
-        background: transparent;
-        outline: none;
-        height: 40px;
-        color: #fff;
-        font-size: 16px;
-      }
-      
-      .container input[type="button"]{
+        .container button{
         border: none;
         outline: none;
         height: 40px;
@@ -66,29 +40,17 @@
         color: black;
         font-size: 18px;
         border-radius: 20px;
-      }
+        }
 
-      .container input[type="button"]:hover{
+        .container button:hover{
         cursor: pointer;
         background:red;
         color:#000;
-      }
+        }
 
-      .container a{
-        text-decoration: none;
-        font-size: 12px;
-        line-height: 20px;
-        color: darkgrey;
-      }
-
-      .container a:hover{
-        color:red;
-      }
-
-      .container p{
-        font-size:.8em;
-      }
-        
+        h1 {
+          text-align: center;
+        }
       </style>
     
       </head>
@@ -109,10 +71,14 @@
               <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
               </button>
               <div id="accountDrop" class="dropdown-content">
-                <a class="notSignedIn" href="logIn.html">Log-In</a>
-                <a class="notSignedIn" href="signUp.html">Sign-Up</a>
-                <a class="signedIn" href="myAccount.html">My Account</a>
-                <a class="signedIn" href="preferences.html">Edit Preferences</a>
+                <div id="notSignedIn">
+                  <a href="logIn.html">Log-In</a>
+                  <a href="signUp.html">Sign-Up</a>
+                </div>
+                <div id="signedIn">
+                  <a href="myAccount.html">My Account</a>
+                  <a href="preferences.html">Edit Preferences</a>
+                </div>
               </div>
             </div>
             <div class="dropdown">
@@ -134,18 +100,12 @@
         <script src="fireBase.js"></script>
         <script src="login.js"></script>
         <div class="container">
-            <h1>Create Account</h1>
-            <form>     
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Enter Email" name="email" required>
-                <label for="psw">Password</label>
-                <input type="password" id="signUp" placeholder="Enter Password" name="psw" required>
-                <label for="pswConfirm"><b>Confirm Password</b></label>
-                <input type="password" id="signUp" placeholder="Confirm Password" name="psw-confirm" required>    
-      
-                <input id="submit" type="button" onclick="submitform()" value="Create Account">
-                <p>Already have an account? Log in <a href="logIn.html" style="color:red">here</a>.</p>
-              </form>            
-          </div>
+          <h1>My Account</h1>
+          <p id="accountEmail">Email stuff</p>
+          <p id="accountEmail">Preferences and stuff</p>
+          <p id="accountEmail">Links and Stuff</p>          
+          <button onclick="logOut()" value="Logout">Log out</button>
+        </div>    
+
       </body>
     </html>
