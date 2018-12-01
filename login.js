@@ -28,20 +28,17 @@ function logIn(){
   var userEmail = document.getElementById('email').value;
   var userPassword = document.getElementById('password').value;
 
-  firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).catch(function(error) {
+  firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).then(function() {
+    window.location.href="myAccount.html";
+  
+  }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     
     window.alert("\nError code: " + errorCode + "\n" + errorMessage);
-  }); 
-
-  if (firebase.auth().currentUser) {
-    window.location.href="myAccount.html";
-  } else {
     window.location.href="logIn.html";
-  }
-    
+  }); 
 }
 
 // Nav changes and myAccount.html changes depending on user state (log in/log out)
