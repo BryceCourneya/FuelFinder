@@ -423,14 +423,12 @@
             
             if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
               fb.child("cars/hondaCivic/tank").once('value', function (snap) {
-                 console.log(snap.val());
                  var tankNode = document.createTextNode(snap.val());
                  tankP.setAttribute("id", "tank");
                  tankP.appendChild(tankNode);
                  document.getElementById("vehicleInfo2").appendChild(tankP);
               });
               fb.child("cars/hondaCivic/fuel").once('value', function (snap) {
-                 console.log(snap.val());
                  var fuelNode = document.createTextNode(snap.val());
                  fuelP.setAttribute("id", "fuel");
                  fuelP.appendChild(fuelNode);
@@ -440,14 +438,12 @@
 
             if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
               fb.child("cars/toyotaCorolla/tank").once('value', function (snap) {
-                 console.log(snap.val());
                  var tankNode = document.createTextNode(snap.val());
                  tankP.setAttribute("id", "tank");
                  tankP.appendChild(tankNode);
                  document.getElementById("vehicleInfo2").appendChild(tankP);
               });
               fb.child("cars/toyotaCorolla/fuel").once('value', function (snap) {
-                 console.log(snap.val());
                  var fuelNode = document.createTextNode(snap.val());
                  fuelP.setAttribute("id", "fuel");
                  fuelP.appendChild(fuelNode);
