@@ -342,31 +342,31 @@
                     localStorage.setItem("maxTime", maxTime);
                     localStorage.setItem("maxDistance", maxDistance);
                   }
-
-                  //firebase.auth().onAuthStateChanged(function(user){
-                  if (notComplete == false && carSupport == true) {
-                  //firebase.database().ref('users/'+user.uid).update( {
-                    var promise = firebase.database().ref("preferences").set( {
-                     "model" : model,
-                     "make" : make,
-                     "year" : year,
-                     "station" : station,
-                     "jerryCans" : jerryCans,
-                     "jerryCanSize" : jerryCanSize,
-                     "maxTime" : maxTime,
-                     "maxDistance" : maxDistance
-                    });
+                     // var promise = firebase.database().ref("preferences").set( {
+                  firebase.auth().onAuthStateChanged(function(user){
+                    if (notComplete == false && carSupport == true) {
+                      var promise = firebase.database().ref('users/'+user.uid).set( {
+                       "model" : model,
+                       "make" : make,
+                       "year" : year,
+                       "station" : station,
+                       "jerryCans" : jerryCans,
+                       "jerryCanSize" : jerryCanSize,
+                       "maxTime" : maxTime,
+                       "maxDistance" : maxDistance
+                      });
                   }
-                  // });
+                  
                   if (notComplete == false && carSupport == true) {
                     promise.then(function() {
-                    window.location.href="savCalcResults.html";
+                      window.location.href="savCalcResults.html";
                   });
                 } else if (notComplete == true) {
                   window.alert("You must enter the make, model, and year of the car!");
                 } else if (carSupport == false) {
-                  window.alert("Sorry! This calculator does not support your vehicle at this time. \nPlease enter another vehicle");
+                  window.alert("Sorry! The Savings Calculator does not support your vehicle at this time. \nPlease enter another vehicle");
                 }
+                  });
                 }
         </script>
       </div>
