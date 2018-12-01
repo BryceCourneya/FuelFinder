@@ -169,10 +169,14 @@
           <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
           </button>
           <div id="accountDrop" class="dropdown-content">
-            <a class="notSignedIn" href="logIn.html">Log-In</a>
-            <a class="notSignedIn" href="signUp.html">Sign-Up</a>
-            <a class="signedIn" href="myAccount.html">My Account</a>
-            <a class="signedIn" href="preferences.html">Edit Preferences</a>
+            <div id="notSignedIn">
+              <a href="logIn.html">Log-In</a>
+              <a href="signUp.html">Sign-Up</a>
+            </div>
+            <div id="signedIn">
+              <a href="myAccount.html">My Account</a>
+              <a href="preferences.html">Edit Preferences</a>
+            </div>
           </div>
         </div>
         <div class="dropdown">
@@ -230,6 +234,8 @@
         <hr>
         <input id="submit" type="button" onclick="submitForm()" value="Start Journey">
         <!-- She said to use type=button and onclick="function" -->
+        
+        <script src="login.js"></script>
 
         <script>
           $(document).ready(function() {

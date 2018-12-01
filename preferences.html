@@ -15,16 +15,16 @@
         }
 
         .container {
-          width: 320px;
-          height: 420px;
+          width: 80%;
+          height: 800px;
           background:rgba(0, 0, 0, 0.84);
           color:white;
-          top: 55%;
+          top: 80%;
           left: 50%;
           position: absolute;
           transform: translate(-50%, -50%);
           box-sizing:border-box;
-          padding: 60px 30px;
+          padding: 50px 30px;
           border-radius: 40px;
         }
 
@@ -46,7 +46,7 @@
           margin-bottom: 20px;
         }
 
-        .container input[type="text"], input[type="password"] {
+        .container input[type="text"], input[type="password"], input[type=number] {
           border:none;
           border-bottom: 1px solid #fff;
           background: transparent;
@@ -54,6 +54,7 @@
           height: 40px;
           color: #fff;
           font-size: 16px;
+          width:30%;
         }
         
         .container input[type="button"]{
@@ -64,6 +65,7 @@
           color: black;
           font-size: 18px;
           border-radius: 20px;
+          width:30%
         }
 
         .container input[type="button"]:hover{
@@ -72,15 +74,9 @@
           color:#000;
         }
 
-        .container a{
-          text-decoration: none;
-          font-size: 12px;
-          line-height: 20px;
+        form p{
+          margin:0;
           color: darkgrey;
-        }
-
-        .container a:hover{
-          color:red;
         }
       </style>
     
@@ -134,9 +130,19 @@
         <div class="container">
             <h1>Edit Preferences</h1>
             <form>     
-              <input type="text" id="make" placeholder="Enter car make" name="email" required>  
-              <input type="text" id="model" placeholder="Enter car model" name="email" required>  
-              <input type="text" id="year" placeholder="Enter car year" name="email" required>  
+              <input type="text" id="make" placeholder="Enter car make" name="email"> 
+              <input type="text" id="model" placeholder="Enter car model" name="model">  
+              <input type="text" id="year" placeholder="Enter car year" name="year">  
+              <p># of jerry Cans</p>
+              <input type=number id="jerryCans" name="jerryCans" id="jerryCans" value="0">
+              <p># of hours</p>
+              <input type=number id="timeH" value="0" id="timeH" name="timeH" min="0" max="99">
+              <p># of minutes</p>
+              <input type=number id="timeM" name="timeM" id="timeM" value="0" min="0" max="59">
+              <p>Max distance (km)</p>
+              <input type=number id="maxDistance" name="distance" value="0">
+              <!--<p>Closest US</p> <input type=radio name="radio" value="closest" id="closest"> 
+              <input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" id="lowestKM"> km-->
               <input id="submit" type="button" onclick="edit()" value="Save Changes"></button>
             </form> 
         </div>

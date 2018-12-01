@@ -12,7 +12,7 @@ function logIn(){
   });
 }
 
-// Nav changes and my account page changes depending on user state (log in/log out)
+// Nav changes and myAccount.html changes depending on user state (log in/log out)
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
@@ -20,9 +20,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById('signedIn').style.display="block";
 
     var user = firebase.auth().currentUser;
-    var userId = user.email;
-    document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
     /*document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
+    document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;
     document.getElementById('').innerHTML = "Your Email: " + email;*/   
@@ -55,14 +54,25 @@ function edit() {
   var make = document.getElementById("make").value;
   var model = document.getElementById("model").value;
   var year = document.getElementById("year").value; 
-  
-  var data = {
-  make: make,
-  model: model,
-  year: year
-  }
+  //var station = document.getElementById("year").value; 
+  var jerryCans = document.getElementById("jerryCans").value; 
+  var hours = document.getElementById("timeH").value;
+  var minutes = document.getElementById("timeM").value;  
+  var maxDistance = document.getElementById("maxDistance").value; 
 
-  ref.push(data);
+  var user = firebase.auth().currentUser;
+  firebase.database().ref('users/'+user.uid).update( {
+    "make": make,
+    "model": model,
+    "year": year,
+    //"station" : station,
+    "jerry cans" : jerryCans,
+    "hours" : hours,
+    "minutes" : minutes,
+    "maxDistance" : maxDistance
+  });
+
+  //ref.push(data);
   window.location.href="myAccount.html"; 
 }
 
