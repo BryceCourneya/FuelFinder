@@ -45,15 +45,30 @@ function logIn(){
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    document.getElementById('notSignedIn').style.display="none";
-    document.getElementById('signedIn').style.display="block";
-
     var user = firebase.auth().currentUser;
-    /*document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
-    document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
-    document.getElementById('').innerHTML = "Your Email: " + email;
-    document.getElementById('').innerHTML = "Your Email: " + email;
-    document.getElementById('').innerHTML = "Your Email: " + email;*/   
+    user.getIdToken().then(function(accessToken) {
+      document.getElementById('notSignedIn').style.display="none";
+      document.getElementById('signedIn').style.display="block";
+      document.getElementById('accountName').innerHTML =  user.email;
+      document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
+      document.getElementById('').innerHTML = "Your Email: " + email;
+      document.getElementById('').innerHTML = "Your Email: " + email;
+      document.getElementById('').innerHTML = "Your Email: " + email; 
+      document.getElementById('accountDetails').textContent = JSON.stringify({
+        "make": make,
+        "model": model,
+        "year": year,
+        //"station" : station,
+        "jerry cans" : jerryCans,
+        "hours" : hours,
+        "minutes" : minutes,
+        "maxDistance" : maxDistance      
+      }, null, '  ');
+    });
+    
+
+    
+     
   } else {
     document.getElementById('signedIn').style.display="none";
     document.getElementById('notSignedIn').style.display="block";
