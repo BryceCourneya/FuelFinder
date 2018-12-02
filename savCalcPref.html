@@ -31,7 +31,7 @@
     #preferences {
       border: 3px rgba(0,0,0,0.6);
       width:80%;
-      height:600px;
+      height:680px;
       padding-left:20px;
       background-color:rgba(0,0,0,0.6);
       margin: 0 auto;
@@ -129,6 +129,11 @@
       }
       #preferences {
         height:760px;
+      }
+      @media(max-width: 384px) {
+        #preferences {
+          height: 840px;
+        }
       }
     }
 
@@ -229,11 +234,18 @@
             <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="timeH" name="timeH" min="0" max="99"> hour(s)<input type=number class="km" name="timeM" id="timeM" value="0" min="0" max="59"> minute(s)
             <br/>
             <input type=checkbox name=check3 id="check3"><label>Total Distance:</label><input type=number class="km" min="0" id="maxDistance"name="distance" value="0"> km
+            <br/> 
+            <input type=checkbox name=check4 id="check4"><label>Fuel Grade:</label>
+              <ul style="margin-top:-20px; margin-left:80px;">
+                <li><input type=radio name="regular" value="Regular" id="regular">Regular</li>
+                <li><input type=radio name="midgrade" value="Regular" id="midgrade">Midgrade</li>
+                <li><input type=radio name="premium" value="Regular" id="premium">Premium</li>
+                <li><input type=radio name="diesel" value="Regular" id="diesel">Diesel</li>
+              </ul>
           </form>
         </div>
         <hr>
         <input id="submit" type="button" onclick="submitForm()" value="Start Journey">
-        <!-- She said to use type=button and onclick="function" -->
         
         <script src="login.js"></script>
 
@@ -295,7 +307,7 @@
                   }
 
                   if (document.getElementById('lowest').checked) {
-                    var station = "Within " + document.getElementById("lowestKM").value + "km";
+                    var station = document.getElementById("lowestKM").value;
                   }
 
                   if (document.getElementById('check1').checked) {
@@ -312,9 +324,25 @@
                     var maxTime = "N/A";
                   }
                   if (document.getElementById('check3').checked) {
-                    var maxDistance = document.getElementById("maxDistance").value + "km";
+                    var maxDistance = document.getElementById("maxDistance").value;
                   } else {
                     var maxDistance = "N/A";
+                  }
+                  if (document.getElementById('check4').checked) {
+                    if (document.getElementById('regular').checked) {
+                      var fuelGrade = "Rgular";
+                    }
+                    if (document.getElementById('midgrade').checked) {
+                      var fuelGrade = "Midgrade";
+                    }
+                    if (document.getElementById('premium').checked) {
+                      var fuelGrade = "Premium";
+                    }
+                    if (document.getElementById('diesel').checked) {
+                      var fuelGrade = "Diesel";
+                    }
+                  } else {
+                    var fuelGrade = "Regular";
                   }
 
                   if (make.trim() == "" || model.trim() == "" || year.trim() == "") {
@@ -341,6 +369,7 @@
                     localStorage.setItem("jerryCanSize", jerryCanSize);
                     localStorage.setItem("maxTime", maxTime);
                     localStorage.setItem("maxDistance", maxDistance);
+                    localStorage.setItem("fuelGrade", fuelGrade);
                   }
                      // var promise = firebase.database().ref("preferences").set( {
                   firebase.auth().onAuthStateChanged(function(user){
@@ -353,7 +382,8 @@
                        "jerryCans" : jerryCans,
                        "jerryCanSize" : jerryCanSize,
                        "maxTime" : maxTime,
-                       "maxDistance" : maxDistance
+                       "maxDistance" : maxDistance,
+                       "fuelGrade" : fuelGrade
                       });
                   }
                   
