@@ -5,6 +5,10 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
     var fb = database.ref();
     var user = firebase.auth().currentUser;
+    //let user = Auth.auth().currentUser
+    let email = user.email;
+
+    document.getElementById('accountName').innerHTML = email;
 
     //Car make
     fb.child('users/'+user.uid+'/make').once('value', function(snap){
