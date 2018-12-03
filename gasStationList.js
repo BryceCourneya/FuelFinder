@@ -13,4 +13,22 @@ $(document).ready(function () {
             return matcher.test($(this).find('.stationname' ).text())
         }).hide();
     })
+    
+    var allstations = $(".stationbox");
+    
+    var station = $("h1.stationname").text();
+    
+    var location = 
+    $("div.stationlocation").text();
+   
+    var distance =  $("div.distancecontainer").text();
+    
+    var price = $("span.pricecontainer").text();
+    
+    var dbref = firebase.database().ref().child("Stations");
+    
+    dbref.on('value', snap => console.log(snap.val()));
+    
+    
 });
+
