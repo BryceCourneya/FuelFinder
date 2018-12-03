@@ -12,7 +12,7 @@ function createAccount(){
       window.location.href="myAccount.html";
 
     }).catch(function(error) {
-      // Handle Errors here.
+      
       var errorCode = error.code;
       var errorMessage = error.message;      
       window.alert("\nError code: " + errorCode + "\n" + errorMessage);
