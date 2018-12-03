@@ -324,6 +324,14 @@
                  document.getElementById("diesel").checked = true;
               }
             });
+            fb.child('users/'+user.uid+'/station').once('value', function (snap) {
+              if (snap.val() == "Closest US") {
+                document.getElementById("closest").checked = true;
+              } else {
+                document.getElementById("lowest").checked = true;
+                document.getElementById("lowestKM").value = (snap.val());
+              }
+            });
               });
           });
           </script>
