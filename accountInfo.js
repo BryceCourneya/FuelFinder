@@ -26,8 +26,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     //Gas station
     fb.child('users/'+user.uid+'/station').once('value', function(snap){
-      var userStation = document.createTextNode(snap.val());
-      document.getElementById('station').appendChild(userStation);      
+      if (snap.val() == "Closest US"){
+        var userStation = document.createTextNode(snap.val());
+        document.getElementById('station').appendChild(userStation);      
+      } else {
+        var userStation = document.createTextNode('Within ' + snap.val() + ' Km');
+        document.getElementById('station').appendChild(userStation);     
+      } 
     });
 
     //# of jerry cans
@@ -61,4 +66,8 @@ function logOut(){
     // An error happened.
     window.alert("\nError code: " + errorCode + "\n" + errorMessage);
   });
+}
+
+function editP(){
+  window.location.href="preferences.html";
 }

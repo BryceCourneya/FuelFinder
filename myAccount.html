@@ -59,7 +59,6 @@
         }
 
         #make {
-          border-right: 2px solid #fff;
           border-left: 2px solid #fff;
           padding: 10px;
         }
@@ -76,17 +75,16 @@
 
         #year {
           border-right: 2px solid #fff;
-          border-left: 2px solid #fff;
           padding: 10px;
         }
 
         #jerryCans{
-          border-right: 2px solid #fff;
           border-left: 2px solid #fff;
           padding: 10px;
         }
 
         #jerryCanSize{
+          border-right: 2px solid #fff;
           padding: 10px;
         }       
 
@@ -97,7 +95,7 @@
         }
 
         #logOut{
-          margin-left: 770px;
+          float:right;
         }
 
         #additionalOptions{
@@ -109,6 +107,37 @@
           border-top: 1px solid #fff;
           padding: 0px;
         }
+        #jerry{
+          margin-bottom: 50px;
+        }
+
+        .yearBreak{
+          display:none;
+        }
+
+        @media(max-width: 1100px) {
+          #logOut{
+            float:none;
+          }
+        }
+
+        @media(max-width: 600px) {
+          .yearBreak{
+            display:block;
+            
+          }
+
+          #year {
+            border-left: 2px solid #fff;
+            
+          }
+
+          #model {
+            border-right: 2px solid #fff;
+            padding: 10px;
+          }
+        }
+               
       </style>
     
     </head>
@@ -171,6 +200,9 @@
             <h3>Car Info</h3>
             <textfield id="make"><b>Car make:</b> </textfield>
             <textfield id="model"><b>Car model:</b> </textfield>
+            <br class="yearBreak">
+            <br class="yearBreak">
+            <br class="yearBreak">
             <textfield id="year"><b>Car year:</b> </textfield> 
           </div>  
 
@@ -182,9 +214,11 @@
 
           <h5>Additional Options</h5>
           <div id="additionalOptions">
-            <textfield id="jerryCans"><b># of jerry cans:</b> </textfield>  
-            <textfield id="jerryCanSize"><b>Jerry can size(L):</b> </textfield> 
-            <textfield id="fuelGrade"><b>Fuel grade:</b> </textfield>                      
+            <div id="jerry">
+              <textfield id="jerryCans"><b># of jerry cans:</b> </textfield>  
+              <textfield id="jerryCanSize"><b>Jerry can size(L):</b> </textfield> 
+            </div>
+            <textfield id="fuelGrade"><b>Fuel grade:</b> </textfield>                    
           </div>
 
             <button id="editPreferences" onclick="editP()" value="Logout">Edit Preferences</button>
