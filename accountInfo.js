@@ -1,14 +1,10 @@
+var database = firebase.database();
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     var fb = database.ref();
     var user = firebase.auth().currentUser;
-
-    user.getIdToken().then(function(accessToken) {
-      document.getElementById('notSignedIn').style.display="none";
-      document.getElementById('signedIn').style.display="block";
-      document.getElementById('accountName').innerHTML = user.email;
-    });
 
     //Car make
     fb.child('users/'+user.uid+'/make').once('value', function(snap){
@@ -51,10 +47,18 @@ firebase.auth().onAuthStateChanged(function(user) {
       var userFuelGrade = document.createTextNode(snap.val());
       document.getElementById('fuelGrade').appendChild(userFuelGrade);      
     });
-
-  } else {
-    document.getElementById('signedIn').style.display="none";
-    document.getElementById('notSignedIn').style.display="block";
-    // No user is signed in.
   }
 });
+
+// logging out of account
+function logOut(){
+
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+    window.location.href="index.html";
+    window.alert("Log out successful");
+  }).catch(function(error) {
+    // An error happened.
+    window.alert("\nError code: " + errorCode + "\n" + errorMessage);
+  });
+}
