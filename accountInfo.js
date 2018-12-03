@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var userStation = document.createTextNode(snap.val());
         document.getElementById('station').appendChild(userStation);      
       } else {
-        var userStation = document.createTextNode('Within ' + snap.val() + ' Km');
+        var userStation = document.createTextNode('Within ' + snap.val() + 'Km');
         document.getElementById('station').appendChild(userStation);     
       } 
     });
@@ -47,7 +47,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     //Size of jerry cans
     fb.child('users/'+user.uid+'/jerryCanSize').once('value', function(snap){
-      var userJerryCanSize = document.createTextNode(snap.val());
+      var userJerryCanSize = document.createTextNode(snap.val() + "L");
       document.getElementById('jerryCanSize').appendChild(userJerryCanSize);      
     });
     
