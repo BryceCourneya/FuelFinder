@@ -126,9 +126,6 @@ function edit() {
   var make = document.getElementById("make").value;
   var model = document.getElementById("model").value;
   var year = document.getElementById("year").value; 
-  var station = document.getElementById("station").value; 
-  var jerryCans = document.getElementById("jerryCans").value; 
-  var jerryCanSize = document.getElementById("jerryCanSize").value; 
 
   if (document.getElementById('closest').checked) {
     var station = "Closest US";
@@ -147,7 +144,7 @@ function edit() {
   }
 
   if (document.getElementById('check4').checked) {
-    
+
     if (document.getElementById('regular').checked) {
       var fuelGrade = "Regular";
     }
