@@ -20,7 +20,6 @@ function createAccount(){
   } else {
     window.alert("passwords are not equal");
   }
-  window.alert(user.uid);
 }
 
 //Logs in into firebase authentication
@@ -74,7 +73,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     //Gas station
     fb.child('users/'+user.uid+'/station').once('value', function(snap){
-      var userStation = document.createTextNode(snap.val());
+      var userStation = document.createTextNode('Within ' + snap.val() + 'km');
       document.getElementById('station').appendChild(userStation);      
     });
 
