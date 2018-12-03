@@ -44,30 +44,9 @@
         h5{
           font-size: 1.4em;
         }
-
-        .container label {
-          margin:0;
-          padding:0;
-          font-weight: bold;
-        }
-
-        .container input {
-          width: 100%;
-          margin-bottom: 20px;
-        }
-
-        /*.container input[type="text"], input[type="password"], input[type=number] {
-          border:none;
-          border-bottom: 1px solid #fff;
-          background: transparent;
-          outline: none;
-          height: 40px;
-          color: #fff;
-          font-size: 16px;
-          width:30%;
-        }*/
         
         #submit{
+          margin-top: 30px;
           border: none;
           outline: none;
           height: 40px;
@@ -95,9 +74,60 @@
           width:30%;
         }
 
-        form ul {
-          list-style-type: none;
+        #gasStation input[type="number"]{
+          width: 40px;
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 20px;
+          color: #fff;
+          font-size: 16px;
+          width:70px;
+        }
+        
+        #gasStation input[type="radio"]{
+          margin-left: 2px;         
+        }
+
+        #check4{
           margin: 0;
+          width: 20px;
+        }
+
+        #jerry{
+          margin-bottom: 50px;
+        }
+
+        #jerry input[type="checkbox"] {
+          width: 20px;
+          margin: 0;
+        }
+
+        #jerry input[type="number"] {
+          width: 40px;
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 20px;
+          color: #fff;
+          font-size: 16px;
+          width:70px;
+          
+        }
+
+        #jerry input[type="radio"]{
+          width: 50px;
+          margin: 0;
+        }
+
+        #premium {
+          margin-left: 109px;
+        }
+
+        #closest {
+          margin-bottom: 40px;
         }
             
       </style>
@@ -166,22 +196,23 @@
 
               <div id="gasStation">
                 <h3>Gas Station</h3>
-                <ul>
-                  <li><input type=radio name="radio" value="closest" id="closest"> Closest US</li>
-                  <li><input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" min="0" id="lowestKM"> km</li>
-                </ul>
+                <input type=radio name="radio" value="closest" id="closest"><label>Closest US</label>
+                <br>
+                <input type=radio name="radio" value="lowest" id="lowest">Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" min="0" id="lowestKM"><label>km</label> 
               </div>
 
               <div id="additionalInfo">
                 <h4>Additional Info</h4>
-                <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0" min="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters
+                <div id="jerry">
+                  <input type=checkbox name=check1 id="check1"><label>Jerry Cans: </label><input type=number class="km" name="jerryCans" id="jerryCans" value="0" min="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters                  
+                </div>
+
                 <input type=checkbox name=check4 id="check4"><label>Fuel Grade:</label>
-                <ul>
-                  <li><input type=radio name="fuelGrade" value="Regular" id="regular">Regular</li>
-                  <li><input type=radio name="fuelGrade" value="Regular" id="midgrade">Midgrade</li>
-                  <li><input type=radio name="fuelGrade" value="Regular" id="premium">Premium</li>
-                  <li><input type=radio name="fuelGrade" value="Regular" id="diesel">Diesel</li>
-                </ul>
+                <input type=radio name="fuelGrade" value="Regular" id="regular"><label>Regular</label>
+                <input type=radio name="fuelGrade" value="Regular" id="midgrade"><label>Midgrade</label>
+                <br>
+                <input type=radio name="fuelGrade" value="Regular" id="premium"><label>Premium</label>
+                <input type=radio name="fuelGrade" value="Regular" id="diesel"><label>Diesel</label>
               </div>         
 
               <input id="submit" type="button" onclick="edit()" value="Save Changes"></button>
