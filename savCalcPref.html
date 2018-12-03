@@ -231,10 +231,6 @@
           <form class="forms" name="form3" id="form3">
             <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0" min="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters
             <br/>
-            <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="timeH" name="timeH" min="0" max="99"> hour(s)<input type=number class="km" name="timeM" id="timeM" value="0" min="0" max="59"> minute(s)
-            <br/>
-            <input type=checkbox name=check3 id="check3"><label>Total Distance:</label><input type=number class="km" min="0" id="maxDistance"name="distance" value="0"> km
-            <br/> 
             <input type=checkbox name=check4 id="check4"><label>Fuel Grade:</label>
               <ul style="margin-top:-20px; margin-left:80px;">
                 <li><input type=radio name="fuelGrade" value="Regular" id="regular">Regular</li>
@@ -289,14 +285,52 @@
               value2 = 0;
             }
             });
+            firebase.auth().onAuthStateChanged(function(user){
+            var fb = firebase.database().ref();
+            var user = firebase.auth().currentUser;
+            fb.child('users/'+user.uid+'/make').once('value', function (snap) {
+                 document.getElementById("make").value = (snap.val());
+            });
+            fb.child('users/'+user.uid+'/model').once('value', function (snap) {
+                 document.getElementById("model").value = (snap.val());
+            });
+            fb.child('users/'+user.uid+'/year').once('value', function (snap) {
+                 document.getElementById("year").value = (snap.val());
+            });
+            fb.child('users/'+user.uid+'/jerryCans').once('value', function (snap) {
+                 document.getElementById("jerryCans").value = (snap.val());
+                 if ((snap.val()) > 0) {
+                   document.getElementById("check1").checked = true;
+                 }
+            });
+            fb.child('users/'+user.uid+'/jerryCanSize').once('value', function (snap) {
+                 document.getElementById("jerryCanSize").value = (snap.val());
+            });
+            fb.child('users/'+user.uid+'/fuelGrade').once('value', function (snap) {
+              if (snap.val() == "Regular") {
+                 document.getElementById("check4").checked = true;
+                 document.getElementById("regular").checked = true;
+              }
+              if (snap.val() == "Midgrade") {
+                 document.getElementById("check4").checked = true;
+                 document.getElementById("midgrade").checked = true;
+              }
+              if (snap.val() == "Premium") {
+                 document.getElementById("check4").checked = true;
+                 document.getElementById("premium").checked = true;
+              }
+              if (snap.val() == "Diesel") {
+                 document.getElementById("check4").checked = true;
+                 document.getElementById("diesel").checked = true;
+              }
+            });
+              });
           });
           </script>
           
           <script>
-           // document.getElementById('submit').addEventListener('submit', submitForm);
 
                 function submitForm() {
-                  //e.preventDefault();
       
                   var make = document.getElementById("make").value;
                   var year = document.getElementById("year").value;
@@ -316,17 +350,6 @@
                   } else {
                     var jerryCans = 0;
                     var jerryCanSize = 0;
-                  }
-
-                  if (document.getElementById('check2').checked) {
-                    var maxTime = document.getElementById("timeH").value + "h " + document.getElementById("timeM").value + "m";
-                  } else {
-                    var maxTime = "N/A";
-                  }
-                  if (document.getElementById('check3').checked) {
-                    var maxDistance = document.getElementById("maxDistance").value;
-                  } else {
-                    var maxDistance = "N/A";
                   }
                   if (document.getElementById('check4').checked) {
                     if (document.getElementById('regular').checked) {
@@ -367,37 +390,32 @@
                     localStorage.setItem("station", station);
                     localStorage.setItem("jerryCans", jerryCans);
                     localStorage.setItem("jerryCanSize", jerryCanSize);
-                    localStorage.setItem("maxTime", maxTime);
-                    localStorage.setItem("maxDistance", maxDistance);
                     localStorage.setItem("fuelGrade", fuelGrade);
                   }
                      // var promise = firebase.database().ref("preferences").set( {
-                  firebase.auth().onAuthStateChanged(function(user){
-                    if (notComplete == false && carSupport == true) {
-                      var promise = firebase.database().ref('users/'+user.uid).set( {
-                       "model" : model,
-                       "make" : make,
-                       "year" : year,
-                       "station" : station,
-                       "jerryCans" : jerryCans,
-                       "jerryCanSize" : jerryCanSize,
-                       "maxTime" : maxTime,
-                       "maxDistance" : maxDistance,
-                       "fuelGrade" : fuelGrade
-                      });
-                  }
+                 // firebase.auth().onAuthStateChanged(function(user){
+                 //   if (notComplete == false && carSupport == true) {
+                 //     var promise = firebase.database().ref('users/'+user.uid).set( {
+                 //      "model" : model,
+                 //      "make" : make,
+                 //      "year" : year,
+                 //      "station" : station,
+                 //      "jerryCans" : jerryCans,
+                 //      "jerryCanSize" : jerryCanSize,
+                 //      "fuelGrade" : fuelGrade
+                 //      });
+                 // }
                   
                   if (notComplete == false && carSupport == true) {
-                    promise.then(function() {
+                  //  promise.then(function() {
                       window.location.href="savCalcResults.html";
-                  });
+                //  });
                 } else if (notComplete == true) {
                   window.alert("You must enter the make, model, and year of the car!");
                 } else if (carSupport == false) {
                   window.alert("Sorry! The Savings Calculator does not support your vehicle at this time. \nPlease enter another vehicle");
                 }
-                  });
-                }
+                  }
         </script>
       </div>
     </main>

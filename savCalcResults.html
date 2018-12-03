@@ -347,8 +347,6 @@
             <h3 id="heading2">Options</h3>
             <p>Station: </p>
             <p>Jerry Cans:</p>
-            <p>Max Time: </p>
-            <p>Max Distance:</p>
           </div>
           <div id="preferences">
           </div>
@@ -407,8 +405,6 @@
             var station = localStorage.getItem("station");
             var jerryCans = localStorage.getItem("jerryCans");
             var jerryCanSize = localStorage.getItem("jerryCanSize");
-            var maxTime = localStorage.getItem("maxTime");
-            var maxDistance = localStorage.getItem("maxDistance");
             var closestBool = localStorage.getItem("closestBool");
 
             var makeP = document.createElement("p");
@@ -434,20 +430,6 @@
             var jerryCansNode = document.createTextNode("" + jerryCans + " x " + jerryCanSize + "L");
             jerryCansP.appendChild(jerryCansNode);
             document.getElementById("preferences").appendChild(jerryCansP);
-
-            var maxTimeP = document.createElement("p");
-            var maxTimeNode = document.createTextNode("" + maxTime);
-            maxTimeP.appendChild(maxTimeNode);
-            document.getElementById("preferences").appendChild(maxTimeP);
-
-            var maxDistanceP = document.createElement("p");
-            if (maxDistance != "N/A") {
-              var maxDistanceNode = document.createTextNode("" + maxDistance + "km");
-            } else {
-              var maxDistanceNode = document.createTextNode("" + maxDistance);
-            }
-            maxDistanceP.appendChild(maxDistanceNode);
-            document.getElementById("preferences").appendChild(maxDistanceP);
 
             var tankP = document.createElement("p");
             var fuelP = document.createElement("p");
