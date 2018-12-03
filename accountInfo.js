@@ -30,13 +30,18 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     //Gas station
     fb.child('users/'+user.uid+'/station').once('value', function(snap){
-      if (snap.val() == "Closest US"){
-        var userStation = document.createTextNode(snap.val());
-        document.getElementById('station').appendChild(userStation);      
+      if (snap.val() == "Closest US" || snap.val() > 0) {
+        if (snap.val() == "Closest US"){
+          var userStation = document.createTextNode(snap.val());
+          document.getElementById('station').appendChild(userStation);      
+        } else {
+          var userStation = document.createTextNode('Within ' + snap.val() + 'Km');
+          document.getElementById('station').appendChild(userStation);     
+        } 
       } else {
-        var userStation = document.createTextNode('Within ' + snap.val() + 'Km');
-        document.getElementById('station').appendChild(userStation);     
-      } 
+        var userStation = document.createTextNode(snap.val());
+        document.getElementById('station').appendChild(userStation);
+      }
     });
 
     //# of jerry cans
