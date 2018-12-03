@@ -45,15 +45,56 @@ function logIn(){
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    document.getElementById('notSignedIn').style.display="none";
-    document.getElementById('signedIn').style.display="block";
-
+    var fb = database.ref();
     var user = firebase.auth().currentUser;
-    /*document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
-    document.getElementById('accountEmail').innerHTML = "Your Email: " + email;
-    document.getElementById('').innerHTML = "Your Email: " + email;
-    document.getElementById('').innerHTML = "Your Email: " + email;
-    document.getElementById('').innerHTML = "Your Email: " + email;*/   
+    user.getIdToken().then(function(accessToken) {
+      document.getElementById('notSignedIn').style.display="none";
+      document.getElementById('signedIn').style.display="block";
+      document.getElementById('accountName').innerHTML =  user.email;
+    });
+
+    //Car make
+    fb.child('users/'+user.uid+'/make').once('value', function(snap){
+      var userMake = document.createTextNode(snap.val());
+      document.getElementById('make').appendChild(userMake);      
+    });
+
+    //Car model
+    fb.child('users/'+user.uid+'/model').once('value', function(snap){
+      var userModel = document.createTextNode(snap.val());
+      document.getElementById('model').appendChild(userModel);      
+    });
+
+    //Car year
+    fb.child('users/'+user.uid+'/year').once('value', function(snap){
+      var userYear = document.createTextNode(snap.val());
+      document.getElementById('year').appendChild(userYear);      
+    });
+
+    //Gas station
+    fb.child('users/'+user.uid+'/station').once('value', function(snap){
+      var userStation = document.createTextNode(snap.val());
+      document.getElementById('station').appendChild(userStation);      
+    });
+
+    //# of jerry cans
+    fb.child('users/'+user.uid+'/jerryCans').once('value', function(snap){
+      var userJerryCans = document.createTextNode(snap.val());
+      document.getElementById('jerryCans').appendChild(userJerryCans);      
+    });
+
+    //Size of jerry cans
+    fb.child('users/'+user.uid+'/jerryCanSize').once('value', function(snap){
+      var userJerryCanSize = document.createTextNode(snap.val());
+      document.getElementById('jerryCanSize').appendChild(userJerryCanSize);      
+    });
+    
+    //Fuel grade
+    fb.child('users/'+user.uid+'/fuelGrade').once('value', function(snap){
+      var userFuelGrade = document.createTextNode(snap.val());
+      document.getElementById('fuelGrade').appendChild(userFuelGrade);      
+    });
+
   } else {
     document.getElementById('signedIn').style.display="none";
     document.getElementById('notSignedIn').style.display="block";
@@ -72,6 +113,10 @@ function logOut(){
     // An error happened.
     window.alert("\nError code: " + errorCode + "\n" + errorMessage);
   });
+}
+
+function editP(){
+  window.location.href="preferences.html";
 }
 
 //account preferences, information is put into database
@@ -99,31 +144,3 @@ function edit() {
 
   window.location.href="myAccount.html"; 
 }
-
-  /*self.ref.child("users").child(user.uid).setValue(["make": make])
-  self.ref.child("users").child(user.uid).setValue(["model": model])
-  self.ref.child("users").child(user.uid).setValue(["year": year])*/ 
- 
-/*
-<script src="/__/firebase/5.5.8/firebase-app.js"></script>
-<script src="/__/firebase/5.5.8/firebase-auth.js"></script>
-<script src="/__/firebase/init.js"></script>
-
-function toggleSignIn() {
-  if (firebase.auth().currentUser) {
-    // [START signout]
-    firebase.auth().signOut();
-    // [END signout]
-  } else {
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    if (email.length < 4) {
-      alert('Please enter an email address.');
-      return;
-    }
-    if (password.length < 4) {
-      alert('Please enter a password.');
-      return;
-    }
-
-*/

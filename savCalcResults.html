@@ -24,7 +24,7 @@
     #results {
       border: 3px rgba(0,0,0,0.6);
       width:90%;
-      height:700px;
+      height:830px;
       background-color:rgba(0,0,0,0.6);
       margin: 0 auto;
       margin-bottom:30px;
@@ -104,12 +104,14 @@
       overflow:hidden;
       float:right;
       padding-left:20px;
+      margin-top:-10px;
     }
     #vehicleInfo2 {
       overflow:hidden;
       float:right;
       margin-left:20px;
       margin-right:40px;
+      margin-top:-10px;
     }
     .break {
       display:none;
@@ -148,6 +150,18 @@
       height:240px;
       width:390px;
     }
+    #gasStation {
+      float:right;
+    }
+    #selectedStation {
+      padding-left:20px;
+    }
+    #header a:visited{
+      color:white;
+    }
+    #header a:hover{
+      color:aqua;
+    }
     @media(max-width: 900px) {
       #map img {
         height: 200px;
@@ -168,6 +182,7 @@
       }
       #fuel {
         margin-bottom:14px;
+        padding-top:16px;
       }
     }
     @media(max-width: 722px) {
@@ -214,6 +229,9 @@
         margin:0 auto;
         padding-right:18px;
         padding-top:10px;
+      }
+      #preferences {
+        float:right;
       }
     }
     @media(max-width: 550px) {
@@ -300,13 +318,15 @@
     <!-- Main content goes here-->
     <main id="main">
       <div id="results">
-        <h3 class="heading">Results</h3>
+        <div id="header">
+        <h3 class="heading">Best station for you:</h3>
+        </div>
         <hr>
 
         <div id=wrapper1>
           <div id=savingsDiv>
             <div id=savings>SAVINGS:</div>
-            <div id=amount>$46.53</div>
+            <div id=amount></div>
             <div id=compared>*compared to your closest station.</div>
           </div>
           <div id=wrapper2>
@@ -314,6 +334,7 @@
             </div>
             <div id=vehicleInfo>
               <p>Vehicle:</p>
+              <p>Fuel Grade:</p>
               <p>Tank Size:</p>
               <p>Fuel
               <br class="break"/>  Consumption:</p>  
@@ -326,8 +347,6 @@
             <h3 id="heading2">Options</h3>
             <p>Station: </p>
             <p>Jerry Cans:</p>
-            <p>Max Time: </p>
-            <p>Max Distance:</p>
           </div>
           <div id="preferences">
           </div>
@@ -337,15 +356,11 @@
         </div>
         
         <hr>
-        <button id="calculationButton"><img id="calculationArrow" src='arrow2.png'>&ensp;Calculations</button>
+        <button id="calculationButton"><img id="calculationArrow" src='arrow2.png'>&ensp;Formula</button>
         <div id="calculationOptions">
-          <form class="forms" name="form3" id="form3">
-            <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0">
-            <br/>
-            <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="maxTime" name="timeH"> hour(s)<input type=number class="km" name="timeM" value="0"> minute(s)
-            <br/>
-            <input type=checkbox name=check3 id="check3"><label>Total Distance:</label><input type=number class="km" id="maxDistance"name="distance" value="0"> km
-          </form>
+          <p>Close Price = Fuel Cost * Tank Size + (Fuel Consumption * Distance (two way) * Fuel Cost) + (Jerry Cans * Can Size * Fuel Price)</p>
+          <p>Far Price = (Fuel Cost * Tank Size + (Fuel Consumption * Distance (two way) * Fuel Cost) + (Jerry Cans * Can Size * Fuel Price)) * Exchange Rate (if foreign)</p>
+          <p>Total Savings = Close Price - Far Price</p>
         </div>
         <hr>
 
@@ -385,19 +400,29 @@
             var year = localStorage.getItem("year");
             year = "'" + year.substring(year.length-2, year.length);
 
+            var fuelGrade = localStorage.getItem("fuelGrade");
+
             var station = localStorage.getItem("station");
             var jerryCans = localStorage.getItem("jerryCans");
             var jerryCanSize = localStorage.getItem("jerryCanSize");
-            var maxTime = localStorage.getItem("maxTime");
-            var maxDistance = localStorage.getItem("maxDistance");
+            var closestBool = localStorage.getItem("closestBool");
 
             var makeP = document.createElement("p");
             var makeNode = document.createTextNode("" + make + " " + model + " " + year);
             makeP.appendChild(makeNode);
             document.getElementById("vehicleInfo2").appendChild(makeP);
 
+            var fuelGradeP = document.createElement("p");
+            var fuelGradeNode = document.createTextNode("" + fuelGrade);
+            fuelGradeP.appendChild(fuelGradeNode);
+            document.getElementById("vehicleInfo2").appendChild(fuelGradeP);
+
             var stationP = document.createElement("p");
-            var stationNode = document.createTextNode("" + station);
+            if (station != "N/A" && station != "Closest US") {
+              var stationNode = document.createTextNode("Within " + station + "km");
+            } else {
+              var stationNode = document.createTextNode("" + station);
+            }
             stationP.appendChild(stationNode);
             document.getElementById("preferences").appendChild(stationP);
 
@@ -405,16 +430,6 @@
             var jerryCansNode = document.createTextNode("" + jerryCans + " x " + jerryCanSize + "L");
             jerryCansP.appendChild(jerryCansNode);
             document.getElementById("preferences").appendChild(jerryCansP);
-
-            var maxTimeP = document.createElement("p");
-            var maxTimeNode = document.createTextNode("" + maxTime);
-            maxTimeP.appendChild(maxTimeNode);
-            document.getElementById("preferences").appendChild(maxTimeP);
-
-            var maxDistanceP = document.createElement("p");
-            var maxDistanceNode = document.createTextNode("" + maxDistance);
-            maxDistanceP.appendChild(maxDistanceNode);
-            document.getElementById("preferences").appendChild(maxDistanceP);
 
             var tankP = document.createElement("p");
             var fuelP = document.createElement("p");
@@ -434,6 +449,8 @@
                  fuelP.appendChild(fuelNode);
                  document.getElementById("vehicleInfo2").appendChild(fuelP);
               });
+
+              var closePrice = (1.342 * 50 + (0.0675 * 1.6 * 1.342) + (jerryCans * jerryCanSize * 1.342));
             }
 
             if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
@@ -449,7 +466,131 @@
                  fuelP.appendChild(fuelNode);
                  document.getElementById("vehicleInfo2").appendChild(fuelP);
               });
-            }
+
+              var closePrice = (1.342 * 55 + (0.069 * 1.6 * 1.342) + (jerryCans * jerryCanSize * 1.342));
+            } 
+
+              if (station == "Closest US" || (station > 16.3 && station < 18)) {
+                var stationName = "Chevron";
+                var stationAddress = "347 D Street";
+                var stationLocation = "Blaine, Washington";
+                var stationPrice = 3.03;
+                var stationPriceString = "$3.03/G";
+                var stationDistance = 16.4;
+                var stationDistanceString = "16.4km";
+                
+                var selectedStation = document.createElement("a");
+                selectedStation.setAttribute("id", "selectedStation");
+                selectedStation.setAttribute("href", "index.html");
+                selectedStationNode = document.createTextNode("" + stationName + " - "
+                + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
+                selectedStation.appendChild(selectedStationNode);
+                document.getElementById("header").appendChild(selectedStation);
+
+                var gasPrice = 3.03;
+                if (fuelGrade == "Midgrade") {
+                  gasPrice += 0.14;
+                }
+                if (fuelGrade == "Premium") {
+                  gasPrice += 0.28;
+                }
+                if (fuelGrade == "Diesel") {
+                  gasPrice += 0.22;
+                }
+                
+                if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 3.03) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 32.8 * 3.03) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 32.8 * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                var totalSavings = ("" + totalSavings);
+                var savingsNode = document.createTextNode("$" + totalSavings.substring(0, 5));
+                document.getElementById("amount").appendChild(savingsNode);
+
+              } else if (station < 16.3) {
+                var stationName = "Esso";
+                var stationAddress = "9100 Westminster Avenue";
+                var stationLocation = "Richmond, BC";
+                var stationPrice = 1.342;
+                var stationPriceString = "$1.342/L";
+                var stationDistance = 0.8;
+                var stationDistanceString = "0.8km";
+                
+                var selectedStation = document.createElement("a");
+                selectedStation.setAttribute("id", "selectedStation");
+                selectedStation.setAttribute("href", "index.html");
+                selectedStationNode = document.createTextNode("" + stationName + " - "
+                + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
+                selectedStation.appendChild(selectedStationNode);
+                document.getElementById("header").appendChild(selectedStation);
+
+                var savingsNode = document.createTextNode("$0.00");
+                document.getElementById("amount").appendChild(savingsNode);
+
+              } else if (station > 18) {
+                var stationName = "Shell";
+                var stationAddress = "360 D Street";
+                var stationLocation = "Blaine, Washington";
+                var stationPrice = 2.91;
+                var stationPriceString = "$2.91/G";
+                var stationDistance = 18.1;
+                var stationDistanceString = "18.1km";
+                
+                var selectedStation = document.createElement("a");
+                selectedStation.setAttribute("id", "selectedStation");
+                selectedStation.setAttribute("href", "index.html");
+                selectedStationNode = document.createTextNode("" + stationName + " - "
+                + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
+                selectedStation.appendChild(selectedStationNode);
+                document.getElementById("header").appendChild(selectedStation);
+                
+                var gasPrice = 2.91;
+                if (fuelGrade == "Midgrade") {
+                  gasPrice += 0.14;
+                }
+                if (fuelGrade == "Premium") {
+                  gasPrice += 0.28;
+                }
+                if (fuelGrade == "Diesel") {
+                  gasPrice += 0.22;
+                }
+                
+                if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 2.91) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 2.91)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 36.2 * 2.91) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 36.2 * 2.91)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                var totalSavings = ("" + totalSavings);
+                var savingsNode = document.createTextNode("$" + totalSavings.substring(0, 5));
+                document.getElementById("amount").appendChild(savingsNode);
+              }
+              
             
         </script>
       </div>

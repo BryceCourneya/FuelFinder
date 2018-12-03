@@ -3,12 +3,13 @@
     <head>
       <title>About us</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
       <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
       <style>
 
         .container {
           width: 80%;
-          height: 800px;
+          height: 90%;
           background:rgba(0, 0, 0, 0.7);
           color:white;
           margin:0 auto;
@@ -37,13 +38,18 @@
           text-align: center;
         }
 
-        #caldwellImg{
+        .section {
+          margin-bottom: 5%;
+          margin-top: 3%;
+        }
+
+        .image{
           float:left;
-          margin-bottom: 20%;
+          margin-bottom: 2%;
           margin-right: 2%;
         }
 
-        .caldwell{
+        .text{
           margin-top: 0%;
           margin-bottom: 0%;
         }
@@ -117,6 +123,7 @@
     
         <!-- Main content goes here-->
 
+        <script src="fireBase.js"></script>
         <script src="login.js"></script>
 
         <div class="container">
@@ -126,27 +133,52 @@
           </p>
           <p id="about">FuelFinder, Fuel your life.</p>
           <h2>- Meet the Team -</h2>        
-          
-          <img src="caldwell.jpg" alt="Caldwell Animus Portems" height="200px" width="250px" id="caldwellImg">
-          <p class="caldwell">Caldwell Animus Portems III </p>
+          <div class="section">
+          <img src="caldwell.jpg" alt="Caldwell Animus Portems" height="200px" width="250px" class="image">
+          <p class="text">Caldwell Animus Portems III </p>
           <br>
-          <p class="caldwell">Team leader, lord of memes, pedophile, Caldwell is our spiritual leader: without him
+          <p class="text">Team leader. Lord of memes. Pedophile. Caldwell is our spiritual leader: without him
             we would be lost. As leader of the team, Caldwell's job is to make sure we are always on track. He is often seen napping
             on the floor, playing footsie with unwilling ladies, or skulking the hallways looking for kids. Many people have said good
             things about him: <i>"Get away from me creep!" "You sure are good with kids, wait, WHAT ARE YOU DOING TO MY SON BRYCE"</i><br>
             All the team can say when asked about him: "class act."
           </p>
-
-          <!--<img src="" alt="Kris chan" title="Luigi Alcuaz" id="pic1">
-          <p class="head">Kris Chan</p>
-          <br>
-          <img src="" alt="Luigi Alcuaz" title="Luigi Alcuaz" id="pic2"> 
-          <p class="head">Luigi Alcuaz</p>
-          <br>
-          <img src="" alt="Bryce Courneya" title="Bryce Courneya" id="pic3">
-          <p class="head">Bryce Courneya</p>
-          <br>-->    
-
+          </div>
+          <div class="section">
+            <img src="tribeMan.jpg" alt="Luigi Alcuaz" height="230px" width="250px" class="image">
+            <p class="text">Luigi "savage" Alcuaz</p>
+            <br>
+            <p class="text"> Sacrifice. No not that kind, SACRIFICE! <i>"Sacrifice, sacrifice, sacrifice!"</i> Luigi is found 
+              always patrolling the hallways and marking his territory. His trusty spear, "Sir PierceALot," is always by his side 
+              or thrown at unsuspecting prey. <br> <i>"I went to BCIT during my school field trip and this guy threw his spear at me.
+              It hurt, but it was sick!" - recently deceased student.</i> <br> His favourite hobby is to dance around a fire yelling 
+              "sacrifice" and can even be seen doing so in the back of the class. If there is a missing hoodie, laptop, or classmate, 
+              you can be sure to find familiar ashes within the raging bonfire. 
+            </p>
+            </div>
+            <div class="section">
+            <img src="smurf.png" alt="Bryce Courneya" height="200px" width="250px" class="image">
+            <p class="text">Bryce "oh papa" Courneya</p>
+            <br>
+            <p class="text">Father. Papa. Courneya. If Caldwell is our spiritual leader then Bryce is his cheerleader. As the odd one
+              out of the group, Bryce is always struggling to get along with his peers. From frosted tips to breaking his ankle, Bryce
+              has done all in his power to have someone he can call friend. He looks up to Caldwell, someone who receives a great amount of
+              attention, and is currently studying in his ways. In his desperate attempts to imitate him, he urges peers to call him papa or
+              father, his new-found moniker. Only after threats and displays of nudity did peers unwillingly comply. As "father" of the group
+              he is constantly making sure everyone is on track through ways no one could even imagine. 
+            </p>
+            </div>
+            <div class="section">
+                <img src="jackie.jpg" alt="Kris Chan" height="200px" width="250px" class="image">
+                <p class="text">Kris "big boi" Chan</p>
+                <br>
+                <p class="text">Kris is a big boi. A hidden karate master known for always bringing his lunch during buisness
+                  analysis lab. <br> <i>"Kris are you going to heat up your lunch? - Glen Elliot</i> <br> Other than that, Kris' entire background
+                  is shrouded in mystery. No one knows where he comes from or if he even goes to school at BCIT but rest assured, when 
+                  that red hoodie comes bouncing along, no one is left standing in its path. He may be small in stature but don't underestimate
+                  him or he'll show you why he is called "big boi."
+                </p>
+            </div>
         </div>
 
     

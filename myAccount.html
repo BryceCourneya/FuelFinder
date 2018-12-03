@@ -4,58 +4,116 @@
       <title>Account</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
-      <link rel="stylesheet" href="account.css"> <!--Homepage CSS Sheet-->
       <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-      <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-      <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
       <style>
 
         body {
-        background-image:url(login.jpg);
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+          background:url(login.jpg) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
         }
 
         .container {
-        width: 90%;
-        height: 80%;
-        background:rgba(0, 0, 0, 0.84);
-        color:white;
-        top: 55%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        box-sizing:border-box;
-        padding: 30px 30px;
-        border-radius: 40px;
+          width: 80%;
+          height: 90%;
+          background:rgba(0, 0, 0, 0.84);
+          color:white;
+          margin:0 auto;
+          margin-top:40px;
+          padding: 30px 30px;
+          border-radius: 40px;
         }
 
         .container button{
-        border: none;
-        outline: none;
-        height: 40px;
-        background:white;
-        color: black;
-        font-size: 18px;
-        border-radius: 20px;
+          border: none;
+          outline: none;
+          height: 40px;
+          background:white;
+          color: black;
+          font-size: 18px;
+          border-radius: 20px;
         }
 
         .container button:hover{
-        cursor: pointer;
-        background:red;
-        color:#000;
+          cursor: pointer;
+          background:red;
+          color:#000;
         }
 
         h1 {
           text-align: center;
         }
+
+        h3{
+          font-size: 1.4em;
+        }
+
+        h4{
+          font-size: 1.4em;
+        }
+
+        h5{
+          font-size: 1.4em;
+        }
+
+        #make {
+          border-right: 2px solid #fff;
+          border-left: 2px solid #fff;
+          padding: 10px;
+        }
+        
+        #model {
+          padding: 10px;
+        }
+
+        #station {
+          border-right: 2px solid #fff;
+          border-left: 2px solid #fff;
+          padding: 10px;
+        }
+
+        #year {
+          border-right: 2px solid #fff;
+          border-left: 2px solid #fff;
+          padding: 10px;
+        }
+
+        #jerryCans{
+          border-right: 2px solid #fff;
+          border-left: 2px solid #fff;
+          padding: 10px;
+        }
+
+        #jerryCanSize{
+          padding: 10px;
+        }       
+
+        #fuelGrade{
+          border-right: 2px solid #fff;
+          border-left: 2px solid #fff;
+          padding: 10px;
+        }
+
+        #logOut{
+          margin-left: 770px;
+        }
+
+        #additionalOptions{
+          margin-bottom:50px;
+        }
+
+        #carInfo{
+          margin-top: 20px;
+          border-top: 1px solid #fff;
+          padding: 0px;
+        }
       </style>
     
-      </head>
+    </head>
     
-      <body>
+    <body>
     <!-- Nav bar start-->
     <div id="top"></div>
    
@@ -102,12 +160,34 @@
         <!-- Main content goes here-->
         <script src="fireBase.js"></script>
         <script src="login.js"></script>
+
         <div class="container">
-          <h1>My Account</h1>
-          <p id="accountEmail">Email stuff</p>
-          <p id="accountEmail">Preferences and stuff</p>
-          <p id="accountEmail">Links and Stuff</p>          
-          <button onclick="logOut()" value="Logout">Log out</button>
+
+          <h1 id ="accountName">My Account</h1>
+          <h2>Preferences</h2>
+          
+          <div id="carInfo">
+            <h3>Car Info</h3>
+            <textfield id="make">Car make: </textfield>
+            <textfield id="model">Car model: </textfield>
+            <textfield id="year">Car year: </textfield> 
+          </div>  
+
+          
+          <div id="gasStation">
+            <h4>Gas Station</h4>
+            <textfield id="station">Gas Station: </textfield> 
+          </div>
+
+          <h5>Additional Options</h5>
+          <div id="additionalOptions">
+            <textfield id="jerryCans"># of jerry cans: </textfield>  
+            <textfield id="jerryCanSize">Jerry can size(L): </textfield> 
+            <textfield id="fuelGrade">Fuel grade: </textfield>                      
+          </div>
+
+            <button id="editPreferences" onclick="editP()" value="Logout">Edit Preferences</button>
+            <button id="logOut" onclick="logOut()" value="Logout">Log out</button>
         </div>    
 
       </body>
