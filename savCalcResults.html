@@ -24,7 +24,7 @@
     #results {
       border: 3px rgba(0,0,0,0.6);
       width:90%;
-      height:700px;
+      height:830px;
       background-color:rgba(0,0,0,0.6);
       margin: 0 auto;
       margin-bottom:30px;
@@ -326,7 +326,7 @@
         <div id=wrapper1>
           <div id=savingsDiv>
             <div id=savings>SAVINGS:</div>
-            <div id=amount>$46.53</div>
+            <div id=amount></div>
             <div id=compared>*compared to your closest station.</div>
           </div>
           <div id=wrapper2>
@@ -358,15 +358,11 @@
         </div>
         
         <hr>
-        <button id="calculationButton"><img id="calculationArrow" src='arrow2.png'>&ensp;Calculations</button>
+        <button id="calculationButton"><img id="calculationArrow" src='arrow2.png'>&ensp;Formula</button>
         <div id="calculationOptions">
-          <form class="forms" name="form3" id="form3">
-            <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0">
-            <br/>
-            <input type=checkbox name=check2 id="check2"><label>Total Time:</label><input type=number class="km" value="0" id="maxTime" name="timeH"> hour(s)<input type=number class="km" name="timeM" value="0"> minute(s)
-            <br/>
-            <input type=checkbox name=check3 id="check3"><label>Total Distance:</label><input type=number class="km" id="maxDistance"name="distance" value="0"> km
-          </form>
+          <p>Close Price = Fuel Cost * Tank Size + (Fuel Consumption * Distance (two way) * Fuel Cost) + (Jerry Cans * Can Size * Fuel Price)</p>
+          <p>Far Price = (Fuel Cost * Tank Size + (Fuel Consumption * Distance (two way) * Fuel Cost) + (Jerry Cans * Can Size * Fuel Price)) * Exchange Rate (if foreign)</p>
+          <p>Total Savings = Close Price - Far Price</p>
         </div>
         <hr>
 
@@ -471,6 +467,8 @@
                  fuelP.appendChild(fuelNode);
                  document.getElementById("vehicleInfo2").appendChild(fuelP);
               });
+
+              var closePrice = (1.342 * 50 + (0.0675 * 1.6 * 1.342) + (jerryCans * jerryCanSize * 1.342));
             }
 
             if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
@@ -486,7 +484,9 @@
                  fuelP.appendChild(fuelNode);
                  document.getElementById("vehicleInfo2").appendChild(fuelP);
               });
-            }
+
+              var closePrice = (1.342 * 55 + (0.069 * 1.6 * 1.342) + (jerryCans * jerryCanSize * 1.342));
+            } 
 
               if (station == "Closest US" || (station > 16.3 && station < 18)) {
                 var stationName = "Chevron";
@@ -504,6 +504,40 @@
                 + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
                 selectedStation.appendChild(selectedStationNode);
                 document.getElementById("header").appendChild(selectedStation);
+
+                var gasPrice = 3.03;
+                if (fuelGrade == "Midgrade") {
+                  gasPrice += 0.14;
+                }
+                if (fuelGrade == "Premium") {
+                  gasPrice += 0.28;
+                }
+                if (fuelGrade == "Diesel") {
+                  gasPrice += 0.22;
+                }
+                
+                if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 3.03) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 32.8 * 3.03) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 32.8 * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                var totalSavings = ("" + totalSavings);
+                var savingsNode = document.createTextNode("$" + totalSavings.substring(0, 5));
+                document.getElementById("amount").appendChild(savingsNode);
+
               } else if (station < 16.3) {
                 var stationName = "Esso";
                 var stationAddress = "9100 Westminster Avenue";
@@ -520,6 +554,10 @@
                 + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
                 selectedStation.appendChild(selectedStationNode);
                 document.getElementById("header").appendChild(selectedStation);
+
+                var savingsNode = document.createTextNode("$0.00");
+                document.getElementById("amount").appendChild(savingsNode);
+
               } else if (station > 18) {
                 var stationName = "Shell";
                 var stationAddress = "360 D Street";
@@ -536,6 +574,39 @@
                 + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
                 selectedStation.appendChild(selectedStationNode);
                 document.getElementById("header").appendChild(selectedStation);
+                
+                var gasPrice = 2.91;
+                if (fuelGrade == "Midgrade") {
+                  gasPrice += 0.14;
+                }
+                if (fuelGrade == "Premium") {
+                  gasPrice += 0.28;
+                }
+                if (fuelGrade == "Diesel") {
+                  gasPrice += 0.22;
+                }
+                
+                if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 2.91) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 2.91)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 36.2 * 2.91) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 36.2 * 2.91)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                var totalSavings = ("" + totalSavings);
+                var savingsNode = document.createTextNode("$" + totalSavings.substring(0, 5));
+                document.getElementById("amount").appendChild(savingsNode);
               }
               
             
