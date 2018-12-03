@@ -4,7 +4,7 @@ body {
 }
 
 #maincontent {
-    margin: 4%;
+    margin: 4% 4% 2% 4%;
     display: flex;
 }
 
@@ -262,4 +262,77 @@ body {
     position: relative;
     top: 25%;
     font-weight: bolder;
+}
+
+#othercontent{
+    display: flex;
+}
+
+#comment-container{
+    margin: 0 4% 4% 4%;
+    width: 45%;
+    background-color: rgb(40, 40, 40, 0.8);
+    color: white;
+    padding: 0.4rem;
+    border: 2px solid white;
+    display: inline-block;
+    height: auto;
+}
+
+
+#reviewcontainer h2{
+    display: inline;
+}
+
+#ratingnumber{
+    background-color: rgb(255, 255, 255, 0.85);
+}
+#comment{
+    width: 450px;
+    height: 150px;
+    font-size: 14pt;
+    background-color: rgb(255, 255, 255, 0.85);
+}
+
+#reviewsubmit{
+    font-size: 16pt;
+    padding: 0.3rem;
+    background-color: rgb(255, 255, 255, 0.85);
+}
+
+#bigreview{
+    display: inline-block;
+    width: 40%;
+     color: white;
+    background-color: rgb(40, 40, 40, 0.8);
+    border: 2px solid white;
+    padding: 0.6rem 0.6rem 0.6rem 0.9rem; 
+}
+
+.newreviewholder{
+    border: 1px solid white;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+#namennumber{
+    border-bottom: 1px solid white;
+    padding-bottom: 0.4rem;
+}
+
+.reviewer{   
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.reviewnumber2{
+    width: 7.5%;
+    text-align: center;
+    background-color: red;
+    border-radius: 5px;
+    font-size: 15pt;
+}
+
+.reviewcomment{
+    padding-top: 0.3rem;
+    font-size: 13pt;
 }

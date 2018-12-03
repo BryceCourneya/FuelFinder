@@ -7,7 +7,7 @@
       <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
       <style>
         body {
-          background-image:url(login.jpg);
+          background:url(login.jpg) no-repeat center center fixed;
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
@@ -16,48 +16,37 @@
 
         .container {
           width: 80%;
-          height: 800px;
+          height: 90%;
           background:rgba(0, 0, 0, 0.84);
           color:white;
-          top: 85%;
-          left: 50%;
-          position: absolute;
-          transform: translate(-50%, -50%);
-          box-sizing:border-box;
-          padding: 50px 30px;
+          margin:0 auto;
+          margin-top:40px;
+          padding: 30px 30px;
           border-radius: 40px;
         }
 
         h1 {
-          margin:0;
-          padding: 0 0 20px;
           text-align: center;
-          font-size: 1.5em;
         }
 
-        .container label {
-          margin:0;
-          padding:0;
-          font-weight: bold;
+        h2{
+          font-size: 1.4em;
         }
 
-        .container input {
-          width: 100%;
-          margin-bottom: 20px;
+        h3{
+          font-size: 1.4em;
         }
 
-        .container input[type="text"], input[type="password"], input[type=number] {
-          border:none;
-          border-bottom: 1px solid #fff;
-          background: transparent;
-          outline: none;
-          height: 40px;
-          color: #fff;
-          font-size: 16px;
-          width:30%;
+        h4{
+          font-size: 1.4em;
+        }
+
+        h5{
+          font-size: 1.4em;
         }
         
-        .container input[type="button"]{
+        #submit{
+          margin-top: 30px;
           border: none;
           outline: none;
           height: 40px;
@@ -68,16 +57,79 @@
           width:30%;
         }
 
-        .container input[type="button"]:hover{
+        #submit:hover{
           cursor: pointer;
           background:red;
           color:#000;
         }
 
-        form p{
-          margin:0;
-          color: darkgrey;
+        #carInfo input{
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 40px;
+          color: #fff;
+          font-size: 16px;
+          width:30%;
         }
+
+        #gasStation input[type="number"]{
+          width: 40px;
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 20px;
+          color: #fff;
+          font-size: 16px;
+          width:70px;
+        }
+        
+        #gasStation input[type="radio"]{
+          margin-left: 2px;         
+        }
+
+        #check4{
+          margin: 0;
+          width: 20px;
+        }
+
+        #jerry{
+          margin-bottom: 50px;
+        }
+
+        #jerry input[type="checkbox"] {
+          width: 20px;
+          margin: 0;
+        }
+
+        #jerry input[type="number"] {
+          width: 40px;
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 20px;
+          color: #fff;
+          font-size: 16px;
+          width:70px;
+          
+        }
+
+        #jerry input[type="radio"]{
+          width: 50px;
+          margin: 0;
+        }
+
+        #premium {
+          margin-left: 109px;
+        }
+
+        #closest {
+          margin-bottom: 40px;
+        }
+            
       </style>
     
       </head>
@@ -128,24 +180,41 @@
     
         <!-- Main content goes here-->
         <script src="fireBase.js"></script>
-        <script src="preferences.js"></script>
         <script src="login.js"></script>
+
         <div class="container">
+
             <h1>Edit Preferences</h1>
-            <form>     
-              <input type="text" id="make" placeholder="Enter car make" name="email"> 
-              <input type="text" id="model" placeholder="Enter car model" name="model">  
-              <input type="text" id="year" placeholder="Enter car year" name="year">  
-              <p># of jerry Cans</p>
-              <input type=number id="jerryCans" name="jerryCans" id="jerryCans" value="0">
-              <p># of hours</p>
-              <input type=number id="timeH" value="0" id="timeH" name="timeH" min="0" max="99">
-              <p># of minutes</p>
-              <input type=number id="timeM" name="timeM" id="timeM" value="0" min="0" max="59">
-              <p>Max distance (km)</p>
-              <input type=number id="maxDistance" name="distance" value="0">
-              <!--<p>Closest US</p> <input type=radio name="radio" value="closest" id="closest"> 
-              <input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" id="lowestKM"> km-->
+
+            <form class=forms>                                
+              <div id="carInfo">
+                <h2>Car Info</h2>
+                  <input type="text" id="make" placeholder="Enter car make" name="make"> 
+                  <input type="text" id="model" placeholder="Enter car model" name="model">  
+                  <input type="text" id="year" placeholder="Enter car year" name="year">  
+              </div>
+
+              <div id="gasStation">
+                <h3>Gas Station</h3>
+                <input type=radio name="radio" value="closest" id="closest"><label>Closest US</label>
+                <br>
+                <input type=radio name="radio" value="lowest" id="lowest">Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" min="0" id="lowestKM"><label>km</label> 
+              </div>
+
+              <div id="additionalInfo">
+                <h4>Additional Info</h4>
+                <div id="jerry">
+                  <input type=checkbox name=check1 id="check1"><label>Jerry Cans: </label><input type=number class="km" name="jerryCans" id="jerryCans" value="0" min="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters                  
+                </div>
+
+                <input type=checkbox name=check4 id="check4"><label>Fuel Grade:</label>
+                <input type=radio name="fuelGrade" value="Regular" id="regular"><label>Regular</label>
+                <input type=radio name="fuelGrade" value="Regular" id="midgrade"><label>Midgrade</label>
+                <br>
+                <input type=radio name="fuelGrade" value="Regular" id="premium"><label>Premium</label>
+                <input type=radio name="fuelGrade" value="Regular" id="diesel"><label>Diesel</label>
+              </div>         
+
               <input id="submit" type="button" onclick="edit()" value="Save Changes"></button>
             </form> 
         </div>
