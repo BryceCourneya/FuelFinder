@@ -12,11 +12,22 @@ firebase.auth().onAuthStateChanged(function(user){
   fb.child('users/'+user.uid+'/year').once('value', function (snap) {
         document.getElementById("year").value = (snap.val());
   });
+  fb.child('users/'+user.uid+'/station').once('value', function (snap) {
+    
+    if ((snap.val()) >= 0) {
+      document.getElementById("lowest").checked = true;
+      document.getElementById("lowest") = (snap.val());
+    } else {
+      document.getElementById("closest").checked = true;
+      document.getElementById("closes") = (snap.val());
+    }
+
+  });
   fb.child('users/'+user.uid+'/jerryCans').once('value', function (snap) {
-        document.getElementById("jerryCans").value = (snap.val());
-        if ((snap.val()) > 0) {
-          document.getElementById("check1").checked = true;
-        }
+    document.getElementById("jerryCans").value = (snap.val());
+    if ((snap.val()) > 0) {
+      document.getElementById("check1").checked = true;
+    }
   });
   fb.child('users/'+user.uid+'/jerryCanSize').once('value', function (snap) {
         document.getElementById("jerryCanSize").value = (snap.val());
@@ -39,6 +50,12 @@ firebase.auth().onAuthStateChanged(function(user){
         document.getElementById("diesel").checked = true;
     }
   });
+  $(document).ready(function() {
+    document.getElementById("closest").checked = true;
+
+    
+  });
+
 });
 
 //account preferences, information is put into database
