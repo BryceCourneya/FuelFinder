@@ -16,10 +16,10 @@ firebase.auth().onAuthStateChanged(function(user){
     
     if ((snap.val()) >= 0) {
       document.getElementById("lowest").checked = true;
-      document.getElementById("lowest") = (snap.val());
+      document.getElementById("lowestKM").value = (snap.val());
     } else {
       document.getElementById("closest").checked = true;
-      document.getElementById("closes") = (snap.val());
+      document.getElementById("closest").value = (snap.val());
     }
 
   });
