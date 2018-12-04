@@ -116,6 +116,9 @@
     .break {
       display:none;
     }
+    a:-webkit-any-link{
+      text-decoration:none !important;
+    }
     #preferences {
       overflow:hidden;
       float:right;
@@ -156,11 +159,17 @@
     #selectedStation {
       padding-left:20px;
     }
+    #header a {
+      color:white;
+    }
     #header a:visited{
       color:white;
     }
     #header a:hover{
       color:aqua;
+    }
+    #header a:active{
+      color:white;
     }
     @media(max-width: 900px) {
       #map img {
@@ -477,7 +486,7 @@
                 
                 var selectedStation = document.createElement("a");
                 selectedStation.setAttribute("id", "selectedStation");
-                selectedStation.setAttribute("href", "index.html");
+                selectedStation.setAttribute("href", "gasStation4.html");
                 selectedStationNode = document.createTextNode("" + stationName + " - "
                 + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
                 selectedStation.appendChild(selectedStationNode);
@@ -527,7 +536,7 @@
                 
                 var selectedStation = document.createElement("a");
                 selectedStation.setAttribute("id", "selectedStation");
-                selectedStation.setAttribute("href", "index.html");
+                selectedStation.setAttribute("href", "gasStation.html");
                 selectedStationNode = document.createTextNode("" + stationName + " - "
                 + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
                 selectedStation.appendChild(selectedStationNode);
@@ -547,7 +556,7 @@
                 
                 var selectedStation = document.createElement("a");
                 selectedStation.setAttribute("id", "selectedStation");
-                selectedStation.setAttribute("href", "index.html");
+                selectedStation.setAttribute("href", "gasStation5.html");
                 selectedStationNode = document.createTextNode("" + stationName + " - "
                 + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
                 selectedStation.appendChild(selectedStationNode);
