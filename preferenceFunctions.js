@@ -51,9 +51,7 @@ firebase.auth().onAuthStateChanged(function(user){
     }
   });
   $(document).ready(function() {
-    document.getElementById("closest").checked = true;
-
-    
+    document.getElementById("closest").checked = true;    
   });
 
 });
