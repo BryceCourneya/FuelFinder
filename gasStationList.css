@@ -83,6 +83,25 @@ body {
     padding: 0 0.5em;
 }
 
+#ratinghold1 {
+    background-color: greenyellow;
+}
+
+#ratinghold2{
+   background-color: greenyellow;
+}
+
+#ratinghold3{
+   background-color: yellow;
+}
+
+#ratinghold4{
+   background-color: greenyellow;
+}
+
+#ratinghold5{
+   background-color: darkturquoise;
+}
 a {
     text-decoration: none;   
     color: black;

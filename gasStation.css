@@ -209,6 +209,15 @@ body {
     background-color: white;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    text-decoration: none;
+    color: black;
+}
 
 .logoholder{
     margin-left: 0.5rem;
@@ -256,6 +265,7 @@ body {
     margin: 0.4rem;
     padding-left: 0.4rem;
     border-left: 1px dotted #808080;
+    width: 22%;
 }
 
 .stationcost{
@@ -314,7 +324,8 @@ body {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
-#namennumber{
+
+.namennumber{
     border-bottom: 1px solid white;
     padding-bottom: 0.4rem;
 }
