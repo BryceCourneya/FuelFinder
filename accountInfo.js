@@ -39,8 +39,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           document.getElementById('station').appendChild(userStation);     
         } 
       } else {
-        var userStation = document.createTextNode(snap.val());
-        document.getElementById('station').appendChild(userStation);
+        document.getElementById('station').innerHTML = 'Gas Station: null';
       }
     });
 
@@ -52,8 +51,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     //Size of jerry cans
     fb.child('users/'+user.uid+'/jerryCanSize').once('value', function(snap){
-      var userJerryCanSize = document.createTextNode(snap.val() + "L");
-      document.getElementById('jerryCanSize').appendChild(userJerryCanSize);      
+      if (snap.val() > 0) {
+        var userJerryCanSize = document.createTextNode(snap.val() + "L");
+        document.getElementById('jerryCanSize').appendChild(userJerryCanSize);
+      }else {
+       var userJerryCanSize = document.createTextNode(snap.val());
+       document.getElementById('jerryCanSize').appendChild(userJerryCanSize);
+      }      
     });
     
     //Fuel grade
@@ -79,4 +83,8 @@ function logOut(){
 
 function editP(){
   window.location.href="preferences.html";
+}
+
+function stationCalc(){
+  window.location.href="savCalcPref.html";
 }

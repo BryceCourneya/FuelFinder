@@ -136,6 +136,15 @@
             border-right: 2px solid #fff;
             padding: 10px;
           }
+          
+        }
+
+        @media(max-width: 650px) {
+          
+          .container button{
+          margin-right: 150px;
+        }
+
         }
                
       </style>
@@ -217,7 +226,8 @@
             <textfield id="fuelGrade"><b>Fuel grade:</b> </textfield>                    
           </div>
 
-            <button id="editPreferences" onclick="editP()" value="Logout">Edit Preferences</button>
+            <button id="editPreferences" onclick="editP()" value="Edit">Edit Preferences</button> 
+            <button id="stationCalc" onclick="stationCalc()" value="stationCalc">Calculate Savings</button>  
             <button id="logOut" onclick="logOut()" value="Logout">Log out</button>
         </div>    
 
