@@ -383,8 +383,13 @@
                     } else {
                         var carSupport = false;
                     }
+                    if (document.getElementById("year").value < 1950 || document.getElementById("year").value > 2018) {
+                      var badYear = true;
+                    } else {
+                      var badYear = false;
+                    }
 
-
+ 
                     if (notComplete == false && carSupport == true) {
                         localStorage.setItem("model", model);
                         localStorage.setItem("make", make);
@@ -395,12 +400,14 @@
                         localStorage.setItem("fuelGrade", fuelGrade);
                     }
 
-                    if (notComplete == false && carSupport == true) {
+                    if (notComplete == false && carSupport == true && badYear == false) {
                         window.location.href = "savCalcResults.html";
                     } else if (notComplete == true) {
                         window.alert("You must enter the make, model, and year of the car!");
                     } else if (carSupport == false) {
                         window.alert("Sorry! The Savings Calculator does not support your vehicle at this time. \nPlease enter another vehicle");
+                    } else if (badYear == true) {
+                        window.alert("Please enter a year between 1950 and 2018!");
                     }
                 }
             </script>
