@@ -266,12 +266,14 @@ a:visited{
     padding-left: 0.4rem;
     border-left: 1px dotted #808080;
     width: 22%;
+    
 }
 
 .stationcost{
     position: relative;
     top: 25%;
     font-weight: bolder;
+    font-size: 0.85rem;
 }
 
 #othercontent{
@@ -298,7 +300,7 @@ a:visited{
     background-color: rgb(255, 255, 255, 0.85);
 }
 #comment{
-    width: 450px;
+    width: 80%;
     height: 150px;
     font-size: 14pt;
     background-color: rgb(255, 255, 255, 0.85);
@@ -347,3 +349,5 @@ a:visited{
     padding-top: 0.3rem;
     font-size: 13pt;
 }
+
+
