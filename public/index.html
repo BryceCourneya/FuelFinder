@@ -1,173 +1,175 @@
 <!DOCTYPE html>
   <html lang="eng">
     <head>
-      <title>Home Page</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-      <link rel="stylesheet" href="./css/logo.css"> <!--Nav-bar CSS Sheet-->
-      <style>
-
-        body{
-          background:url(./Images/road2.jpeg) no-repeat center center fixed;
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;
-          margin:0;
+    <title>Home Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="./js/fireBase.js"></script>
+    <link rel="stylesheet" href="./css/logo.css">
+    <!--Nav-bar CSS Sheet-->
+    <style>
+        body {
+            background: url(./Images/road2.jpeg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            margin: 0;
         }
+
         #background {
-          height:calc(100% - 56px);
-          width:100%;
-          background-color:rgba(0,0,0,0.4);
-          position:absolute;
+            height: calc(100% - 56px);
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
         }
 
-        #mainSearch{
-          border-radius: 12px;
-          margin-left: auto;
-          margin-right: auto;
-          width: 235px;
-          outline: none;
-          padding-left:8px;
-          padding-top:4px;
-          padding-bottom:4px;
-          padding-right:0px;
+        #mainSearch {
+            border-radius: 12px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 235px;
+            outline: none;
+            padding-left: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-right: 0px;
         }
 
-        #featureButtons{
-          margin-top:0;
-          width: 100%;
-          height:70px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        #featureButtons {
+            margin-top: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         #savingsCalc {
-          width:160px;
-          height:70px;
-          font-size:12pt;
-          border-radius:20px;
-          border: none;
-          background-color:rgba(255,255,255,0.8);
-          outline:none;
+            width: 160px;
+            height: 70px;
+            font-size: 12pt;
+            border-radius: 20px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            outline: none;
         }
 
         #savingsCalc:hover {
-          cursor: pointer;
-          background:red;
+            cursor: pointer;
+            background: red;
         }
 
         #gasStationList {
-          width:160px;
-          height:70px;
-          margin-left:10px;
-          font-size:12pt;
-          border-radius:20px;
-          border:none;
-          background-color:rgba(255,255,255,0.8);
-          outline:none;
+            width: 160px;
+            height: 70px;
+            margin-left: 10px;
+            font-size: 12pt;
+            border-radius: 20px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            outline: none;
         }
 
-        #gasStationList:hover{
-          cursor: pointer;
-          background:red;
+        #gasStationList:hover {
+            cursor: pointer;
+            background: red;
         }
 
-        h1{
-          text-align: center;
-          font-size: 4em;
-          color:white;
-          margin-top: 5%;
+        h1 {
+            text-align: center;
+            font-size: 4em;
+            color: white;
+            margin-top: 5%;
         }
 
-        h2{
-          text-align: center;
-          font-size: 2em;
-          color: white;
-          margin-top: 4%;
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            color: white;
+            margin-top: 4%;
         }
 
-        .descript{
-          font-size: 1em;
-          font-style: italic;
-          text-align: center;
-          color:white;
+        .descript {
+            font-size: 1em;
+            font-style: italic;
+            text-align: center;
+            color: white;
         }
-      </style>
-    
-      </head>
-    
-      <body>
+    </style>
+
+</head>
+
+<body>
     <!-- Nav bar start-->
     <div id="top"></div>
-   
+
     <nav id="topbar">
-      <div id="logo">
-        <a href="index.html"><img src="./images/logo.png" alt="logo" id="logo1"></a>
-        <a href="index.html"><img src="./images/logo2.png" alt="logo" id="logo2"></a>
-      </div>
-      <nav class="navbar" id="navbar">
-        <div class="dropdown">
-          <button class="dropbtn"><img src="./images/accountlogo.png" alt="account" title="Account">
-          </button>
-          <div id="accountDrop" class="dropdown-content">
-            <div id="notSignedIn">
-              <a href="logIn.html">Log-In</a>
-              <a href="signUp.html">Sign-Up</a>
-            </div>
-            <div id="signedIn">
-              <a href="myAccount.html">My Account</a>
-              <a href="preferences.html">Edit Preferences</a>
-            </div>
-          </div>
+        <div id="logo">
+            <a href="index.html"><img src="./Images/logo.png" alt="logo" id="logo1"></a>
+            <a href="index.html"><img src="./Images/logo2.png" alt="logo" id="logo2"></a>
         </div>
-        <div class="dropdown">
-          <button class="dropbtn"><img src="./images/featureslogo.png" alt="Features" title="Features">
-          </button>
-          <div id="featureDrop" class="dropdown-content">
-            <a href="savCalcPref.html">US Savings Calculator</a>
-            <a href="gasStationList.html">Gas Station List</a>
-            <a href="aboutUs.html">About Us</a>
-          </div>
-        </div>
-        <a href="index.html"><img src="./images/homelogo.png" alt="home" title="Home"></a> 
-      </nav>
-      
+        <nav class="navbar" id="navbar">
+            <div class="dropdown">
+                <button class="dropbtn"><img src="./Images/accountlogo.png" alt="account" title="Account">
+                </button>
+                <div id="accountDrop" class="dropdown-content">
+                    <div id="notSignedIn">
+                        <a href="logIn.html">Log-In</a>
+                        <a href="signUp.html">Sign-Up</a>
+                    </div>
+                    <div id="signedIn">
+                        <a href="myAccount.html">My Account</a>
+                        <a href="preferences.html">Edit Preferences</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"><img src="./Images/featureslogo.png" alt="Features" title="Features">
+                </button>
+                <div id="featureDrop" class="dropdown-content">
+                    <a href="savCalcPref.html">US Savings Calculator</a>
+                    <a href="gasStationList.html">Gas Station List</a>
+                    <a href="aboutUs.html">About Us</a>
+                </div>
+            </div>
+            <a href="index.html"><img src="./Images/homelogo.png" alt="home" title="Home"></a>
+        </nav>
+
     </nav>
-    
+
     <!-- Nav bar end-->
-    
-        <!-- Main content goes here-->
-        <script src="./js/fireBase.js"></script>
-        <script src="./js/navChange.js"></script>
-        <container id="background">
-          <div id="first_home">
-            
+
+    <!-- Main content goes here-->
+    <script src="./js/navChange.js"></script>
+    <container id="background">
+        <div id="first_home">
+
             <h1>Fuel Finder</h1>
             <p class="descript">Let us find the perfect stop for you</p>
             <div id="featureButtons">
-              <a href="savCalcPref.html">
-              <button id="savingsCalc">
-                Savings Calculator
-              </button>
-              </a>
-              <a href="gasStationList.html">
-              <button id="gasStationList">
-                Gas Station List
-              </button>
-              </a>
+                <a href="savCalcPref.html">
+                    <button id="savingsCalc">
+                        Savings Calculator
+                    </button>
+                </a>
+                <a href="gasStationList.html">
+                    <button id="gasStationList">
+                        Gas Station List
+                    </button>
+                </a>
             </div>
             <h2>What is Fuel Finder?</h2>
             <p class="descript">
-              Fuel Finder is a service dedicated to reducing the fuel expenses of every driver in the world.
-              <br>
-              Join countless others in enjoying an application that calculates everything for you.
-              <br>
-              Developed by BCIT's COMP 1930 Group 21
+                Fuel Finder is a service dedicated to reducing the fuel expenses of every driver in the world.
+                <br>
+                Join countless others in enjoying an application that calculates everything for you.
+                <br>
+                Developed by BCIT's COMP 1930 Group 21
             </p>
-          
-          </div>
-        </container>
-      </body>
+
+        </div>
+    </container>
+</body>
     </html>
       

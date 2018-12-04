@@ -5,9 +5,10 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <link rel="stylesheet" href="./css/logo.css"> <!--Nav-bar CSS Sheet-->
       <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+        <script src="./js/fireBase.js"></script>
       <style>
         body {
-          background:url(../Images/login.jpg) no-repeat center center fixed;
+          background:url(./Images/login.jpg) no-repeat center center fixed;
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
@@ -175,7 +176,7 @@
     <!-- Nav bar end-->
     
         <!-- Main content goes here-->
-        <script src="./js/fireBase.js"></script>
+        
         <script src="./js/navChange.js"></script>
         <script>
           $(document).ready(function() {
@@ -217,7 +218,7 @@
                 <input type=radio name="fuelGrade" value="Regular" id="diesel"><label>Diesel</label>
               </div>         
 
-              <input id="submit" type="button" onclick="edit()" value="Save Changes"></button>
+              <input id="submit" type="button" onclick="edit()" value="Save Changes">
             </form> 
         </div>
       </body>
