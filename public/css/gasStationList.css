@@ -108,9 +108,7 @@ a {
     flex-grow: 1;
 }
 
-a:link {
-    
-}
+
 .stationinfo {
     flex-grow: 1;
     margin: 1em;
@@ -190,4 +188,8 @@ a:link {
 .timeupdated{
     color: #808080;
     font-size: 0.6em;
+}
+
+@media only screen and (max-width: 768px){
+    .
 }
