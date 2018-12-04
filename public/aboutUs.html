@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+  <html lang="eng">
+    <head>
+      <title>About us</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+      <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
+      <style>
+
+        .container {
+          width: 80%;
+          height: 90%;
+          background:rgba(0, 0, 0, 0.7);
+          color:white;
+          margin:0 auto;
+          margin-top:40px;
+          padding: 30px 30px;
+          border-radius: 40px;
+        }
+
+        body {
+          background:url(About_us.jpg) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+        #mission {
+          text-align: center;
+        }
+        
+        h1 {
+          text-align:center;
+        }
+
+        #about {
+          color:white;
+          text-align: center;
+        }
+
+        .section {
+          margin-bottom: 5%;
+          margin-top: 3%;
+        }
+
+        .image{
+          float:left;
+          margin-bottom: 2%;
+          margin-right: 2%;
+        }
+
+        .text{
+          margin-top: 0%;
+          margin-bottom: 0%;
+        }
+
+        h2 {
+          color:white;
+          text-align: center;
+        }
+
+        .separate{
+          border-top-style: solid;
+          border-color:black;
+        }
+        
+        #pic1{
+          width:20%;
+        }
+        
+        .head{
+          font-size:1.5em;
+          display:inline-block;
+          color:white;
+        }
+
+        .container input[type="button"]{
+          border: none;
+          outline: none;
+          height: 40px;
+          background:white;
+          color: black;
+          font-size: 18px;
+          border-radius: 20px;
+          margin-left:370px;
+        }
+
+        .container input[type="button"]:hover{
+          cursor: pointer;
+          background:red;
+          color:#000;
+        }
+
+        #cst {
+          display:none;
+        }
+
+        #taco {
+          margin-left:400px;
+        }
+
+      </style>
+    
+    </head>
+    
+    <body>
+    <!-- Nav bar start-->
+    <div id="top"></div>
+   
+    <nav id="topbar">
+      <div id="logo">
+        <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <div class="dropdown">
+          <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
+          </button>
+          <div id="accountDrop" class="dropdown-content">
+            <div id="notSignedIn">
+              <a href="logIn.html">Log-In</a>
+              <a href="signUp.html">Sign-Up</a>
+            </div>
+            <div id="signedIn">
+              <a href="myAccount.html">My Account</a>
+              <a href="preferences.html">Edit Preferences</a>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
+          </button>
+          <div id="featureDrop" class="dropdown-content">
+            <a href="savCalcPref.html">US Savings Calculator</a>
+            <a href="gasStationList.html">Gas Station List</a>
+            <a href="aboutUs.html">About Us</a>
+          </div>
+        </div>
+        <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
+      </nav>
+      
+    </nav>
+    
+    <!-- Nav bar end-->
+    
+        <!-- Main content goes here-->
+
+        <script src="fireBase.js"></script>
+        <script src="navChange.js"></script>
+        <script> 
+          function cstOnly(){
+            if (document.getElementbyId('taco') == 'dos') {
+              document.getElementById('cst').style.display = "block";
+            }
+          }
+        </script>
+
+        <div class="container">
+          <h1>- FuelFinder -</h1>
+          <p id="mission">Through rain or shine, blood and tears, we've finally created an application to suit your needs. FuelFinder
+            can find for you the most ideal way to save on gas expenses.
+          </p>
+          <p id="about">FuelFinder, Fuel your life.</p>        
+        </div>
+    </body>
+  </html>

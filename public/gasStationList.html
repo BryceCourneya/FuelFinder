@@ -7,11 +7,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script src=fireBase.js></script>
-    <script src="gasStationList.js"></script>
-    <link rel="stylesheet" href="logo.css">
+    <script src=./js/fireBase.js></script>
+    <script src="./js/gasStationList.js"></script>
+    <link rel="stylesheet" href="./css/logo.css">
     <!--Needed for nav bar-->
-    <link rel="stylesheet" href="gasStationList.css">
+    <link rel="stylesheet" href="./css/gasStationList.css">
     <!--CSS for the gs station list page-->
 
     <style>
@@ -25,12 +25,16 @@
    
     <nav id="topbar">
       <div id="logo">
-        <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
-        <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
+          <form>
+        <input type="search" name="search" placeholder="Search" id="search">
+        <input type="submit" name="submit" value="Submit">
+        </form>
+        <a href="index.html"><img src="./Images/logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="./Images/logo2.png" alt="logo" id="logo2"></a>
       </div>
       <nav class="navbar" id="navbar">
         <div class="dropdown">
-          <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
+          <button class="dropbtn"><img src="./Images/accountlogo.png" alt="account" title="Account">
           </button>
           <div id="accountDrop" class="dropdown-content">
             <div id="notSignedIn">
@@ -44,7 +48,7 @@
           </div>
         </div>
         <div class="dropdown">
-          <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
+          <button class="dropbtn"><img src="./Images/featureslogo.png" alt="Features" title="Features">
           </button>
           <div id="featureDrop" class="dropdown-content">
             <a href="savCalcPref.html">US Savings Calculator</a>
@@ -52,14 +56,14 @@
             <a href="aboutUs.html">About Us</a>
           </div>
         </div>
-        <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
+        <a href="index.html"><img src="./Images/homelogo.png" alt="home" title="Home"></a> 
       </nav>
       
     </nav>
     
     <!-- Nav bar end-->
 
-    <script src="navChange.js"></script>
+    <script src="./js/navChange.js"></script>
 
     <!-- Main content goes here-->
     <div id=searchcontainer>
@@ -75,7 +79,7 @@
             <div id="stationbox1" class="stationbox">
                 <div class="stationrating">
                     <div class="iconholder">
-                        <img class="esso" src="esso.png" alt="esso">
+                        <img class="esso" src="./Images/esso.png" alt="esso">
                     </div>
                     <div class="ratinghold" id="ratinghold1">
                         6.8
@@ -115,7 +119,7 @@
             <div class="stationbox">
                 <div class="stationrating">
                     <div class="iconholder">
-                        <img class="esso" src="chevron.png" alt="chevron">
+                        <img class="esso" src="./Images/chevron.png" alt="chevron">
                     </div>
                     <div class="ratinghold" id="ratinghold2">
                         7.1
@@ -155,7 +159,7 @@
             <div class="stationbox">
                 <div class="stationrating">
                     <div class="iconholder">
-                        <img class="esso" src="esso.png" alt="esso">
+                        <img class="esso" src="./Images/esso.png" alt="esso">
                     </div>
                     <div class="ratinghold" id="ratinghold3">
                         5.9
@@ -195,7 +199,7 @@
             <div class="stationbox">
                 <div class="stationrating">
                     <div class="iconholder">
-                        <img class="esso" src="chevron.png" alt="chevron">
+                        <img class="esso" src="./Images/chevron.png" alt="chevron">
                     </div>
                     <div class="ratinghold" id="ratinghold4">
                         7.4
@@ -235,7 +239,7 @@
             <div class="stationbox">
                 <div class="stationrating">
                     <div class="iconholder">
-                        <img class="esso" src="shell.png" alt="shell">
+                        <img class="esso" src="./Images/shell.png" alt="shell">
                     </div>
                     <div class="ratinghold" id="ratinghold5">
                         8.1
@@ -275,7 +279,7 @@
         </div>
     </div>
     
-    <script src="login.js"></script>
+    <script src="./js/login.js"></script>
     
 
 </body>

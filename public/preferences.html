@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+  <html lang="eng">
+    <head>
+      <title>Account Preferences</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="logo.css"> <!--Nav-bar CSS Sheet-->
+      <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+      <style>
+        body {
+          background:url(login.jpg) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+
+        .container {
+          width: 80%;
+          height: 90%;
+          background:rgba(0, 0, 0, 0.84);
+          color:white;
+          margin:0 auto;
+          margin-top:40px;
+          padding: 30px 30px;
+          border-radius: 40px;
+        }
+
+        h1 {
+          text-align: center;
+        }
+
+        h2{
+          font-size: 1.4em;
+        }
+
+        h3{
+          font-size: 1.4em;
+        }
+
+        h4{
+          font-size: 1.4em;
+        }
+
+        h5{
+          font-size: 1.4em;
+        }
+        
+        #submit{
+          margin-top: 30px;
+          border: none;
+          outline: none;
+          height: 40px;
+          background:white;
+          color: black;
+          font-size: 18px;
+          border-radius: 20px;
+          width: 200px;
+        }
+
+        #submit:hover{
+          cursor: pointer;
+          background:red;
+          color:#000;
+        }
+
+        #carInfo input{
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 40px;
+          color: #fff;
+          font-size: 16px;
+          width:30%;
+        }
+
+        #gasStation input[type="number"]{
+          width: 40px;
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 20px;
+          color: #fff;
+          font-size: 16px;
+          width:70px;
+        }
+        
+        #gasStation input[type="radio"]{
+          margin-left: 2px;         
+        }
+
+        #check4{
+          margin: 0;
+          width: 20px;
+        }
+
+        #jerry{
+          margin-bottom: 50px;
+        }
+
+        #jerry input[type="checkbox"] {
+          width: 20px;
+          margin: 0;
+        }
+
+        #jerry input[type="number"] {
+          width: 40px;
+          border:none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 20px;
+          color: #fff;
+          font-size: 16px;
+          width:70px;
+          
+        }
+
+        #jerry input[type="radio"]{
+          width: 50px;
+          margin: 0;
+        }
+
+        #premium {
+          margin-left: 109px;
+        }
+
+        #closest {
+          margin-bottom: 40px;
+        }
+        
+      </style>
+    
+      </head>
+    
+      <body>
+    <!-- Nav bar start-->
+    <div id="top"></div>
+   
+    <nav id="topbar">
+      <div id="logo">
+        <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <div class="dropdown">
+          <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
+          </button>
+          <div id="accountDrop" class="dropdown-content">
+            <div id="notSignedIn">
+              <a href="logIn.html">Log-In</a>
+              <a href="signUp.html">Sign-Up</a>
+            </div>
+            <div id="signedIn">
+              <a href="myAccount.html">My Account</a>
+              <a href="preferences.html">Edit Preferences</a>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
+          </button>
+          <div id="featureDrop" class="dropdown-content">
+            <a href="savCalcPref.html">US Savings Calculator</a>
+            <a href="gasStationList.html">Gas Station List</a>
+            <a href="aboutUs.html">About Us</a>
+          </div>
+        </div>
+        <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
+      </nav>
+      
+    </nav>
+    
+    <!-- Nav bar end-->
+    
+        <!-- Main content goes here-->
+        <script src="fireBase.js"></script>
+        <script src="navChange.js"></script>
+        <script>
+          $(document).ready(function() {
+            document.getElementById("closest").checked = true;
+          });
+        </script>
+        <script src="preferenceFunctions.js"></script>
+
+        <div class="container">
+
+            <h1>Edit Preferences</h1>
+
+            <form class=forms>                                
+              <div id="carInfo">
+                <h2>Car Info</h2>
+                  <input type="text" id="make" placeholder="Enter make" name="make"> 
+                  <input type="text" id="model" placeholder="Enter model" name="model">  
+                  <input type="text" id="year" placeholder="Enter year" name="year">  
+              </div>
+
+              <div id="gasStation">
+                <h3>Gas Station</h3>
+                <input type=radio name="radio" value="0" id="closest"><label>Closest US</label>
+                <br>
+                <input type=radio name="radio" value="0" id="lowest">Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" min="0" id="lowestKM"><label>km</label> 
+              </div>
+
+              <div id="additionalInfo">
+                <h4>Additional Info</h4>
+                <div id="jerry">
+                  <input type=checkbox name=check1 id="check1"><label>Jerry Cans: </label><input type=number class="km" name="jerryCans" id="jerryCans" value="0" min="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters                  
+                </div>
+
+                <input type=checkbox name=check4 id="check4"><label>Fuel Grade:</label>
+                <input type=radio name="fuelGrade" value="Regular" id="regular"><label>Regular</label>
+                <input type=radio name="fuelGrade" value="Regular" id="midgrade"><label>Midgrade</label>
+                <br>
+                <input type=radio name="fuelGrade" value="Regular" id="premium"><label>Premium</label>
+                <input type=radio name="fuelGrade" value="Regular" id="diesel"><label>Diesel</label>
+              </div>         
+
+              <input id="submit" type="button" onclick="edit()" value="Save Changes"></button>
+            </form> 
+        </div>
+      </body>
+    </html>
