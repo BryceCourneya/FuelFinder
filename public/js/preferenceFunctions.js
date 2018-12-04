@@ -69,11 +69,17 @@ function edit() {
 
   if (document.getElementById('lowest').checked) {
     var station = document.getElementById("lowestKM").value;
+    if (station < 0) {
+      var station = 0;
+    }
   }
 
   if (document.getElementById('check1').checked) {
     var jerryCans = document.getElementById("jerryCans").value;
     var jerryCanSize = document.getElementById("jerryCanSize").value;
+    if (jerryCanSize < 0) {
+      var jerryCanSize = 0;
+    }
   } else {
     var jerryCans = 0;
     var jerryCanSize = 0;

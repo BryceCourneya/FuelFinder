@@ -76,13 +76,16 @@
 
         .container a{
           text-decoration: none;
-          font-size: 12px;
           line-height: 20px;
           color: darkgrey;
         }
 
         .container a:hover{
           color:red;
+        }
+
+        .container p{
+        font-size:.8em;
         }
         
       </style>
@@ -145,7 +148,7 @@
             <input type="password" id="password" placeholder="Enter Password" name="psw" required>
 
             <input id="submit" type="button" onclick="logIn()" value="Login">
-            <a href="signUp.html">Don't have an account?</a>
+            <p>Don't have an account? Sign up <a href="signUp.html" style="color:red">here</a>.</p>
         </form>
 
 
