@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="./js/fireBase.js"></script>
+    <link rel="stylesheet" href="./css/logo.css">
+    <!--Needed for nav bar-->
+    <link rel="stylesheet" href="./css/gasStation.css">
+    
+</head>
+
+<body>
+    <!-- Nav bar start-->
+    <div id="top"></div>
+   
+    <nav id="topbar">
+      <div id="logo">
+        <a href="index.html"><img src="./Images/logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="./Images/logo2.png" alt="logo" id="logo2"></a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <div class="dropdown">
+          <button class="dropbtn"><img src="./Images/accountlogo.png" alt="account" title="Account">
+          </button>
+          <div id="accountDrop" class="dropdown-content">
+            <div id="notSignedIn">
+              <a href="logIn.html">Log-In</a>
+              <a href="signUp.html">Sign-Up</a>
+            </div>
+            <div id="signedIn">
+              <a href="myAccount.html">My Account</a>
+              <a href="preferences.html">Edit Preferences</a>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn"><img src="./Images/featureslogo.png" alt="Features" title="Features">
+          </button>
+          <div id="featureDrop" class="dropdown-content">
+            <a href="savCalcPref.html">US Savings Calculator</a>
+            <a href="gasStationList.html">Gas Station List</a>
+            <a href="aboutUs.html">About Us</a>
+          </div>
+        </div>
+        <a href="index.html"><img src="./Images/homelogo.png" alt="home" title="Home"></a> 
+      </nav>
+      
+    </nav>
+    
+    <!-- Nav bar end-->
+
+    <script src="./js/login.js"></script>
+
+    <div id="maincontent">
+        <div id="actualcontent">
+            <div class="headinfo">
+                <div class="logoholder">
+                    <div class="logoimage">
+                        <img class="image" src="./Images/chevron.png" alt="essologo">
+                    </div>
+                </div>
+                <div class="stationinfo">
+                    <h1 class="stationname">
+                        Chevron
+                    </h1>
+                    <div class="stationlocation">
+                        8151 Granville Avenue
+                        <br>
+                        Richmond, BC
+                    </div>
+                </div>
+                <div class="stationother">
+                <div class="bigratingholder">
+                    <div class="ratingtext" id="ratingtext">7.1</div>
+                </div>
+                <div class="costholder">
+                    <div class="costtext">135.7&#65504;/L</div>
+                </div>
+                </div>
+            </div>
+            <div id="slideshowbob">
+                <div class="slideshow-container">
+                    <div class="slide-animation fade">
+                        <div class="numbertext">1 / 3</div>
+                        <img src="./Images/chevron.jpg" alt="image 1" style="width: 100%">
+                    </div>
+                    <div class="slide-animation fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="./Images/Chevron2.jpg" alt="image 1" style="width: 100%">
+                    </div>
+                    <div class="slide-animation fade">
+                        <div class="numbertext">3 / 3</div>
+                        <img src="./Images/chevron3.jpg" alt="image 1" style="width: 100%">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <div style="text-align: center">
+                        <span class="dot" onclick="currentSlides(1)"></span>
+                        <span class="dot" onclick="currentSlides(2)"></span>
+                        <span class="dot" onclick="currentSlides(3)"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="sidediv-container">           
+            <div class="sidedivs">
+                <div id="otherstationtext">Other Gas Stations</div>
+                <a href="gasStation5.html">
+                <div class="extrastations">
+                    <div class="logoholder">
+                        <div class="logo-container">
+                            <img class="image" src="./Images/shell.png" alt="logo"></div>
+                        </div>
+                    
+                    <div class="stationdetails">
+                        <h1 class="stationname2">Shell</h1>
+                        <div class="stationlocation2"> 
+                            360 D Street
+                            <br>
+                            Blaine, Washington
+                        </div>
+                    </div>
+                    <div class="stationrate">
+                        <div class="stationrating" id="stationrating1">8.1</div>
+                    </div>
+                    <div class="stationprice">
+                    <div class="stationcost">$2.91/g</div>
+                    </div>
+                </div>
+                </a>
+                <a href="gasStation4.html">
+                <div class="extrastations">
+                    <div class="logoholder">
+                        <div class="logo-container">
+                            <img class="image" src="./Images/chevron.png" alt="logo"></div>
+                        </div>
+                    
+                    <div class="stationdetails">
+                        <h1 class="stationname2">Chevron</h1>
+                        <div class="stationlocation2"> 
+                            347 D Street
+                            <br>
+                            Blaine, Washington
+                        </div>
+                    </div>
+                    <div class="stationrate">
+                        <div class="stationrating" id="stationrating2">7.4</div>
+                    </div>
+                    <div class="stationprice">
+                    <div class="stationcost">$3.03/g</div>
+                    </div>
+                </div>
+                </a>
+                <a href="gasStation.html">
+                <div class="extrastations">
+                    <div class="logoholder">
+                        <div class="logo-container">
+                            <img class="image" src="./Images/esso.png" alt="logo"></div>
+                        </div>
+                    
+                    <div class="stationdetails">
+                        <h1 class="stationname2">Esso</h1>
+                        <div class="stationlocation2"> 
+                            9100 Wesminster Hwy
+                            <br>
+                            Richmond, BC
+                        </div>
+                    </div>
+                    <div class="stationrate">
+                        <div class="stationrating" id="stationrating3">6.8</div>
+                    </div>
+                    <div class="stationprice">
+                    <div class="stationcost">134.2&#65504;/L</div>
+                    </div>
+                </div>
+                </a>
+                <a href="gasStation3.html">
+                <div class="extrastations">
+                    <div class="logoholder">
+                        <div class="logo-container">
+                            <img class="image" src="./Images/esso.png" alt="logo"></div>
+                        </div>
+                    
+                    <div class="stationdetails">
+                        <h1 class="stationname2">Esso</h1>
+                        <div class="stationlocation2"> 
+                            8011 No. 3 Road
+                            <br>
+                            Richmond, BC
+                        </div>
+                    </div>
+                    <div class="stationrate">
+                        <div class="stationrating" id="stationrating4">5.9</div>
+                    </div>
+                    <div class="stationprice">
+                    <div class="stationcost">138.9&#65504;/L</div>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>       
+    </div>
+    <div id="othercontent">
+    <div id="comment-container">
+            <div id="reviewcontainer">
+                <h2>Leave a Review</h2>
+            </div>
+            <div id="ratingcontainer">
+                <label id="ratinglabel">Your Rating</label>
+                <form id="reviewform">
+                    <input type="text" name="Rating" placeholder="0.0" id="ratingnumber" min="1.0" max="10.0"> 
+                </form>
+                <label>Comment:</label>
+                <form>
+                    <textarea name="comment" id="comment" placeholder="How was your experience?"></textarea>
+                </form>
+                <input type="button" name="submit" id="reviewsubmit" onclick="formsubmit()" value="Leave Review">
+            </div>
+        </div>
+        <div id="bigreview"></div>
+    </div>
+    <script src="./js/gasStation.js"></script>
+</body>

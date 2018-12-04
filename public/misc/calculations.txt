@@ -1,0 +1,25 @@
+Calculations
+
+Total = far - close
+
+-----------------------------------------------------------------------------
+
+Close:
+
+closePrice x tankSize + (L/1km x totalTripDistance x closePrice)
+
+example:
+1.38/l x 50l + ((0.0675L/1km) x 20km x 1.38/L) = $70.86
+
+-----------------------------------------------------------------------------
+
+Far:
+
+farPrice x tankSize x exchange rate + (L/1km x totalTripDistance x farPrice)
+
+example:
+3.04/G x 13.2G x 1.33 + (0.01783G/1km) x 20km x 3.04/G) = $54.50
+
+-----------------------------------------------------------------------------
+
+$70.86 - $54.50 = $16.36 Total Savings

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>Savings Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./css/logo.css"> <!--Needed for nav bar-->
+  <style>
+    body {
+      background:url(./Images/world.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    #main {
+      width:100%;
+      height:500px;
+    }
+    .heading {
+      padding-top:18px;
+      padding-left:20px;
+    }
+    #results {
+      border: 3px rgba(0,0,0,0.6);
+      width:90%;
+      height:830px;
+      background-color:rgba(0,0,0,0.6);
+      margin: 0 auto;
+      margin-bottom:30px;
+      border-radius:13px;
+      color:white;
+    }
+    #calculationOptions {
+      margin-left:16px;
+      margin-top:8px;
+      color: white;
+      padding-left:20px;
+    }
+    #calculationButton {
+      background: none;
+      border: 0;
+      outline:none;
+      font-size:16pt;
+      font-weight:bold;
+      color: white;
+      padding-left:20px;
+    }
+    #calculationArrow {
+      transition: 0.5s;
+      color: white;
+    }
+    form ul {
+      list-style-type: none;
+    }
+    hr {
+      margin-right:20px;
+      margin:20px;
+    }
+    .km {
+      width:35px;
+      color:black;
+    }
+    #submit {
+      width:200px;
+      height:60px;
+      font-size:16pt;
+      font-weight:bold;
+    }
+    .forms input{
+      padding:4px;
+      border-radius:12px;
+      border-color:rgba(0,0,0,0.2);
+      outline:none;
+      margin-top:4px;
+      margin-left:4px;
+      background-color:rgba(255,255,255,0.8);
+    }
+    #wrapper1 {
+      width:100%;
+      overflow:hidden;
+
+    }
+    #savingsDiv {
+      width:30%;
+      border:white 3px solid;
+      margin-left:20px;
+      border-radius:10px;
+      background-color: rgba(0,0,0,0.4);
+      float:left;
+    }
+    #savings {
+      text-align:center;
+      margin:0 auto;
+      padding-top:10px;
+    }
+    #amount {
+      text-align:center;
+      font-size:30pt;
+      margin:0 auto;
+      padding:10px;
+    }
+    #vehicleInfo {
+      overflow:hidden;
+      float:right;
+      padding-left:20px;
+      margin-top:-10px;
+    }
+    #vehicleInfo2 {
+      overflow:hidden;
+      float:right;
+      margin-left:20px;
+      margin-right:40px;
+      margin-top:-10px;
+    }
+    .break {
+      display:none;
+    }
+    a:-webkit-any-link{
+      text-decoration:none !important;
+    }
+    #preferences {
+      overflow:hidden;
+      float:right;
+      margin-left:40px;
+      margin-right:40px;
+      margin-top:50px;
+      float:left;
+    }
+    #compared {
+      text-align:center;
+    }
+    #preferenceNames {
+      overflow:hidden;
+      float:left;
+      padding-left:20px;
+    }
+    #prefWrap {
+      width:100%;
+      height:220px;
+      display:block;
+      margin-top:-10px;
+    }
+    #map {
+      float:right;
+      margin-right:20px;
+      height:240px;
+      width:390px;
+      display:block;
+      margin-top:-5px;
+    }
+    #map img {
+      height:240px;
+      width:390px;
+    }
+    #gasStation {
+      float:right;
+    }
+    #selectedStation {
+      padding-left:20px;
+    }
+    #header a {
+      color:white;
+    }
+    #header a:visited{
+      color:white;
+    }
+    #header a:hover{
+      color:aqua;
+    }
+    #header a:active{
+      color:white;
+    }
+    #header p {
+      margin-left:20px;
+      color:red;
+    }
+    @media(max-width: 900px) {
+      #map img {
+        height: 200px;
+        width: 320px;
+      }
+      #map {
+        height: 200px;
+        width: 320px;
+        margin-top:14px;
+      }
+    }
+    @media(max-width: 750px) {
+      #vehicleInfo {
+        display:block;  
+      }
+      .break {
+        display:block;
+      }
+      #fuel {
+        margin-bottom:14px;
+        padding-top:16px;
+      }
+    }
+    @media(max-width: 722px) {
+      #map img {
+        height: 140px;
+        width: 230px;
+      }
+      #map {
+        height: 140px;
+        width: 230px;
+        margin-top:40px;
+        margin-left:0;
+      }
+    }
+    @media(max-width: 625px) {
+      #map img {
+        display:none;
+      }
+      #map {
+        display:none;
+      }
+    }
+    @media(max-width: 600PX) {
+      #savingsDiv {
+        float:none;
+        margin: 0 auto;
+        width:80%;
+        padding-left:10px;
+        padding-right:10px;
+      }
+      #wrapper2 {
+        margin:0 auto;
+        width:100%;
+        height:100px;
+      }
+      #vehicleInfo {
+        padding-left:24px;
+        margin:0 auto;
+        float:left;
+        padding-top:10px;
+      }
+      #vehicleInfo2 {
+        padding-left:8px;
+        margin:0 auto;
+        padding-right:18px;
+        padding-top:10px;
+      }
+      #preferences {
+        float:right;
+      }
+    }
+    @media(max-width: 550px) {
+      h1 {
+        font-size:20pt;
+        text-align:center;
+        padding-left:0;
+        display:inline;
+      }
+      #gasStationButton {
+        padding-right:0;
+      }
+      #carInfoButton {
+        padding-right:0;
+      }
+      #results {
+        height:760px;
+      }
+    }
+
+  </style>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <script src="./js/fireBase.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Nav bar start-->
+    <div id="top"></div>
+   
+    <nav id="topbar">
+      <div id="logo">
+        <a href="index.html"><img src="./Images/logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="./Images/logo2.png" alt="logo" id="logo2"></a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <div class="dropdown">
+          <button class="dropbtn"><img src="./Images/accountlogo.png" alt="account" title="Account">
+          </button>
+          <div id="accountDrop" class="dropdown-content">
+            <div id="notSignedIn">
+              <a href="logIn.html">Log-In</a>
+              <a href="signUp.html">Sign-Up</a>
+            </div>
+            <div id="signedIn">
+              <a href="myAccount.html">My Account</a>
+              <a href="preferences.html">Edit Preferences</a>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn"><img src="./Images/featureslogo.png" alt="Features" title="Features">
+          </button>
+          <div id="featureDrop" class="dropdown-content">
+            <a href="savCalcPref.html">US Savings Calculator</a>
+            <a href="gasStationList.html">Gas Station List</a>
+            <a href="aboutUs.html">About Us</a>
+          </div>
+        </div>
+        <a href="index.html"><img src="./Images/homelogo.png" alt="home" title="Home"></a> 
+      </nav>
+      
+    </nav>
+    
+    <!-- Nav bar end-->
+
+    <!-- Main content goes here-->
+    <main id="main">
+      <div id="results">
+        <div id="header">
+        <h3 class="heading">Best station for you:</h3>
+        </div>
+        <hr>
+
+        <div id=wrapper1>
+          <div id=savingsDiv>
+            <div id=savings>SAVINGS:</div>
+            <div id=amount></div>
+            <div id=compared>*compared to your closest station.</div>
+          </div>
+          <div id=wrapper2>
+            <div id=vehicleInfo2>
+            </div>
+            <div id=vehicleInfo>
+              <p>Vehicle:</p>
+              <p>Fuel Grade:</p>
+              <p>Tank Size:</p>
+              <p>Fuel
+              <br class="break"/>  Consumption:</p>  
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div id=prefWrap>
+          <div id="preferenceNames">
+            <h3 id="heading2">Options</h3>
+            <p>Station: </p>
+            <p>Jerry Cans:</p>
+          </div>
+          <div id="preferences">
+          </div>
+          <div id="map">
+            <img src="./Images/map.png">
+          </div>
+        </div>
+        
+        <hr>
+        <button id="calculationButton"><img id="calculationArrow" src='./Images/arrow2.png'>&ensp;Formula</button>
+        <div id="calculationOptions">
+          <p>Close Price = Fuel Cost * Tank Size + (Fuel Consumption * Distance (two way) * Fuel Cost) + (Jerry Cans * Can Size * Fuel Price)</p>
+          <p>Far Price = (Fuel Cost * Tank Size + (Fuel Consumption * Distance (two way) * Fuel Cost) + (Jerry Cans * Can Size * Fuel Price)) * Exchange Rate (if foreign)</p>
+          <p>Total Savings = Close Price - Far Price</p>
+        </div>
+        <hr>
+
+        <script src="./js/navChange.js"></script>
+
+        <script>
+          $(document).ready(function() {
+          $("#calculationOptions").hide();
+          var carInfo = document.getElementById("carInfo");
+          var arrow = document.getElementsByClassName("arrow");
+          value0 = 0;
+          value1 = 0;
+          value2 = 0;
+
+          $("#calculationButton").click(function(){
+            $("#calculationOptions").toggle(500);
+            if (value2 == 0) {
+              $("#calculationArrow").css({'transform': 'rotate(90deg)'});
+              value2 = 1;
+            } else if (value2 == 1){
+            $("#calculationArrow").css({'transform': ''});
+              value2 = 0;
+            }
+            });
+          });
+          </script>
+          
+          <script>
+            var model = localStorage.getItem("model");
+            var modelLetter = model.charAt("0").toUpperCase();
+            var model = modelLetter + model.substring(1, model.length);
+
+            var make = localStorage.getItem("make");
+            var makeLetter = make.charAt("0").toUpperCase();
+            var make = makeLetter + make.substring(1, make.length);
+
+            var year = localStorage.getItem("year");
+            year = "'" + year.substring(year.length-2, year.length);
+
+            var fuelGrade = localStorage.getItem("fuelGrade");
+
+            var station = localStorage.getItem("station");
+            var jerryCans = localStorage.getItem("jerryCans");
+            var jerryCanSize = localStorage.getItem("jerryCanSize");
+            var closestBool = localStorage.getItem("closestBool");
+
+            var makeP = document.createElement("p");
+            var makeNode = document.createTextNode("" + make + " " + model + " " + year);
+            makeP.appendChild(makeNode);
+            document.getElementById("vehicleInfo2").appendChild(makeP);
+
+            var fuelGradeP = document.createElement("p");
+            var fuelGradeNode = document.createTextNode("" + fuelGrade);
+            fuelGradeP.appendChild(fuelGradeNode);
+            document.getElementById("vehicleInfo2").appendChild(fuelGradeP);
+
+            var stationP = document.createElement("p");
+            if (station != "N/A" && station != "Closest US") {
+              var stationNode = document.createTextNode("Within " + station + "km");
+            } else {
+              var stationNode = document.createTextNode("" + station);
+            }
+            stationP.appendChild(stationNode);
+            document.getElementById("preferences").appendChild(stationP);
+
+            var jerryCansP = document.createElement("p");
+            var jerryCansNode = document.createTextNode("" + jerryCans + " x " + jerryCanSize + "L");
+            jerryCansP.appendChild(jerryCansNode);
+            document.getElementById("preferences").appendChild(jerryCansP);
+
+            var tankP = document.createElement("p");
+            var fuelP = document.createElement("p");
+
+            var fb = firebase.database().ref()
+            
+            if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+              fb.child("cars/hondaCivic/tank").once('value', function (snap) {
+                 var tankNode = document.createTextNode(snap.val());
+                 tankP.setAttribute("id", "tank");
+                 tankP.appendChild(tankNode);
+                 document.getElementById("vehicleInfo2").appendChild(tankP);
+              });
+              fb.child("cars/hondaCivic/fuel").once('value', function (snap) {
+                 var fuelNode = document.createTextNode(snap.val());
+                 fuelP.setAttribute("id", "fuel");
+                 fuelP.appendChild(fuelNode);
+                 document.getElementById("vehicleInfo2").appendChild(fuelP);
+              });
+
+              var closePrice = (1.342 * 50 + (0.0675 * 1.6 * 1.342) + (jerryCans * jerryCanSize * 1.342));
+            }
+
+            if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+              fb.child("cars/toyotaCorolla/tank").once('value', function (snap) {
+                 var tankNode = document.createTextNode(snap.val());
+                 tankP.setAttribute("id", "tank");
+                 tankP.appendChild(tankNode);
+                 document.getElementById("vehicleInfo2").appendChild(tankP);
+              });
+              fb.child("cars/toyotaCorolla/fuel").once('value', function (snap) {
+                 var fuelNode = document.createTextNode(snap.val());
+                 fuelP.setAttribute("id", "fuel");
+                 fuelP.appendChild(fuelNode);
+                 document.getElementById("vehicleInfo2").appendChild(fuelP);
+              });
+
+              var closePrice = (1.342 * 55 + (0.069 * 1.6 * 1.342) + (jerryCans * jerryCanSize * 1.342));
+            } 
+
+              if (station == "Closest US" || (station > 16.3 && station < 18)) {
+                var stationName = "Chevron";
+                var stationAddress = "347 D Street";
+                var stationLocation = "Blaine, Washington";
+                var stationPrice = 3.03;
+                var stationPriceString = "$3.03/G";
+                var stationDistance = 16.4;
+                var stationDistanceString = "16.4km";
+                
+                var selectedStation = document.createElement("a");
+                selectedStation.setAttribute("id", "selectedStation");
+                selectedStation.setAttribute("href", "gasStation4.html");
+                selectedStationNode = document.createTextNode("" + stationName + " - "
+                + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
+                selectedStation.appendChild(selectedStationNode);
+                document.getElementById("header").appendChild(selectedStation);
+
+                var gasPrice = 3.03;
+                if (fuelGrade == "Midgrade") {
+                  gasPrice += 0.14;
+                }
+                if (fuelGrade == "Premium") {
+                  gasPrice += 0.28;
+                }
+                if (fuelGrade == "Diesel") {
+                  gasPrice += 0.22;
+                }
+                
+                if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 3.03) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 32.8 * 3.03) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 32.8 * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                var totalSavings = ("" + totalSavings);
+                var savingsNode = document.createTextNode("$" + totalSavings.substring(0, 5));
+                document.getElementById("amount").appendChild(savingsNode);
+
+              } else if (station < 16.3) {
+                var stationName = "Esso";
+                var stationAddress = "9100 Westminster Avenue";
+                var stationLocation = "Richmond, BC";
+                var stationPrice = 1.342;
+                var stationPriceString = "$1.342/L";
+                var stationDistance = 0.8;
+                var stationDistanceString = "0.8km";
+                
+                var selectedStation = document.createElement("a");
+                selectedStation.setAttribute("id", "selectedStation");
+                selectedStation.setAttribute("href", "gasStation.html");
+                selectedStationNode = document.createTextNode("" + stationName + " - "
+                + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
+                selectedStationP = document.createElement("p");
+                selectedStationPNode = document.createTextNode("This is already your closest station!");
+                selectedStation.appendChild(selectedStationNode);
+                selectedStationP.appendChild(selectedStationPNode);
+                document.getElementById("header").appendChild(selectedStation);
+                document.getElementById("header").appendChild(selectedStationP);
+
+                var savingsNode = document.createTextNode("$0.00");
+                document.getElementById("amount").appendChild(savingsNode);
+
+              } else if (station > 18) {
+                var stationName = "Shell";
+                var stationAddress = "360 D Street";
+                var stationLocation = "Blaine, Washington";
+                var stationPrice = 2.91;
+                var stationPriceString = "$2.91/G";
+                var stationDistance = 18.1;
+                var stationDistanceString = "18.1km";
+                
+                var selectedStation = document.createElement("a");
+                selectedStation.setAttribute("id", "selectedStation");
+                selectedStation.setAttribute("href", "gasStation5.html");
+                selectedStationNode = document.createTextNode("" + stationName + " - "
+                + stationAddress + " - " + stationLocation + " - " + stationPriceString + " - " + stationDistanceString + " away");
+                selectedStation.appendChild(selectedStationNode);
+                document.getElementById("header").appendChild(selectedStation);
+                
+                var gasPrice = 2.91;
+                if (fuelGrade == "Midgrade") {
+                  gasPrice += 0.14;
+                }
+                if (fuelGrade == "Premium") {
+                  gasPrice += 0.28;
+                }
+                if (fuelGrade == "Diesel") {
+                  gasPrice += 0.22;
+                }
+                
+                if (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 2.91) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 14.5 + (0.018227872 * 32.8 * 2.91)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                if (make.toLowerCase() == "honda" && model.toLowerCase() == "civic") {
+                  if (jerryCanSize != 0) {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 36.2 * 2.91) + (jerryCans * (0.264172*jerryCanSize) * 3.03)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  } else {
+                    var farPrice = ((gasPrice * 13.2 + (0.01783161 * 36.2 * 2.91)) * 1.33);
+                    var totalSavings = closePrice - farPrice;
+                  }
+                }
+                var totalSavings = ("" + totalSavings);
+                var savingsNode = document.createTextNode("$" + totalSavings.substring(0, 5));
+                document.getElementById("amount").appendChild(savingsNode);
+              }
+              
+            
+        </script>
+      </div>
+    </main>
+  </body>
+</html>
+  

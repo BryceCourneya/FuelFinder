@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Savings Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/logo.css">
+    <!--Needed for nav bar-->
+    <style>
+        body {
+      background:url(./Images/desertroad.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    #main {
+      width:100%;
+      height:500px;
+    }
+    h1 {
+      width:80%;
+      padding-left:28px;
+      margin:0 auto;
+      margin-top:10px;
+      margin-bottom:-10px;
+    }
+    h3 {
+      padding-top:18px;
+      padding-left:8px;
+    }
+    #preferences {
+      border: 3px rgba(0,0,0,0.6);
+      width:80%;
+      height:680px;
+      padding-left:20px;
+      background-color:rgba(0,0,0,0.6);
+      margin: 0 auto;
+      margin-bottom:30px;
+      border-radius:13px;
+      color:white;
+    }
+    #carInfo {
+      margin-left:16px;
+      margin-top:8px;
+      color: white;
+    }
+    #additionalOptions {
+      margin-left:16px;
+      margin-top:8px;
+      color: white;
+    }
+    #carInfoButton {
+      background: none;
+      border: 0;
+      outline:none;
+      font-size:16pt;
+      font-weight:bold;
+      padding-right:40%;
+      color: white;
+    }
+    #additionalOptionsButton {
+      background: none;
+      border: 0;
+      outline:none;
+      font-size:16pt;
+      font-weight:bold;
+      color: white;
+    }
+    #gasStationButton {
+      background: none;
+      border: 0;
+      outline:none;
+      font-size:16pt;
+      font-weight:bold;
+      padding-right:40%;
+      color: white;
+    }
+    #carInfoArrow {
+      transition: 0.5s;
+      color: white;
+    }
+    #gasStationArrow {
+      transition: 0.5s;
+      color: white;
+    }
+    #additionalOptionsArrow {
+      transition: 0.5s;
+      color: white;
+    }
+    form ul {
+      list-style-type: none;
+    }
+    hr {
+      margin-right:20px;
+      margin:20px;
+    }
+    .km {
+      width:35px;
+      color:black;
+    }
+    #submit {
+      width:200px;
+      height:60px;
+      font-size:16pt;
+      font-weight:bold;
+    }
+    .forms input{
+      padding:4px;
+      border-radius:12px;
+      border-color:rgba(0,0,0,0.2);
+      outline:none;
+      margin-top:4px;
+      margin-left:4px;
+      background-color:rgba(255,255,255,0.8);
+    }
+    @media(max-width: 550px) {
+      h1 {
+        font-size:20pt;
+        text-align:center;
+        padding-left:0;
+      }
+      #gasStationButton {
+        padding-right:0;
+      }
+      #carInfoButton {
+        padding-right:0;
+      }
+      #preferences {
+        height:760px;
+      }
+      @media(max-width: 384px) {
+        #preferences {
+          height: 840px;
+        }
+      }
+    }
+
+  </style>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <script src="./js/fireBase.js"></script>
+
+</head>
+
+<body>
+    <!-- Nav bar start-->
+    <div id="top"></div>
+
+    <nav id="topbar">
+        <div id="logo">
+            <a href="index.html"><img src="./Images/logo.png" alt="logo" id="logo1"></a>
+            <a href="index.html"><img src="./Images/logo2.png" alt="logo" id="logo2"></a>
+        </div>
+        <nav class="navbar" id="navbar">
+            <div class="dropdown">
+                <button class="dropbtn"><img src="./Images/accountlogo.png" alt="account" title="Account">
+                </button>
+                <div id="accountDrop" class="dropdown-content">
+                    <div id="notSignedIn">
+                        <a href="logIn.html">Log-In</a>
+                        <a href="signUp.html">Sign-Up</a>
+                    </div>
+                    <div id="signedIn">
+                        <a href="myAccount.html">My Account</a>
+                        <a href="preferences.html">Edit Preferences</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"><img src="./Images/featureslogo.png" alt="Features" title="Features">
+                </button>
+                <div id="featureDrop" class="dropdown-content">
+                    <a href="savCalcPref.html">US Savings Calculator</a>
+                    <a href="gasStationList.html">Gas Station List</a>
+                    <a href="aboutUs.html">About Us</a>
+                </div>
+            </div>
+            <a href="index.html"><img src="./Images/homelogo.png" alt="home" title="Home"></a>
+        </nav>
+
+    </nav>
+
+    <!-- Nav bar end-->
+
+    <!-- Main content goes here-->
+    <main id="main">
+
+      <div id="preferences">
+        <h3>Savings Calculator - find your dream gas station!</h3>
+        <hr>
+        <button id="carInfoButton">1.&ensp;<img id="carInfoArrow" src='./Images/arrow.png'>&ensp;Car Info</button>
+        <div id="carInfo">
+          <form class="forms" name="form1" id="form1">
+            <input type=text name="make" placeholder="make" id="make">
+            <input type=text name="model" placeholder="model" id="model">
+            <input type=number name="year" placeholder="year" id="year" min="1950" max="2020">
+          </form>
+        </div>
+        <hr>
+        <button id="gasStationButton">2.&ensp;<img id="gasStationArrow" src='./Images/arrow.png'>&ensp;Gas Station</button>
+        <div id="gasStation">
+          <form class="forms" name="form2" id="form2">
+            <ul>
+              <li><input type=radio name="radio" value="closest" id="closest"> Closest US</li>
+              <li><input type=radio name="radio" value="lowest" id="lowest"> Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" min="0" id="lowestKM"> km</li>
+            </ul>
+          </form>
+        </div>
+        <hr>
+        <button id="additionalOptionsButton"><img id="additionalOptionsArrow" src='./Images/arrow2.png'>&ensp;Additional Options</button>
+        <div id="additionalOptions">
+          <form class="forms" name="form3" id="form3">
+            <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0" min="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters
+            <br/>
+            <input type=checkbox name=check4 id="check4"><label>Fuel Grade:</label>
+              <ul style="margin-top:-20px; margin-left:80px;">
+                <li><input type=radio name="fuelGrade" value="Regular" id="regular">Regular</li>
+                <li><input type=radio name="fuelGrade" value="Regular" id="midgrade">Midgrade</li>
+                <li><input type=radio name="fuelGrade" value="Regular" id="premium">Premium</li>
+                <li><input type=radio name="fuelGrade" value="Regular" id="diesel">Diesel</li>
+              </ul>
+          </form>
+        </div>
+        <hr>
+        <input id="submit" type="button" onclick="submitForm()" value="Start Journey">
+        
+        <script src="./js/navChange.js"></script>
+
+            <script>
+                $(document).ready(function() {
+                    $("#additionalOptions").hide();
+                    document.getElementById("closest").checked = true;
+                    var carInfo = document.getElementById("carInfo");
+                    var arrow = document.getElementsByClassName("arrow");
+                    value0 = 0;
+                    value1 = 0;
+                    value2 = 0;
+
+                    $("#carInfoButton").click(function() {
+                        $("#carInfo").toggle(500);
+                        if (value0 == 0) {
+                            $("#carInfoArrow").css({
+                                'transform': 'rotate(-90deg)'
+                            });
+                            value0 = 1;
+                        } else if (value0 == 1) {
+                            $("#carInfoArrow").css({
+                                'transform': ''
+                            });
+                            value0 = 0;
+                        }
+                    });
+                    $("#gasStationButton").click(function() {
+                        $("#gasStation").toggle(500);
+                        if (value1 == 0) {
+                            $("#gasStationArrow").css({
+                                'transform': 'rotate(-90deg)'
+                            });
+                            value1 = 1;
+                        } else if (value1 == 1) {
+                            $("#gasStationArrow").css({
+                                'transform': ''
+                            });
+                            value1 = 0;
+                        }
+                    });
+                    $("#additionalOptionsButton").click(function() {
+                        $("#additionalOptions").toggle(500);
+                        if (value2 == 0) {
+                            $("#additionalOptionsArrow").css({
+                                'transform': 'rotate(90deg)'
+                            });
+                            value2 = 1;
+                        } else if (value2 == 1) {
+                            $("#additionalOptionsArrow").css({
+                                'transform': ''
+                            });
+                            value2 = 0;
+                        }
+                    });
+                    firebase.auth().onAuthStateChanged(function(user) {
+                        var fb = firebase.database().ref();
+                        var user = firebase.auth().currentUser;
+                        fb.child('users/' + user.uid + '/make').once('value', function(snap) {
+                            document.getElementById("make").value = (snap.val());
+                        });
+                        fb.child('users/' + user.uid + '/model').once('value', function(snap) {
+                            document.getElementById("model").value = (snap.val());
+                        });
+                        fb.child('users/' + user.uid + '/year').once('value', function(snap) {
+                            document.getElementById("year").value = (snap.val());
+                        });
+                        fb.child('users/' + user.uid + '/jerryCans').once('value', function(snap) {
+                            document.getElementById("jerryCans").value = (snap.val());
+                            if ((snap.val()) > 0) {
+                                document.getElementById("check1").checked = true;
+                            }
+                        });
+                        fb.child('users/' + user.uid + '/jerryCanSize').once('value', function(snap) {
+                            document.getElementById("jerryCanSize").value = (snap.val());
+                        });
+                        fb.child('users/' + user.uid + '/fuelGrade').once('value', function(snap) {
+                            if (snap.val() == "Regular") {
+                                document.getElementById("check4").checked = true;
+                                document.getElementById("regular").checked = true;
+                            }
+                            if (snap.val() == "Midgrade") {
+                                document.getElementById("check4").checked = true;
+                                document.getElementById("midgrade").checked = true;
+                            }
+                            if (snap.val() == "Premium") {
+                                document.getElementById("check4").checked = true;
+                                document.getElementById("premium").checked = true;
+                            }
+                            if (snap.val() == "Diesel") {
+                                document.getElementById("check4").checked = true;
+                                document.getElementById("diesel").checked = true;
+                            }
+                        });
+                        fb.child('users/' + user.uid + '/station').once('value', function(snap) {
+                            if (snap.val() == "Closest US") {
+                                document.getElementById("closest").checked = true;
+                            } else {
+                                document.getElementById("lowest").checked = true;
+                                document.getElementById("lowestKM").value = (snap.val());
+                            }
+                        });
+                    });
+                });
+            </script>
+
+            <script>
+                function submitForm() {
+
+                    var make = document.getElementById("make").value;
+                    var year = document.getElementById("year").value;
+                    var model = document.getElementById("model").value;
+
+                    if (document.getElementById('closest').checked) {
+                        var station = "Closest US";
+                    }
+
+                    if (document.getElementById('lowest').checked) {
+                        var station = document.getElementById("lowestKM").value;
+                    }
+
+                    if (document.getElementById('check1').checked) {
+                        var jerryCans = document.getElementById("jerryCans").value;
+                        var jerryCanSize = document.getElementById("jerryCanSize").value;
+                    } else {
+                        var jerryCans = 0;
+                        var jerryCanSize = 0;
+                    }
+                    if (document.getElementById('check4').checked) {
+                        if (document.getElementById('regular').checked) {
+                            var fuelGrade = "Regular";
+                        }
+                        if (document.getElementById('midgrade').checked) {
+                            var fuelGrade = "Midgrade";
+                        }
+                        if (document.getElementById('premium').checked) {
+                            var fuelGrade = "Premium";
+                        }
+                        if (document.getElementById('diesel').checked) {
+                            var fuelGrade = "Diesel";
+                        }
+                    } else {
+                        var fuelGrade = "Regular";
+                    }
+
+                    if (make.trim() == "" || model.trim() == "" || year.trim() == "") {
+                        var notComplete = true;
+                    } else {
+                        var notComplete = false;
+                    }
+                    /* Car types */
+
+                    if (((make.toLowerCase() == "honda" && model.toLowerCase() == "civic") ||
+                            (make.toLowerCase() == "toyota" && model.toLowerCase() == "corolla"))) {
+                        var carSupport = true;
+                    } else {
+                        var carSupport = false;
+                    }
+                    if (document.getElementById("year").value < 1950 || document.getElementById("year").value > 2018) {
+                      var badYear = true;
+                    } else {
+                      var badYear = false;
+                    }
+
+ 
+                    if (notComplete == false && carSupport == true) {
+                        localStorage.setItem("model", model);
+                        localStorage.setItem("make", make);
+                        localStorage.setItem("year", year);
+                        localStorage.setItem("station", station);
+                        localStorage.setItem("jerryCans", jerryCans);
+                        localStorage.setItem("jerryCanSize", jerryCanSize);
+                        localStorage.setItem("fuelGrade", fuelGrade);
+                    }
+
+                    if (notComplete == false && carSupport == true && badYear == false) {
+                        window.location.href = "savCalcResults.html";
+                    } else if (notComplete == true) {
+                        window.alert("You must enter the make, model, and year of the car!");
+                    } else if (carSupport == false) {
+                        window.alert("Sorry! The Savings Calculator does not support your vehicle at this time. \nPlease enter another vehicle");
+                    } else if (badYear == true) {
+                        window.alert("Please enter a year between 1950 and 2018!");
+                    }
+                }
+            </script>
+        </div>
+    </main>
+</body>
+</html>
+  

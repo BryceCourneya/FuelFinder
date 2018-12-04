@@ -1,0 +1,353 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../Images/forestroad.jpg);
+    background-size: cover;
+}
+
+#maincontent {
+    margin: 4% 4% 2% 4%;
+    display: flex;
+}
+
+#actualcontent {
+    background-color: rgb(40, 40, 40, 0.8);
+    width: 60%;
+    border: 4px solid azure;
+}
+
+.headinfo {
+    display: flex;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 0.6rem;
+    border-bottom: 2px dotted #808080;
+    
+}
+
+.logoholder {
+    margin: 1rem;
+    margin-right: 0;
+    max-width: 8em;
+    width: auto;
+    border-right: dotted 1px #717171;
+    padding-right: 1rem;
+}
+
+.stationinfo {
+    display: inline-block;
+    padding-left: 1.2rem;
+    padding-top: 0.9rem;
+    flex-grow: 1;
+}
+
+.stationname {
+    margin: 0;
+    font-size: 2.8em;
+    line-height: 2rem;  
+    color: white;
+}
+
+.stationlocation{
+    font-size: 1.5rem;
+    line-height: 0.9em;
+    color: white;
+}
+
+.stationother{
+    width: 22.5%;
+}
+
+.bigratingholder{
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid white;
+    padding-bottom: 0.5rem;
+}
+
+.ratingtext{
+    position: relative;
+    top: 10%;
+    display: inline;
+    background-color: greenyellow;
+    width: 50%;
+    border: white 2px solid;
+    left: 25%;
+    font-size: 20pt;
+    border-radius: 25px;
+}
+
+.costholder{
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.costtext{
+    position: relative;
+    top: 10%;
+    display: inline-block;
+    font-size: 18pt;
+    color: white;
+    font-weight: bold;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+#slideshowbob {
+    box-sizing: border-box;
+}
+
+.slideshow-container {
+    max-width: 750px;
+    position: relative;
+    margin: 0 5% 0 5%;
+}
+
+.slide-animation {
+    display: none;
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12pt;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    background: rgb(0,0,0, 0.4);
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgb(0, 0, 0, 0.8);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+.shift {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.sidediv-container{
+    width: 30%;
+    margin-left: 5%;
+    background-color: rgb(40, 40, 40, 0.8);
+    margin-top: 6%;
+    height: 80%;
+    border: 1px solid azure;
+}
+
+.sidedivs{
+    width: 95%;  
+    margin: auto;
+    margin-top: 0.4rem;
+}
+
+#otherstationtext{
+    color: white;
+    border-bottom: 1px solid white;
+    margin-bottom: 0.8rem;
+    line-height: 1rem;
+    font-size: 14pt;
+}
+
+.extrastations{
+    display: flex;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.logoholder{
+    margin-left: 0.5rem;
+    padding-right: 0.5rem;
+    max-width: 13%;
+}
+
+
+
+.stationdetails{
+    flex-grow: 1;
+    padding-left: 0.3rem;
+}
+
+.stationname2 {
+    font-size: 1.2rem;
+    margin: 0;
+    
+}
+
+.stationlocation2 {
+    font-size: 1.0rem;
+    line-height: 0.8rem;
+}
+
+.stationrate{
+    position: relative;
+    display: inline-block;
+    top: 20px;
+    width: 10%;
+    border-radius: 30%;
+    padding: 0 0.5em;
+    text-align: center;
+}
+
+.stationrating {
+    background-color: greenyellow;
+    border-radius: 30%;
+}
+
+.stationprice{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0.4rem;
+    padding-left: 0.4rem;
+    border-left: 1px dotted #808080;
+    width: 22%;
+    
+}
+
+.stationcost{
+    position: relative;
+    top: 25%;
+    font-weight: bolder;
+    font-size: 0.85rem;
+}
+
+#othercontent{
+    display: flex;
+}
+
+#comment-container{
+    margin: 0 4% 4% 4%;
+    width: 45%;
+    background-color: rgb(40, 40, 40, 0.8);
+    color: white;
+    padding: 0.4rem;
+    border: 2px solid white;
+    display: inline-block;
+    height: auto;
+}
+
+
+#reviewcontainer h2{
+    display: inline;
+}
+
+#ratingnumber{
+    background-color: rgb(255, 255, 255, 0.85);
+}
+#comment{
+    width: 80%;
+    height: 150px;
+    font-size: 14pt;
+    background-color: rgb(255, 255, 255, 0.85);
+}
+
+#reviewsubmit{
+    font-size: 16pt;
+    padding: 0.3rem;
+    background-color: rgb(255, 255, 255, 0.85);
+}
+
+#bigreview{
+    display: inline-block;
+    width: 40%;
+     color: white;
+    background-color: rgb(40, 40, 40, 0.8);
+    border: 2px solid white;
+    padding: 0.6rem 0.6rem 0.6rem 0.9rem; 
+}
+
+.newreviewholder{
+    border: 1px solid white;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.namennumber{
+    border-bottom: 1px solid white;
+    padding-bottom: 0.4rem;
+}
+
+.reviewer{   
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.reviewnumber2{
+    width: 7.5%;
+    text-align: center;
+    background-color: red;
+    border-radius: 5px;
+    font-size: 15pt;
+}
+
+.reviewcomment{
+    padding-top: 0.3rem;
+    font-size: 13pt;
+}
+
+
