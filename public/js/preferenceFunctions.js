@@ -114,7 +114,7 @@ function edit() {
   if (notComplete == false && carSupport == true) {
 
     var user = firebase.auth().currentUser;    
-    database.ref('users/'+user.uid).update( {
+    database.ref('users/'+user.uid).set( {
       "model" : model,
       "make" : make,
       "year" : year,
