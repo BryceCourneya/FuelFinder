@@ -50,17 +50,30 @@
           height:70px;
           font-size:12pt;
           border-radius:20px;
+          border: none;
           background-color:rgba(255,255,255,0.8);
           outline:none;
         }
+
+        #savingsCalc:hover {
+          cursor: pointer;
+          background:red;
+        }
+
         #gasStationList {
           width:160px;
           height:70px;
           margin-left:10px;
           font-size:12pt;
           border-radius:20px;
+          border:none;
           background-color:rgba(255,255,255,0.8);
           outline:none;
+        }
+
+        #gasStationList:hover{
+          cursor: pointer;
+          background:red;
         }
 
         h1{
@@ -93,10 +106,6 @@
    
     <nav id="topbar">
       <div id="logo">
-        <form>
-        <input type="search" name="search" placeholder="Search" id="search">
-        <input type="submit" name="submit" value="Submit">
-        </form>
         <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
         <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
       </div>
@@ -126,14 +135,14 @@
         </div>
         <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
       </nav>
-      </div>
+      
     </nav>
     
     <!-- Nav bar end-->
     
         <!-- Main content goes here-->
         <script src="fireBase.js"></script>
-        <script src="login.js"></script>
+        <script src="navChange.js"></script>
         <container id="background">
           <div id="first_home">
             

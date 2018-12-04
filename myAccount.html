@@ -59,7 +59,6 @@
         }
 
         #make {
-          border-right: 2px solid #fff;
           border-left: 2px solid #fff;
           padding: 10px;
         }
@@ -76,17 +75,16 @@
 
         #year {
           border-right: 2px solid #fff;
-          border-left: 2px solid #fff;
           padding: 10px;
         }
 
         #jerryCans{
-          border-right: 2px solid #fff;
           border-left: 2px solid #fff;
           padding: 10px;
         }
 
         #jerryCanSize{
+          border-right: 2px solid #fff;
           padding: 10px;
         }       
 
@@ -97,7 +95,7 @@
         }
 
         #logOut{
-          margin-left: 770px;
+          float:right;
         }
 
         #additionalOptions{
@@ -109,6 +107,46 @@
           border-top: 1px solid #fff;
           padding: 0px;
         }
+        #jerry{
+          margin-bottom: 50px;
+        }
+
+        .yearBreak{
+          display:none;
+        }
+
+        @media(max-width: 1100px) {
+          #logOut{
+            float:none;
+          }
+        }
+
+        @media(max-width: 600px) {
+          .yearBreak{
+            display:block;
+            
+          }
+
+          #year {
+            border-left: 2px solid #fff;
+            
+          }
+
+          #model {
+            border-right: 2px solid #fff;
+            padding: 10px;
+          }
+          
+        }
+
+        @media(max-width: 650px) {
+          
+          .container button{
+          margin-right: 150px;
+        }
+
+        }
+               
       </style>
     
     </head>
@@ -119,10 +157,6 @@
    
     <nav id="topbar">
       <div id="logo">
-        <form>
-        <input type="search" name="search" placeholder="Search" id="search">
-        <input type="submit" name="submit" value="Submit">
-        </form>
         <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
         <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
       </div>
@@ -152,14 +186,15 @@
         </div>
         <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
       </nav>
-      </div>
+      
     </nav>
     
     <!-- Nav bar end-->
     
         <!-- Main content goes here-->
         <script src="fireBase.js"></script>
-        <script src="login.js"></script>
+        <script src="navChange.js"></script>
+        <script src="accountInfo.js"></script>
 
         <div class="container">
 
@@ -170,6 +205,9 @@
             <h3>Car Info</h3>
             <textfield id="make"><b>Car make:</b> </textfield>
             <textfield id="model"><b>Car model:</b> </textfield>
+            <br class="yearBreak">
+            <br class="yearBreak">
+            <br class="yearBreak">
             <textfield id="year"><b>Car year:</b> </textfield> 
           </div>  
 
@@ -181,12 +219,15 @@
 
           <h5>Additional Options</h5>
           <div id="additionalOptions">
-            <textfield id="jerryCans"><b># of jerry cans:</b> </textfield>  
-            <textfield id="jerryCanSize"><b>Jerry can size(L):</b> </textfield> 
-            <textfield id="fuelGrade"><b>Fuel grade:</b> </textfield>                      
+            <div id="jerry">
+              <textfield id="jerryCans"><b># of jerry cans:</b> </textfield>  
+              <textfield id="jerryCanSize"><b>Jerry can size:</b> </textfield> 
+            </div>
+            <textfield id="fuelGrade"><b>Fuel grade:</b> </textfield>                    
           </div>
 
-            <button id="editPreferences" onclick="editP()" value="Logout">Edit Preferences</button>
+            <button id="editPreferences" onclick="editP()" value="Edit">Edit Preferences</button> 
+            <button id="stationCalc" onclick="stationCalc()" value="stationCalc">Calculate Savings</button>  
             <button id="logOut" onclick="logOut()" value="Logout">Log out</button>
         </div>    
 

@@ -84,19 +84,15 @@
         
       </style>
     
-      </head>
+    </head>
     
-      <body>
+    <body>
  
     <!-- Nav bar start-->
     <div id="top"></div>
    
     <nav id="topbar">
       <div id="logo">
-        <form>
-        <input type="search" name="search" placeholder="Search" id="search">
-        <input type="submit" name="submit" value="Submit">
-        </form>
         <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
         <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
       </div>
@@ -126,36 +122,35 @@
         </div>
         <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
       </nav>
-      </div>
+      
     </nav>
     
     <!-- Nav bar end-->
     
-        <!-- Main content goes here-->
-        <!-- The surrounding HTML is left untouched by FirebaseUI.
-        Your app may use that space for branding, controls and other customizations.-->
-        <script src="fireBase.js"></script>
-        <script src="login.js"></script>
-        <div class="container">
-        
-          
-            <h1>Log-In</h1>
-              <form>     
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Enter Email" name="email" required>
-                <label for="psw">Password</label>
-                <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+    <!-- Main content goes here-->
+    <script src="fireBase.js"></script>
+    <script src="login.js"></script>
+    <script src="navChange.js"></script>
+    <div class="container">
+    
       
-                <input id="submit" type="button" onclick="logIn()" value="Login"></button>
-                <a href="signUp.html">Don't have an account?</a>
-              </form> 
-      
-      
-          </div>
+        <h1>Log-In</h1>
+          <form>     
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Enter Email" name="email" required>
+            <label for="psw">Password</label>
+            <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+  
+            <input id="submit" type="button" onclick="logIn()" value="Login"></button>
+            <a href="signUp.html">Don't have an account?</a>
+          </form> 
+  
+  
+      </div>
 
 
-        </div>
+    </div>
 
 
-        </body>
+    </body>
       </html>

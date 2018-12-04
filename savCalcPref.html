@@ -113,8 +113,6 @@
       margin-left:4px;
       background-color:rgba(255,255,255,0.8);
     }
-    #form3 input {
-    }
     @media(max-width: 550px) {
       h1 {
         font-size:20pt;
@@ -162,10 +160,6 @@
    
     <nav id="topbar">
       <div id="logo">
-        <form>
-        <input type="search" name="search" placeholder="Search" id="search">
-        <input type="submit" name="submit" value="Submit">
-        </form>
         <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
         <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
       </div>
@@ -202,10 +196,9 @@
 
     <!-- Main content goes here-->
     <main id="main">
-      <h1>Savings Calculator</h1>
 
       <div id="preferences">
-        <h3>Preferences</h3>
+        <h3>Savings Calculator - find your dream gas station!</h3>
         <hr>
         <button id="carInfoButton">1.&ensp;<img id="carInfoArrow" src='arrow.png'>&ensp;Car Info</button>
         <div id="carInfo">
@@ -243,7 +236,7 @@
         <hr>
         <input id="submit" type="button" onclick="submitForm()" value="Start Journey">
         
-        <script src="login.js"></script>
+        <script src="navChange.js"></script>
 
         <script>
           $(document).ready(function() {
@@ -322,6 +315,14 @@
               if (snap.val() == "Diesel") {
                  document.getElementById("check4").checked = true;
                  document.getElementById("diesel").checked = true;
+              }
+            });
+            fb.child('users/'+user.uid+'/station').once('value', function (snap) {
+              if (snap.val() == "Closest US") {
+                document.getElementById("closest").checked = true;
+              } else {
+                document.getElementById("lowest").checked = true;
+                document.getElementById("lowestKM").value = (snap.val());
               }
             });
               });

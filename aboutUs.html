@@ -73,6 +73,32 @@
           display:inline-block;
           color:white;
         }
+
+        .container input[type="button"]{
+          border: none;
+          outline: none;
+          height: 40px;
+          background:white;
+          color: black;
+          font-size: 18px;
+          border-radius: 20px;
+          margin-left:370px;
+        }
+
+        .container input[type="button"]:hover{
+          cursor: pointer;
+          background:red;
+          color:#000;
+        }
+
+        #cst {
+          display:none;
+        }
+
+        #taco {
+          margin-left:400px;
+        }
+
       </style>
     
     </head>
@@ -83,10 +109,6 @@
    
     <nav id="topbar">
       <div id="logo">
-        <form>
-        <input type="search" name="search" placeholder="Search" id="search">
-        <input type="submit" name="submit" value="Submit">
-        </form>
         <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
         <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
       </div>
@@ -116,7 +138,7 @@
         </div>
         <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
       </nav>
-      </div>
+      
     </nav>
     
     <!-- Nav bar end-->
@@ -124,63 +146,21 @@
         <!-- Main content goes here-->
 
         <script src="fireBase.js"></script>
-        <script src="login.js"></script>
+        <script src="navChange.js"></script>
+        <script> 
+          function cstOnly(){
+            if (document.getElementbyId('taco') == 'dos') {
+              document.getElementById('cst').style.display = "block";
+            }
+          }
+        </script>
 
         <div class="container">
           <h1>- FuelFinder -</h1>
           <p id="mission">Through rain or shine, blood and tears, we've finally created an application to suit your needs. FuelFinder
             can find for you the most ideal way to save on gas expenses.
           </p>
-          <p id="about">FuelFinder, Fuel your life.</p>
-          <h2>- Meet the Team -</h2>        
-          <div class="section">
-          <img src="caldwell.jpg" alt="Caldwell Animus Portems" height="200px" width="250px" class="image">
-          <p class="text">Caldwell Animus Portems III </p>
-          <br>
-          <p class="text">Team leader. Lord of memes. Master of hiding behind doors. Caldwell is our spiritual leader: without him
-            we would be lost. As leader of the team, Caldwell's job is to make sure we are always on track. He is often seen napping
-            on the floor, playing footsie with unwilling ladies, or hiding behind doors watching us work. Many people have said good
-            things about him: <i>"Bro the party ended 2 days ago, why are you still behind my door?" "I swear I saw someone behind my
-            door but I thought that last week too so I'm probably tripping."</i><br>
-            All the team can say when asked about him: "class act."
-          </p>
-          </div>
-          <div class="section">
-            <img src="tribeMan.jpg" alt="Luigi Alcuaz" height="230px" width="250px" class="image">
-            <p class="text">Luigi "savage" Alcuaz</p>
-            <br>
-            <p class="text"> Sacrifice. No not that kind, SACRIFICE! <i>"Sacrifice, sacrifice, sacrifice!"</i> Luigi is found 
-              always patrolling the hallways and marking his territory. His trusty spear, "Sir PierceALot," is always by his side 
-              or thrown at unsuspecting prey. <br> <i>"I went to BCIT during my school field trip and this guy threw his spear at me.
-              It hurt, but it was sick!" - recently deceased student.</i> <br> His favourite hobby is to dance around a fire yelling 
-              "sacrifice" and can even be seen doing so in the back of the class. If there is a missing hoodie, laptop, or classmate, 
-              you can be sure to find familiar ashes within the raging bonfire. 
-            </p>
-          </div>
-          <div class="section">
-            <img src="smurf.png" alt="Bryce Courneya" height="200px" width="250px" class="image">
-            <p class="text">Bryce "oh papa" Courneya</p>
-            <br>
-            <p class="text">Father. Papa. Courneya. If Caldwell is our spiritual leader then Bryce is his cheerleader. As the odd one
-              out of the group, Bryce is always struggling to get along with his peers. From frosted tips to breaking his ankle, Bryce
-              has done all in his power to have someone he can call friend. He looks up to Caldwell, someone who receives a great amount of
-              attention, and is currently studying in his ways. In his desperate attempts to imitate him, he urges peers to call him papa or
-              father, his new-found moniker. Only after threats and displays of nudity did peers unwillingly comply. As "father" of the group
-              he is constantly making sure everyone is on track through ways no one can even imagine. 
-            </p>
-          </div>
-          <div class="section">
-            <img src="jackie.jpg" alt="Kris Chan" height="200px" width="250px" class="image">
-            <p class="text">Kris "karateMaster" Chan</p>
-            <br>
-            <p class="text">A hidden karate master known for always bringing his lunch during buisness
-              analysis lab. <br> <i>"Kris are you going to heat up your lunch? - Glen Elliot</i> <br> Other than that, Kris' entire background
-              is shrouded in mystery. No one knows where he comes from or if he even goes to school at BCIT but rest assured, when 
-              that red hoodie comes bouncing along, no one is left standing in its path. As an avid fan of younger Justin Bieber, Kris is always
-              hidden behind his mop of hair. Sometimes people don't even realise Kris is around until that mouth opens and a horrible rendition
-              of baby is in the air. All in all with Kris around, we can be sure to know the lyrics to "One less lonely girl" front and back.  
-            </p>
-          </div>
+          <p id="about">FuelFinder, Fuel your life.</p>        
         </div>
     </body>
   </html>

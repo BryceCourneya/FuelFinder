@@ -54,7 +54,7 @@
           color: black;
           font-size: 18px;
           border-radius: 20px;
-          width:30%;
+          width: 200px;
         }
 
         #submit:hover{
@@ -129,7 +129,7 @@
         #closest {
           margin-bottom: 40px;
         }
-            
+        
       </style>
     
       </head>
@@ -140,10 +140,6 @@
    
     <nav id="topbar">
       <div id="logo">
-        <form>
-        <input type="search" name="search" placeholder="Search" id="search">
-        <input type="submit" name="submit" value="Submit">
-        </form>
         <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
         <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
       </div>
@@ -173,14 +169,20 @@
         </div>
         <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
       </nav>
-      </div>
+      
     </nav>
     
     <!-- Nav bar end-->
     
         <!-- Main content goes here-->
         <script src="fireBase.js"></script>
-        <script src="login.js"></script>
+        <script src="navChange.js"></script>
+        <script>
+          $(document).ready(function() {
+            document.getElementById("closest").checked = true;
+          });
+        </script>
+        <script src="preferenceFunctions.js"></script>
 
         <div class="container">
 
@@ -189,16 +191,16 @@
             <form class=forms>                                
               <div id="carInfo">
                 <h2>Car Info</h2>
-                  <input type="text" id="make" placeholder="Enter car make" name="make"> 
-                  <input type="text" id="model" placeholder="Enter car model" name="model">  
-                  <input type="text" id="year" placeholder="Enter car year" name="year">  
+                  <input type="text" id="make" placeholder="Enter make" name="make"> 
+                  <input type="text" id="model" placeholder="Enter model" name="model">  
+                  <input type="text" id="year" placeholder="Enter year" name="year">  
               </div>
 
               <div id="gasStation">
                 <h3>Gas Station</h3>
-                <input type=radio name="radio" value="closest" id="closest"><label>Closest US</label>
+                <input type=radio name="radio" value="0" id="closest"><label>Closest US</label>
                 <br>
-                <input type=radio name="radio" value="lowest" id="lowest">Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" min="0" id="lowestKM"><label>km</label> 
+                <input type=radio name="radio" value="0" id="lowest">Lowest price within <input class="km" type=number name="km" placeholder="0" value="0" min="0" id="lowestKM"><label>km</label> 
               </div>
 
               <div id="additionalInfo">
