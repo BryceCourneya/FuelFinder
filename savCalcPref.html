@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <title>Savings Calculator</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="logo.css"> <!--Needed for nav bar-->
+  <link rel="stylesheet" href="css/logo.css"> <!--Needed for nav bar-->
   <style>
     body {
-      background:url(desertroad.jpg!d) no-repeat center center fixed;
+      background:url(images/desertroad.jpg!d) no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -160,12 +160,12 @@
    
     <nav id="topbar">
       <div id="logo">
-        <a href="index.html"><img src="logo.png" alt="logo" id="logo1"></a>
-        <a href="index.html"><img src="logo2.png" alt="logo" id="logo2"></a>
+        <a href="index.html"><img src="images/logo.png" alt="logo" id="logo1"></a>
+        <a href="index.html"><img src="images/logo2.png" alt="logo" id="logo2"></a>
       </div>
       <nav class="navbar" id="navbar">
         <div class="dropdown">
-          <button class="dropbtn"><img src="accountlogo.png" alt="account" title="Account">
+          <button class="dropbtn"><img src="images/accountlogo.png" alt="account" title="Account">
           </button>
           <div id="accountDrop" class="dropdown-content">
             <div id="notSignedIn">
@@ -179,7 +179,7 @@
           </div>
         </div>
         <div class="dropdown">
-          <button class="dropbtn"><img src="featureslogo.png" alt="Features" title="Features">
+          <button class="dropbtn"><img src="images/featureslogo.png" alt="Features" title="Features">
           </button>
           <div id="featureDrop" class="dropdown-content">
             <a href="savCalcPref.html">US Savings Calculator</a>
@@ -187,7 +187,7 @@
             <a href="aboutUs.html">About Us</a>
           </div>
         </div>
-        <a href="index.html"><img src="homelogo.png" alt="home" title="Home"></a> 
+        <a href="index.html"><img src="images/homelogo.png" alt="home" title="Home"></a> 
       </nav>
       
     </nav>
@@ -200,7 +200,7 @@
       <div id="preferences">
         <h3>Savings Calculator - find your dream gas station!</h3>
         <hr>
-        <button id="carInfoButton">1.&ensp;<img id="carInfoArrow" src='arrow.png'>&ensp;Car Info</button>
+        <button id="carInfoButton">1.&ensp;<img id="carInfoArrow" src='images/arrow.png'>&ensp;Car Info</button>
         <div id="carInfo">
           <form class="forms" name="form1" id="form1">
             <input type=text name="make" placeholder="make" id="make">
@@ -209,7 +209,7 @@
           </form>
         </div>
         <hr>
-        <button id="gasStationButton">2.&ensp;<img id="gasStationArrow" src='arrow.png'>&ensp;Gas Station</button>
+        <button id="gasStationButton">2.&ensp;<img id="gasStationArrow" src='images/arrow.png'>&ensp;Gas Station</button>
         <div id="gasStation">
           <form class="forms" name="form2" id="form2">
             <ul>
@@ -219,7 +219,7 @@
           </form>
         </div>
         <hr>
-        <button id="additionalOptionsButton"><img id="additionalOptionsArrow" src='arrow2.png'>&ensp;Additional Options</button>
+        <button id="additionalOptionsButton"><img id="additionalOptionsArrow" src='images/arrow2.png'>&ensp;Additional Options</button>
         <div id="additionalOptions">
           <form class="forms" name="form3" id="form3">
             <input type=checkbox name=check1 id="check1"><label>Jerry Cans:</label><input type=number class="km" name="jerryCans" id="jerryCans" value="0" min="0"> x <input type="number" class="km" name="jerryCanSize" id="jerryCanSize" value="0" min="0" max="100"> liters
@@ -393,29 +393,14 @@
                     localStorage.setItem("jerryCanSize", jerryCanSize);
                     localStorage.setItem("fuelGrade", fuelGrade);
                   }
-                     // var promise = firebase.database().ref("preferences").set( {
-                 // firebase.auth().onAuthStateChanged(function(user){
-                 //   if (notComplete == false && carSupport == true) {
-                 //     var promise = firebase.database().ref('users/'+user.uid).set( {
-                 //      "model" : model,
-                 //      "make" : make,
-                 //      "year" : year,
-                 //      "station" : station,
-                 //      "jerryCans" : jerryCans,
-                 //      "jerryCanSize" : jerryCanSize,
-                 //      "fuelGrade" : fuelGrade
-                 //      });
-                 // }
                   
                   if (notComplete == false && carSupport == true) {
-                  //  promise.then(function() {
                       window.location.href="savCalcResults.html";
-                //  });
-                } else if (notComplete == true) {
-                  window.alert("You must enter the make, model, and year of the car!");
-                } else if (carSupport == false) {
-                  window.alert("Sorry! The Savings Calculator does not support your vehicle at this time. \nPlease enter another vehicle");
-                }
+                  } else if (notComplete == true) {
+                    window.alert("You must enter the make, model, and year of the car!");
+                  } else if (carSupport == false) {
+                    window.alert("Sorry! The Savings Calculator does not support your vehicle at this time. \nPlease enter another vehicle");
+                  }
                   }
         </script>
       </div>
